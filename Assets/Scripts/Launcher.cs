@@ -6,11 +6,13 @@ using Photon.Pun;
 public class Launcher : MonoBehaviourPunCallbacks
 {
     public PhotonView playerPrefab;
+    SpawnSpot[] spawnSpots;
 
     // Start is called before the first frame update
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
+        spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
     }
 
     public override void OnConnectedToMaster()
@@ -22,7 +24,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("Successfully Joined a Room");
-        GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+        SpawnSpot mySpawnSpot = spawnSpots [Random.Range (0, spawnSpots.Length)];
+        GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         player.transform.Find("Camera").gameObject.SetActive(true);
     }
 }
