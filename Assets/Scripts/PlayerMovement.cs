@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public Transform groundCheck;
     public LayerMask groundMask;
 
-
     Vector3 velocity;
 
     // Update is called once per frame
