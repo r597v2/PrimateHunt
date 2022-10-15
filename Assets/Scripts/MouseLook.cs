@@ -7,6 +7,7 @@ public class MouseLook : MonoBehaviourPunCallbacks
 {
     public float mouseSensitivity = 100f;
     float xRotation = 0f;
+    float yRotation = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +26,9 @@ public class MouseLook : MonoBehaviourPunCallbacks
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            transform.Rotate(Vector3.up * mouseX);
+            yRotation += mouseX;
+
+            transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
         }
     }
 }
