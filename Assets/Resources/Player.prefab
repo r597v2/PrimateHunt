@@ -12,13 +12,12 @@ GameObject:
   - component: {fileID: 95367450038629544}
   - component: {fileID: 95367450038629546}
   - component: {fileID: 95367450038629540}
-  - component: {fileID: 95367450038629543}
   - component: {fileID: 963270794761650555}
   - component: {fileID: 661959708076234156}
   - component: {fileID: 5332983766419876968}
   - component: {fileID: -5180517343363294081}
-  - component: {fileID: 8303120387896091189}
   - component: {fileID: 5142211204702234687}
+  - component: {fileID: 7329540771786708825}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -96,18 +95,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &95367450038629543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95367450038629545}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd079dbf292801f42812f1e88aae541f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &963270794761650555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,29 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a388df842ba09294dbcb4ca768663821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8303120387896091189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95367450038629545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8c4c83260d6c9c408a7a5aca6e55324, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventorySize: 4
-  inventorySystem:
-    inventorySlots:
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
 --- !u!54 &5142211204702234687
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -211,6 +175,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7329540771786708825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95367450038629545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c4c83260d6c9c408a7a5aca6e55324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySize: 4
+  inventorySystem:
+    inventorySlots:
+    - itemData: {fileID: 0}
+      stackSize: -1
+    - itemData: {fileID: 0}
+      stackSize: -1
+    - itemData: {fileID: 0}
+      stackSize: -1
+    - itemData: {fileID: 0}
+      stackSize: -1
 --- !u!1 &95367450096926021
 GameObject:
   m_ObjectHideFlags: 0

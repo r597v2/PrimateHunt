@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5647278116952084890}
   - component: {fileID: 5647278116952084891}
   - component: {fileID: 5647278116952084888}
+  - component: {fileID: 1696022350596620336}
+  - component: {fileID: 8261254168807846094}
   m_Layer: 0
   m_Name: BananaItem
   m_TagString: Untagged
@@ -32,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 4730368167474375974}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &5647278116952084891
 SphereCollider:
@@ -61,6 +63,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickUpRadius: 1
   ItemData: {fileID: 11400000, guid: bdd66df395ad7e94189c2f0c82881609, type: 2}
+--- !u!54 &1696022350596620336
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5647278116952084889}
+  serializedVersion: 2
+  m_Mass: 0.12
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8261254168807846094
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5647278116952084889}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.48664188, y: 0.2117641, z: 0.90682125}
+  m_Center: {x: -0.007028103, y: -0.03697455, z: 0.0034070015}
 --- !u!1001 &6408762441077191259
 PrefabInstance:
   m_ObjectHideFlags: 0
