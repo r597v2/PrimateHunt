@@ -46550,6 +46550,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4404583797375175655, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4404583797375175655, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1696022350596620336, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -108551,6 +108559,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4404583797375175655, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -4404583797375175655, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1696022350596620336, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -121627,6 +121643,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4404583797375175655, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4404583797375175655, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1696022350596620336, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -122870,6 +122894,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4404583797375175655, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4404583797375175655, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1696022350596620336, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -130907,6 +130939,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4404583797375175655, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4404583797375175655, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1696022350596620336, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_UseGravity
       value: 1
