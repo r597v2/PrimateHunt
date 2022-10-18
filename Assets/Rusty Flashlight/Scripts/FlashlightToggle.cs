@@ -9,7 +9,6 @@ public class FlashlightToggle : MonoBehaviourPunCallbacks
 
     public GameObject lightGO; //light gameObject to work with
     private bool isOn = false; //is flashlight on or off?
-    private PhotonView PV;
 
     // Use this for initialization
     void Start()
@@ -17,40 +16,40 @@ public class FlashlightToggle : MonoBehaviourPunCallbacks
         //set default off
         lightGO.SetActive(isOn);
 
-        PV = GetComponent<PhotonView>();
-        if (PV.IsMine)
+        if (photonView.IsMine)
         {
-            PV.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
+            photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        RPC_FlashlightControl();
+        if (!photonView.IsMine) {
+            return;
+        }
+
+        //toggle flashlight on key down
+        if (Input.GetMouseButton(1))
+        {
+            //toggle light
+            isOn = !isOn;
+            photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
+        }
     }
 
     [PunRPC]
-    private void RPC_FlashlightControl()
+    private void RPC_FlashlightControl(bool isOn)
     {
-        if (photonView.IsMine)
+        //turn light on
+        if (isOn)
         {
-            //toggle flashlight on key down
-            if (Input.GetMouseButton(1))
-            {
-                //toggle light
-                isOn = !isOn;
-                //turn light on
-                if (isOn)
-                {
-                    lightGO.SetActive(true);
-                }
-                //turn light off
-                else
-                {
-                    lightGO.SetActive(false);
-                }
-            }
+            lightGO.SetActive(true);
+        }
+        //turn light off
+        else
+        {
+            lightGO.SetActive(false);
         }
     }
 }
