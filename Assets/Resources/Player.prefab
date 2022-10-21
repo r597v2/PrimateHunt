@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 95367450038629544}
-  speed: 5
+  normalSpeed: 5
   gravity: -19.62
   groundDistance: 0.4
   playerHeight: {fileID: 95367450038629544}
@@ -812,7 +812,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 95
   orthographic: 0
