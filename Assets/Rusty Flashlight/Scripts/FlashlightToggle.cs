@@ -35,6 +35,7 @@ public class FlashlightToggle : MonoBehaviourPunCallbacks
             //toggle light
             isOn = !isOn;
             photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
+            gameObject.GetComponent<AudioSource>().Play();
         }
     }
 
