@@ -590,6 +590,9 @@ MonoBehaviour:
   speed: 5
   gravity: -19.62
   groundDistance: 0.4
+  playerHeight: {fileID: 95367450038629544}
+  normalHeight: 2
+  crouchHeight: 0.3
   groundCheck: {fileID: 95367450096926020}
   groundMask:
     serializedVersion: 2
