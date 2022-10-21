@@ -5,38 +5,45 @@ using Photon.Pun;
 
 public class PlayerInteraction : MonoBehaviourPunCallbacks
 {
-    private LightOnOff lightOnOff;
+    private LightSwitch lightSwitch;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine) {
+        if (!photonView.IsMine)
+        {
             return;
         }
 
-        if (Input.GetMouseButtonDown(0) && lightOnOff != null)
+        if (Input.GetMouseButtonDown(0) && lightSwitch != null)
         {
-            lightOnOff.toggle();
+            photonView.RPC("RPC_ToggleLights", RpcTarget.AllBuffered);
         }
     }
 
-    public void SetLightOnOff(LightOnOff lightOnOff) 
+    [PunRPC]
+    private void RPC_ToggleLights()
     {
-        this.lightOnOff  = lightOnOff;
+        lightSwitch?.Toggle();
     }
 
-     // private void OnTriggerEnter(Collider other)
+    public void SetLightSwitch(LightSwitch lightSwitch)
+    {
+        this.lightSwitch = lightSwitch;
+    }
+
+    // private void OnTriggerEnter(Collider other)
     // {
-        // if (other.gameObject.tag == "Item")
-        // {
-        //     Destroy(other.gameObject);
-        //     Debug.Log("banan get");
-        // }
+    // if (other.gameObject.tag == "Item")
+    // {
+    //     Destroy(other.gameObject);
+    //     Debug.Log("banan get");
+    // }
     // }
 }
