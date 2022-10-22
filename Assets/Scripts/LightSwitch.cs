@@ -6,6 +6,8 @@ public class LightSwitch : MonoBehaviour
 {
     public GameObject lightObj;
 
+    public string switchName = "LOBBY";
+
     private PlayerInteraction playerAtSwitch;
 
     private bool isVisible;
@@ -21,13 +23,13 @@ public class LightSwitch : MonoBehaviour
     void OnBecameVisible()
     {
         isVisible = true;
-        playerAtSwitch?.SetLightSwitch(this);
+        playerAtSwitch?.SetLightSwitchName(switchName);
     }
 
     void OnBecameInvisible()
     {
         isVisible = false;
-        playerAtSwitch?.SetLightSwitch(null);
+        playerAtSwitch?.SetLightSwitchName(null);
     }
 
     public void Toggle()
@@ -42,7 +44,7 @@ public class LightSwitch : MonoBehaviour
         {
             playerAtSwitch = other.gameObject.GetComponent<PlayerInteraction>();
 
-            playerAtSwitch.SetLightSwitch(isVisible ? this : null);
+            playerAtSwitch.SetLightSwitchName(isVisible ? switchName : null);
         }
      }
     
@@ -51,7 +53,7 @@ public class LightSwitch : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerInteraction>().SetLightSwitch(null);
+            other.gameObject.GetComponent<PlayerInteraction>().SetLightSwitchName(null);
             playerAtSwitch = null;
         }
     }

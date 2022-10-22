@@ -3722,6 +3722,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 40831a8f0114afe46a6774a0062b3582, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 40831a8f0114afe46a6774a0062b3582, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.28
@@ -5900,6 +5904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightObj: {fileID: 1989302926}
+  switchName: LOBBY
 --- !u!64 &1413463775
 MeshCollider:
   m_ObjectHideFlags: 0

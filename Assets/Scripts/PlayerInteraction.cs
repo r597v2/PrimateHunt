@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class PlayerInteraction : MonoBehaviourPunCallbacks
 {
-    private LightSwitch lightSwitch;
+    private string switchName;
 
     // Start is called before the first frame update
     void Start()
@@ -21,29 +21,32 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
             return;
         }
 
-        if (Input.GetMouseButtonDown(0) && lightSwitch != null)
+        if (Input.GetMouseButtonDown(0) && switchName != null)
         {
-            photonView.RPC("RPC_ToggleLights", RpcTarget.AllBuffered);
+            photonView.RPC("RPC_ToggleLights", RpcTarget.AllBuffered, switchName);
         }
     }
 
     [PunRPC]
-    private void RPC_ToggleLights()
+    private void RPC_ToggleLights(string switchName)
     {
+        // find the light switch with name "switchName"
+        LightSwitch lightSwitch = null;
+        LightSwitch[] allLightSwitches = FindObjectsOfType<LightSwitch>();
+        foreach(LightSwitch lsw in allLightSwitches)
+        {
+            if(lsw.switchName == switchName)
+            {
+                lightSwitch = lsw;
+                break;
+            }
+        }
+
         lightSwitch?.Toggle();
     }
 
-    public void SetLightSwitch(LightSwitch lightSwitch)
+    public void SetLightSwitchName(string switchName)
     {
-        this.lightSwitch = lightSwitch;
+        this.switchName = switchName;
     }
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    // if (other.gameObject.tag == "Item")
-    // {
-    //     Destroy(other.gameObject);
-    //     Debug.Log("banan get");
-    // }
-    // }
 }
