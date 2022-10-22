@@ -18,12 +18,18 @@ public class VomitControl : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
-
+            
             if (Input.GetKeyDown(KeyCode.V))
             {
-                vomitParticles.Play();
-                gameObject.GetComponent<AudioSource>().Play();
+                photonView.RPC("RPC_VomitControl", RpcTarget.AllBuffered);
             }
         }
+    }
+
+    [PunRPC]
+    private void RPC_VomitControl()
+    {
+        vomitParticles.Play();
+        gameObject.GetComponent<AudioSource>().Play();
     }
 }

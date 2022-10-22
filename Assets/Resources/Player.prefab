@@ -799,8 +799,8 @@ Camera:
   m_GameObject: {fileID: 95367450762143517}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1493,6 +1493,7 @@ GameObject:
   - component: {fileID: 7662070349434172291}
   - component: {fileID: 8706671629088065118}
   - component: {fileID: 9177058724109947888}
+  - component: {fileID: 8428887794749067791}
   m_Layer: 0
   m_Name: VomitControl
   m_TagString: Untagged
@@ -1508,7 +1509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832704896128225956}
   m_LocalRotation: {x: 0.0029321983, y: -0, z: -0, w: 0.99999577}
-  m_LocalPosition: {x: 0.60264623, y: 0.32817113, z: -0.0062042163}
+  m_LocalPosition: {x: -0.021, y: 0.477, z: -0.006}
   m_LocalScale: {x: 0.51161367, y: 0.5116136, z: 0.5116136}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1625,6 +1626,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8428887794749067791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832704896128225956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1234342173025146975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,15 +1827,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1470188751895612288, guid: 1676f0d96b298ec41976c879b7fc2c11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2189788
+      value: 0.007
       objectReference: {fileID: 0}
     - target: {fileID: 1470188751895612288, guid: 1676f0d96b298ec41976c879b7fc2c11, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3734081
+      value: 0.153
       objectReference: {fileID: 0}
     - target: {fileID: 1470188751895612288, guid: 1676f0d96b298ec41976c879b7fc2c11, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.40281877
+      value: 0.314
       objectReference: {fileID: 0}
     - target: {fileID: 1470188751895612288, guid: 1676f0d96b298ec41976c879b7fc2c11, type: 3}
       propertyPath: m_LocalRotation.w
