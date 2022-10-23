@@ -5,6 +5,8 @@ using Photon.Pun;
 
 public class MouseLook : MonoBehaviourPunCallbacks
 {
+    public Camera cam;
+    
     public float mouseSensitivity = 100f;
     float xRotation = 0f;
     float yRotation = 0f;
