@@ -42,6 +42,7 @@ MonoBehaviour:
   - RPC_FlashlightControl
   - RPC_ToggleLights
   - RPC_VomitControl
+  - RPC_Interact
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
