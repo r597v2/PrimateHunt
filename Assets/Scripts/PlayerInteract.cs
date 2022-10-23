@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerInteract : MonoBehaviour
+public class PlayerInteract : MonoBehaviourPunCallbacks
 {
     [SerializeField] private float distance = 2f;
     [SerializeField]private LayerMask mask;
@@ -20,6 +21,11 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         playerUI.UpdateText(string.Empty);
         //create a ray at the center of the camera, shooting outwards.
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
@@ -33,6 +39,7 @@ public class PlayerInteract : MonoBehaviour
                 playerUI.UpdateText(interactable.promptMessage);
                 if(Input.GetMouseButtonDown(0))
                 {
+                    Debug.Log("LMB clicked!");
                     interactable.BaseIntereract();
                 }
             }

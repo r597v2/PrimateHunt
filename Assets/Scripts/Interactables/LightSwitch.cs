@@ -10,7 +10,6 @@ public class LightSwitch : Interactable
     // Start is called before the first frame update
     void Start()
     {
-        lights.SetActive(true);
     }
 
     // Update is called once per frame
