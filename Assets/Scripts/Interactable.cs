@@ -9,10 +9,17 @@ public abstract class Interactable : MonoBehaviourPun
     public string promptMessage;
     // Name used by RPC
     public string idName = "DEFAULT";
-    
+
     public void BaseIntereract()
     {
-        photonView?.RPC("RPC_Interact", RpcTarget.AllBuffered, idName);
+        if (photonView != null)
+        {
+            photonView.RPC("RPC_Interact", RpcTarget.AllBuffered, idName);
+        }
+        else
+        {
+            Interact();
+        }
     }
 
     [PunRPC]
@@ -20,9 +27,9 @@ public abstract class Interactable : MonoBehaviourPun
     {
         Interactable target = null;
         Interactable[] allInteractables = FindObjectsOfType<Interactable>();
-        foreach(Interactable interactable in allInteractables)
+        foreach (Interactable interactable in allInteractables)
         {
-            if(interactable.idName == idName)
+            if (interactable.idName == idName)
             {
                 target = interactable;
                 break;
