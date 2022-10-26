@@ -1039,6 +1039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptMessage: Press LMB to use
   idName: RoomLightSwitch
+  interactType: 0
   lights: {fileID: 807605746}
 --- !u!82 &224026996
 AudioSource:
@@ -9357,6 +9358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptMessage: Press LMB to use
   idName: Lobby Light Switch
+  interactType: 0
   lights: {fileID: 1989302926}
 --- !u!82 &1762195673
 AudioSource:
@@ -12071,6 +12073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptMessage: Press LMB to use
   idName: LevelSelectUI
+  interactType: 0
   levelSelectUI: {fileID: 1363501694}
 --- !u!1 &14875149395557626
 GameObject:

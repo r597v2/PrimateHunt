@@ -10,20 +10,29 @@ public abstract class Interactable : MonoBehaviourPun
     // Name used by RPC
     public string idName = "DEFAULT";
 
-    public void BaseIntereract()
+    public enum INTERACT_TYPE
+    {
+        INTERACT,
+        PICKUP
+    }
+
+    [SerializeField]
+    public INTERACT_TYPE interactType = INTERACT_TYPE.INTERACT;
+
+    public void BaseIntereract(int photonViewID)
     {
         if (photonView != null)
         {
-            photonView.RPC("RPC_Interact", RpcTarget.AllBuffered, idName);
+            photonView.RPC("RPC_Interact", RpcTarget.AllBuffered, idName, photonViewID);
         }
         else
         {
-            Interact();
+            Interact(photonViewID);
         }
     }
 
     [PunRPC]
-    protected void RPC_Interact(string idName)
+    protected void RPC_Interact(string idName, int photonViewID)
     {
         Interactable target = null;
         Interactable[] allInteractables = FindObjectsOfType<Interactable>();
@@ -36,10 +45,27 @@ public abstract class Interactable : MonoBehaviourPun
             }
         }
 
-        target?.Interact();
+        target?.Interact(photonViewID);
     }
 
-    protected virtual void Interact()
+    protected GameObject FindPlayerGameObjectByPhotonViewID(int photonViewID)
+    {
+        GameObject playerGameObject = null;
+        GameObject[] playerGameObjects = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject gameObj in playerGameObjects)
+        {
+            if (gameObj.GetPhotonView().ViewID == photonViewID)
+            {
+                playerGameObject = gameObj;
+                break;
+            }
+        }
+
+        return playerGameObject;
+    }
+
+    protected virtual void Interact(int photonViewID)
     {
         //template function to be overridden by subclasses
     }

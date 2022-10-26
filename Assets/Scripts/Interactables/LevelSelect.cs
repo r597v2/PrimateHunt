@@ -22,7 +22,7 @@ public class LevelSelect : Interactable
         }
     }
     
-    protected override void Interact()
+    protected override void Interact(int photonViewID)
     {
         if (!levelSelectUI.activeInHierarchy)
         {

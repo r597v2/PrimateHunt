@@ -18,7 +18,7 @@ public class LightSwitch : Interactable
 
     }
 
-    protected override void Interact()
+    protected override void Interact(int photonViewID)
     {
         gameObject.GetComponent<AudioSource>().Play();
 

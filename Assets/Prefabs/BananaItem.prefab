@@ -9,13 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5647278116952084890}
-  - component: {fileID: 5647278116952084891}
-  - component: {fileID: 5647278116952084888}
   - component: {fileID: 1696022350596620336}
   - component: {fileID: 8261254168807846094}
+  - component: {fileID: 7120115087687469044}
   m_Layer: 9
   m_Name: BananaItem
-  m_TagString: Banana
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,35 +33,8 @@ Transform:
   m_Children:
   - {fileID: 4730368167474375974}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5647278116952084891
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5647278116952084889}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5647278116952084888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5647278116952084889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e92fc90bf164746b43782eb62e9582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PickUpRadius: 1
-  ItemData: {fileID: 11400000, guid: bdd66df395ad7e94189c2f0c82881609, type: 2}
 --- !u!54 &1696022350596620336
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -90,8 +62,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.48664188, y: 0.2117641, z: 0.90682125}
-  m_Center: {x: -0.007028103, y: -0.03697455, z: 0.0034070015}
+  m_Size: {x: 0.47204304, y: 0.18743396, z: 0.90682125}
+  m_Center: {x: 0.00027132034, y: -0.02181685, z: 0.0034070015}
+--- !u!114 &7120115087687469044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5647278116952084889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ad674aea6ee954593db560316a8acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptMessage: Press E to pick up
+  idName: Banana
+  interactType: 1
+  ItemData: {fileID: 11400000, guid: bdd66df395ad7e94189c2f0c82881609, type: 2}
 --- !u!1001 &6408762441077191259
 PrefabInstance:
   m_ObjectHideFlags: 0

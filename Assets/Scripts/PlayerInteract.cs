@@ -6,7 +6,8 @@ using Photon.Pun;
 public class PlayerInteract : MonoBehaviourPunCallbacks
 {
     [SerializeField] private float distance = 2f;
-    [SerializeField]private LayerMask mask;
+    [SerializeField] private LayerMask mask;
+    [SerializeField] private LayerMask mask2;
 
     private Camera cam;
     private PlayerUI playerUI;
@@ -33,14 +34,17 @@ public class PlayerInteract : MonoBehaviourPunCallbacks
         RaycastHit hitInfo; //variable to store collision info
         if (Physics.Raycast(ray, out hitInfo, distance, mask))
         {
-            if(hitInfo.collider.GetComponent<Interactable>() != null)
+            if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
                 playerUI.UpdateText(interactable.promptMessage);
-                if(Input.GetMouseButtonDown(0))
+
+                if (
+                    (Input.GetMouseButtonDown(0) && interactable.interactType == Interactable.INTERACT_TYPE.INTERACT) // Interact type
+                    || (Input.GetKeyDown(KeyCode.E) && interactable.interactType == Interactable.INTERACT_TYPE.PICKUP) // pickup type
+                    )
                 {
-                    Debug.Log("LMB clicked!");
-                    interactable.BaseIntereract();
+                    interactable.BaseIntereract(photonView.ViewID);
                 }
             }
         }
