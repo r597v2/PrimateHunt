@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviourPunCallbacks
 {
     public CharacterController controller;
+    public Slider staminaBar;
+    public float dValue;
 
+    public float stamina;
+    float maxStamina;
     public float normalSpeed = 5f;
     private float speed;
     private float sprintFactor = 2f;
@@ -18,6 +23,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public float normalHeight, crouchHeight;
 
     private bool isCrouched = false;
+    private bool staminaDecreasing;
 
     private bool isGrounded;
 
@@ -29,6 +35,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     void Start()
     {
         speed = normalSpeed;
+        maxStamina = stamina;
+        staminaBar.maxValue = maxStamina;
     }
 
     // Update is called once per frame
@@ -52,11 +60,13 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 speed *= sprintFactor;
+                staminaDecreasing = true;
             }
 
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 speed /= sprintFactor;
+                staminaDecreasing = false;
             }
 
             // Check crouching
@@ -80,8 +90,23 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             velocity.y += gravity * Time.deltaTime;
 
             controller.Move(velocity * Time.deltaTime);
+        }
+
+        UpdateStamina(staminaDecreasing);
+    }
 
 
+    private void UpdateStamina(bool decreasing)
+    {
+        if (decreasing && stamina > 0)
+        {
+            stamina -= dValue * Time.deltaTime;
+            staminaBar.value = stamina;
+        }
+        else if (!decreasing && stamina < maxStamina)
+        {
+            stamina += dValue * Time.deltaTime;
+            staminaBar.value = stamina;
         }
     }
 

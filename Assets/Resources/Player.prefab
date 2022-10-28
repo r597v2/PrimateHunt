@@ -532,7 +532,6 @@ GameObject:
   - component: {fileID: 7329540771786708825}
   - component: {fileID: 741793616793302554}
   - component: {fileID: 6252919883353401457}
-  - component: {fileID: 3721715058890166735}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -592,6 +591,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 95367450038629544}
+  staminaBar: {fileID: 8424867644845872175}
+  dValue: 10
+  stamina: 30
   normalSpeed: 5
   gravity: -19.62
   groundDistance: 0.4
@@ -751,21 +753,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptText: {fileID: 3979587152742074886}
---- !u!114 &3721715058890166735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95367450038629545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce32b3f742903ce468d185436d5012ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stamina: 30
-  staminaBar: {fileID: 8424867644845872175}
-  dValue: 4
 --- !u!1 &95367450096926021
 GameObject:
   m_ObjectHideFlags: 0
