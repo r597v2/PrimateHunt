@@ -5,6 +5,7 @@ using TMPro;
 public class InventorySlot_UI : MonoBehaviour
 {
     [SerializeField] private Image itemSprite;
+    [SerializeField] public Image selectionSprite;
     [SerializeField] private TextMeshProUGUI itemCount;
     [SerializeField] private InventorySlot assignedInventorySlot;
 

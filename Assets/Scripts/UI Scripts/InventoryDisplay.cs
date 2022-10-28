@@ -4,8 +4,6 @@ using UnityEngine.Events;
 
 public abstract class InventoryDisplay : MonoBehaviour
 {
-    [SerializeField] MouseItemData mouseInventoryItem;
-
     protected InventorySystem inventorySystem;
     protected Dictionary<InventorySlot_UI, InventorySlot> slotDictionary;
 
@@ -14,7 +12,6 @@ public abstract class InventoryDisplay : MonoBehaviour
 
     protected virtual void Start()
     {
-
     }
 
     public abstract void AssignSlot(InventorySystem invToDisplay);

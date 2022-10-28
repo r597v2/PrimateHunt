@@ -103,9 +103,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             stamina -= dValue * Time.deltaTime;
             staminaBar.value = stamina;
         }
-        else if (!decreasing && stamina < maxStamina)
+        else if (Input.GetKeyDown(KeyCode.B) && !decreasing && stamina < maxStamina)
         {
-            stamina += dValue * Time.deltaTime;
+            stamina += dValue;
             staminaBar.value = stamina;
         }
     }
