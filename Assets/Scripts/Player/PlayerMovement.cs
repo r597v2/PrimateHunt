@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     private bool isCrouched = false;
     private bool staminaDecreasing;
+    public bool isSprinting;
 
     private bool isGrounded;
 
@@ -56,17 +57,25 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
             Vector3 move = transform.right * x + transform.forward * z;
 
-            // Check sprint
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (stamina <= 0 || stamina <= 0 && isSprinting)
             {
-                speed *= sprintFactor;
-                staminaDecreasing = true;
+                DisableSprint();
+            }
+
+            // Check sprint
+            if (Input.GetKeyDown(KeyCode.LeftShift) && stamina > 0)
+            {
+                Sprint();
+            }
+
+            if (stamina > 0)
+            {
+                sprintFactor = 2f;
             }
 
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
-                speed /= sprintFactor;
-                staminaDecreasing = false;
+                StopSprinting();
             }
 
             // Check crouching
@@ -95,6 +104,25 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         UpdateStamina(staminaDecreasing);
     }
 
+    private void Sprint()
+    {
+        speed *= sprintFactor;
+        staminaDecreasing = true;
+        isSprinting = true;
+    }
+
+    private void StopSprinting()
+    {
+        speed /= sprintFactor;
+        staminaDecreasing = false;
+        isSprinting = false;
+    }
+
+    private void DisableSprint()
+    {
+        StopSprinting();
+        sprintFactor = 1f;
+    }
 
     private void UpdateStamina(bool decreasing)
     {
