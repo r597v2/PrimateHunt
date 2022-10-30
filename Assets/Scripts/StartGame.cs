@@ -15,23 +15,9 @@ public class StartGame : MonoBehaviourPunCallbacks
 
     public void GameStart()
     {
-        // if (BankIsSelected.bankIsSelected)
-        // {
-        //     // OpenBankScene();
-        // }
-
         if (BankIsSelected.bankIsSelected && PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.Disconnect();
-            PhotonNetwork.JoinRandomOrCreateRoom();
-            PhotonNetwork.LoadLevel(1);
+            PhotonNetwork.LoadLevel("Bank");
         }
     }
-
-    // public void OpenBankScene()
-    // {
-    //     SceneManager.LoadScene("Bank");
-
-    //     SceneManager.UnloadSceneAsync("Lobby");
-    // }
 }

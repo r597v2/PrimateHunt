@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
@@ -12,14 +13,18 @@ public class Launcher : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        PhotonNetwork.ConnectUsingSettings();
         spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
 
         if (PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.AutomaticallySyncScene = true;
+            spawnPlayer();
         }
-        else return;
+        else
+        {
+            PhotonNetwork.ConnectUsingSettings();
+        }
+        
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public override void OnConnectedToMaster()
@@ -59,6 +64,12 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         Debug.Log("Successfully Joined a Room.");
         Debug.Log("Players in this room: " + PhotonNetwork.CurrentRoom.PlayerCount + ". Players in all rooms: " + PhotonNetwork.PlayerList.Length);
+
+        spawnPlayer();
+    }
+
+    private void spawnPlayer()
+    {
         SpawnSpot mySpawnSpot = spawnSpots [Random.Range (0, spawnSpots.Length)];
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         player.transform.Find("Camera").gameObject.SetActive(true);

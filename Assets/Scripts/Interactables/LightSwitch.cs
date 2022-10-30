@@ -22,13 +22,6 @@ public class LightSwitch : Interactable
     {
         gameObject.GetComponent<AudioSource>().Play();
 
-        if (lights.activeInHierarchy)
-        {
-            lights.SetActive(false);
-        }
-        else
-        {
-            lights.SetActive(true);
-        }
+        lights.SetActive(!lights.activeInHierarchy);
     }
 }
