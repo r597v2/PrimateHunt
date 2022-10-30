@@ -14,6 +14,12 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.ConnectUsingSettings();
         spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
+
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+        }
+        else return;
     }
 
     public override void OnConnectedToMaster()
