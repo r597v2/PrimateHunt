@@ -54,7 +54,10 @@ public class StaticInventoryDisplay : InventoryDisplay
     {
         foreach (InventorySlot_UI slot in slots)
         {
-            slot.selectionSprite.enabled = false;
+            if(slot.selectionSprite != null)
+            {
+                slot.selectionSprite.enabled = false;
+            }
         }
     }
 

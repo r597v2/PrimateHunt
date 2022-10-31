@@ -2361,18 +2361,6 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7529725964777262741, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.36421984
-      objectReference: {fileID: 0}
-    - target: {fileID: 7529725964777262741, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.36421984
-      objectReference: {fileID: 0}
-    - target: {fileID: 7529725964777262741, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.36421984
-      objectReference: {fileID: 0}
-    - target: {fileID: 7529725964777262741, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.6958
       objectReference: {fileID: 0}
@@ -2411,10 +2399,6 @@ PrefabInstance:
     - target: {fileID: 7529725964777262741, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9021919505078067938, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
-      propertyPath: sceneViewId
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -8801,7 +8785,7 @@ MonoBehaviour:
   promptMessage: Press E to pickup
   idName: AK
   interactType: 1
-  ItemData: {fileID: 11400000, guid: ff2a6a4c2cd2f514cab196648cba3f43, type: 2}
+  itemData: {fileID: 11400000, guid: ff2a6a4c2cd2f514cab196648cba3f43, type: 2}
 --- !u!64 &1226267991
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18668,18 +18652,6 @@ PrefabInstance:
     - target: {fileID: 5647278116952084890, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_RootOrder
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5647278116952084890, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.36421984
-      objectReference: {fileID: 0}
-    - target: {fileID: 5647278116952084890, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.36421984
-      objectReference: {fileID: 0}
-    - target: {fileID: 5647278116952084890, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.36421984
       objectReference: {fileID: 0}
     - target: {fileID: 5647278116952084890, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_LocalPosition.x

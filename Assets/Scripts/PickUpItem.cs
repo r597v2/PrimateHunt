@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUpItem : Interactable
 {
-    public InventoryItemData ItemData;
+    public InventoryItemData itemData;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class PickUpItem : Interactable
 
         if (!inventory) return;
 
-        if (inventory.InventorySystem.AddToInventory(ItemData, 1))
+        if (inventory.InventorySystem.AddToInventory(itemData, 1))
         {
             Destroy(this.gameObject);
         }

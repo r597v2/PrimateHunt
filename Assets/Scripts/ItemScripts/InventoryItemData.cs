@@ -11,4 +11,11 @@ public class InventoryItemData : ScriptableObject
     public string description;
     public Sprite Icon;
     public int MaxStackSize;
+    public ITEMTYPES itemType;
+    public enum ITEMTYPES
+    {
+        DEFAULT,
+        BANANA,
+        AMMO
+    }
 }

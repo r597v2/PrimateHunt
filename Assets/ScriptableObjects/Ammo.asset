@@ -17,3 +17,4 @@ MonoBehaviour:
   description: It's ammo for guns.
   Icon: {fileID: 21300000, guid: 4535955d73ffe464e89de548c85edcc0, type: 3}
   MaxStackSize: 420
+  itemType: 2

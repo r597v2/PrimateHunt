@@ -7,14 +7,20 @@ public class InventorySlot
 {
     [SerializeField] private InventoryItemData itemData;
     [SerializeField] private int stackSize;
+    [SerializeField] private InventoryItemData.ITEMTYPES slotType;
 
     public InventoryItemData ItemData => itemData;
     public int StackSize => stackSize;
+    public InventoryItemData.ITEMTYPES SlotType {
+        get { return slotType; }
+        set { this.slotType = value; }
+    }
 
-    public InventorySlot(InventoryItemData source, int amount)
+    public InventorySlot(InventoryItemData source, int amount, InventoryItemData.ITEMTYPES slotType)
     {
         itemData = source;
         stackSize = amount;
+        this.slotType = slotType;
     }
 
     public InventorySlot()

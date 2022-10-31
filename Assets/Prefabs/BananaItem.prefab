@@ -28,12 +28,12 @@ Transform:
   m_GameObject: {fileID: 5647278116952084889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.61018, y: -2.3354907, z: 12.273461}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.36421984, y: 0.36421984, z: 0.36421984}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4730368167474375974}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1696022350596620336
 Rigidbody:
@@ -79,7 +79,7 @@ MonoBehaviour:
   promptMessage: Press E to pick up
   idName: Banana
   interactType: 1
-  ItemData: {fileID: 11400000, guid: bdd66df395ad7e94189c2f0c82881609, type: 2}
+  itemData: {fileID: 11400000, guid: bdd66df395ad7e94189c2f0c82881609, type: 2}
 --- !u!1001 &6408762441077191259
 PrefabInstance:
   m_ObjectHideFlags: 0
