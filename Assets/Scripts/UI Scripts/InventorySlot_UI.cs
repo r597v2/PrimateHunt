@@ -32,7 +32,7 @@ public class InventorySlot_UI : MonoBehaviour
 
     public void UpdateUISlot(InventorySlot slot)
     {
-        if (slot.ItemData != null)
+        if (slot.StackSize > 0 && slot.ItemData != null)
         {
             itemSprite.sprite = slot.ItemData.Icon;
             itemSprite.color = Color.white;

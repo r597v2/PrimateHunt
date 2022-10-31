@@ -18,4 +18,8 @@ public class InventoryItemData : ScriptableObject
         BANANA,
         AMMO
     }
+
+    public InventoryItemData(ITEMTYPES itemType) {
+        this.itemType = itemType;
+    }
 }

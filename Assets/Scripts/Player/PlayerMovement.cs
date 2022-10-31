@@ -129,10 +129,19 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             stamina -= dValue * Time.deltaTime;
             staminaBar.value = stamina;
         }
-        else if (Input.GetKeyDown(KeyCode.B) && !decreasing && stamina < maxStamina)
+        else if (Input.GetKeyDown(KeyCode.B))
         {
-            stamina += dValue;
-            staminaBar.value = stamina;
+            InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.BANANA);
+            InventoryHolder ih = GetComponent<InventoryHolder>();
+            
+            if (ih.InventorySystem.RetrieveFromInventory(itemData, 1))
+            {
+                if (!decreasing && stamina < maxStamina)
+                {
+                    stamina += dValue;
+                    staminaBar.value = stamina;
+                }
+            }
         }
     }
 

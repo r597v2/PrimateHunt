@@ -39,9 +39,9 @@ public class InventorySystem
         return false;
     }
 
-    public bool ContainsItem(InventoryItemData itemToAdd, out List<InventorySlot> invSlot)
+    public bool ContainsItem(InventoryItemData itemToCheck, out List<InventorySlot> invSlot)
     {
-        invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();
+        invSlot = InventorySlots.Where(i => i.ItemData && i.ItemData.itemType == itemToCheck.itemType).ToList();
         Debug.Log(invSlot.Count);
 
         return invSlot == null ? false : true;
@@ -60,5 +60,23 @@ public class InventorySystem
         }
 
         return false;
-    } 
+    }
+
+    // returns true if the item is retrieved.
+    public bool RetrieveFromInventory(InventoryItemData itemToRetrieve, int amountToRetrieve) 
+    {
+        if(ContainsItem(itemToRetrieve, out List<InventorySlot> invSlot)) {
+            foreach (var slot in invSlot)
+            {
+                if (slot.StackSize > 0) // available
+                {
+                    slot.RemoveFromStack(amountToRetrieve);
+                    OnInventorySlotChanged?.Invoke(slot);
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }
