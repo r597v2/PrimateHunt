@@ -599,6 +599,7 @@ MonoBehaviour:
   controller: {fileID: 95367450038629544}
   staminaBar: {fileID: 8424867644845872175}
   dValue: 10
+  obesity: 2
   stamina: 30
   normalSpeed: 5
   gravity: -19.62

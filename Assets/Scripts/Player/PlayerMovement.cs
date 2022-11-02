@@ -9,12 +9,14 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public CharacterController controller;
     public Slider staminaBar;
     public float dValue;
+    public float obesity;
 
     public float stamina;
     float maxStamina;
     public float normalSpeed = 5f;
     private float speed;
     private float sprintFactor = 2f;
+    private bool isSprinting;
     private float crouchFactor = 0.5f;
 
     public float gravity = -9.81f;
@@ -56,11 +58,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
             Vector3 move = transform.right * x + transform.forward * z;
 
-            if (stamina > 0)
-            {
-                sprintFactor = 2f;
-            }
-
             //check if the stamina is 0, then disable sprinting
             if (stamina <= 0)
             {
@@ -101,6 +98,31 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             controller.Move(velocity * Time.deltaTime);
         }
 
+        //eating bananas 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.BANANA);
+            InventoryHolder ih = GetComponent<InventoryHolder>();
+
+            if (ih.InventorySystem.RetrieveFromInventory(itemData, 1))
+            {
+                if (stamina >= maxStamina)
+                {
+                    stamina -= dValue * obesity; //remove dValue * obesity from stamina
+                    transform.Find("VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
+                    staminaBar.value = stamina; //update the stamina
+                    DisableSprint();
+                }
+                else if (!staminaDecreasing && stamina < maxStamina)
+                {
+                    EnableSprint();
+                    sprintFactor = 2f;
+                    stamina += dValue;
+                    staminaBar.value = stamina;
+                }
+            }
+        }
+
         UpdateStamina(staminaDecreasing);
     }
 
@@ -108,40 +130,39 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     {
         speed *= sprintFactor;
         staminaDecreasing = true;
+        isSprinting = true;
     }
 
     private void StopSprinting()
     {
         speed /= sprintFactor;
         staminaDecreasing = false;
+        isSprinting = false;
     }
 
     private void DisableSprint()
     {
-        StopSprinting();
+        if (isSprinting)
+        {
+            StopSprinting();
+        }
+
         sprintFactor = 1f;
+        dValue = 0;
+    }
+
+    public void EnableSprint()
+    {
+        sprintFactor = 2f;
+        dValue = 10;
     }
 
     private void UpdateStamina(bool decreasing)
     {
-        if (decreasing && stamina > 0)
+        if (staminaDecreasing && stamina > 0)
         {
             stamina -= dValue * Time.deltaTime;
             staminaBar.value = stamina;
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.BANANA);
-            InventoryHolder ih = GetComponent<InventoryHolder>();
-            
-            if (ih.InventorySystem.RetrieveFromInventory(itemData, 1))
-            {
-                if (!decreasing && stamina < maxStamina)
-                {
-                    stamina += dValue;
-                    staminaBar.value = stamina;
-                }
-            }
         }
     }
 

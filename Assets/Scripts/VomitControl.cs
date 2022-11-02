@@ -16,20 +16,24 @@ public class VomitControl : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
+        if (Input.GetKeyDown(KeyCode.V))
         {
-            
-            if (Input.GetKeyDown(KeyCode.V))
-            {
-                photonView.RPC("RPC_VomitControl", RpcTarget.AllBuffered);
-            }
+            Vomit();
         }
     }
 
     [PunRPC]
-    private void RPC_VomitControl()
+    public void RPC_VomitControl()
     {
         vomitParticles.Play();
         gameObject.GetComponent<AudioSource>().Play();
+    }
+
+    public void Vomit()
+    {
+        if (photonView.IsMine)
+        {
+            photonView.RPC("RPC_VomitControl", RpcTarget.AllBuffered);
+        }
     }
 }
