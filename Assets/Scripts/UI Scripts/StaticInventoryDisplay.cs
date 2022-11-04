@@ -10,6 +10,7 @@ public class StaticInventoryDisplay : InventoryDisplay
     void Awake()
     {
         hideAllSelections();
+        slots[0].selectionSprite.enabled = true;
     }
 
     protected override void Start()
