@@ -102,10 +102,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             {
                 InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.BANANA);
                 InventoryHolder ih = GetComponent<InventoryHolder>();
-                bananaEat.GetComponent<AudioSource>().Play();
 
                 if (ih.InventorySystem.RetrieveFromInventory(itemData, 1))
                 {
+                    bananaEat.GetComponent<AudioSource>().Play();
+                    
                     if (stamina >= maxStamina)
                     {
                         stamina -= dValue * obesity; //remove dValue * obesity from stamina
