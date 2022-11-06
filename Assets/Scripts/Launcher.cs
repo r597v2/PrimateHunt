@@ -72,7 +72,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         SpawnSpot mySpawnSpot = spawnSpots [Random.Range (0, spawnSpots.Length)];
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
-        player.transform.Find("Camera").gameObject.SetActive(true);
+        
+        player.transform.Find("Head").transform.Find("Camera").gameObject.SetActive(true);
         player.transform.Find("Canvas").gameObject.SetActive(true);
     }
 }

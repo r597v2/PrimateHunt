@@ -6,6 +6,8 @@ using Photon.Pun;
 public class MouseLook : MonoBehaviourPunCallbacks
 {
     public Camera cam;
+    public GameObject head;
+    public GameObject playerModel;
     
     public float mouseSensitivity = 100f;
     float xRotation = 0f;
@@ -30,7 +32,8 @@ public class MouseLook : MonoBehaviourPunCallbacks
 
             yRotation += mouseX;
 
-            transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+            playerModel.transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+            head.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         }
     }
 }
