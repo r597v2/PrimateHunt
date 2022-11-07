@@ -16,17 +16,13 @@ public class FlashlightToggle : MonoBehaviourPunCallbacks
     {
         //set default off
         lightGO.SetActive(isOn);
-
-        if (photonView.IsMine)
-        {
-            photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine) {
+        if (!photonView.IsMine)
+        {
             return;
         }
 
@@ -36,31 +32,25 @@ public class FlashlightToggle : MonoBehaviourPunCallbacks
             //toggle light
             isOn = !isOn;
             photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
-            gameObject.GetComponent<AudioSource>().Play();
-        }
-
-        if (!isOn)
-        {
-            lightBlock.SetActive(true);
-        }
-        else
-        {
-            lightBlock.SetActive(false);
         }
     }
 
     [PunRPC]
     private void RPC_FlashlightControl(bool isOn)
     {
+        gameObject.GetComponent<AudioSource>().Play();
+
         //turn light on
         if (isOn)
         {
             lightGO.SetActive(true);
+            lightBlock.SetActive(false);
         }
         //turn light off
         else
         {
             lightGO.SetActive(false);
+            lightBlock.SetActive(true);
         }
     }
 }
