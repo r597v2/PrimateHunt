@@ -359,6 +359,7 @@ MonoBehaviour:
   - {fileID: 8251147861453987733}
   - {fileID: 2329631970898914978}
   - {fileID: 5007503231327607301}
+  selectedSlot: 1
 --- !u!1 &1999901538
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +530,6 @@ GameObject:
   - component: {fileID: 985381172360648188}
   - component: {fileID: 8990130199183072358}
   - component: {fileID: 2675551794472344707}
-  - component: {fileID: 672680826439555141}
   m_Layer: 0
   m_Name: NeckBack
   m_TagString: Untagged
@@ -602,19 +602,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &672680826439555141
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8103929085069518}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.50000006
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &95367450038629545
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +613,6 @@ GameObject:
   - component: {fileID: 95367450038629547}
   - component: {fileID: 95367450038629544}
   - component: {fileID: 95367450038629546}
-  - component: {fileID: 95367450038629540}
   - component: {fileID: 963270794761650555}
   - component: {fileID: 661959708076234156}
   - component: {fileID: 5332983766419876968}
@@ -674,13 +660,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.66
+  m_Radius: 0.22
   m_SlopeLimit: 45
   m_StepOffset: 0.5
   m_SkinWidth: 0.05
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.01, z: 0}
+  m_Center: {x: 0, y: 0.83, z: -0.04}
 --- !u!114 &95367450038629546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,19 +695,6 @@ MonoBehaviour:
   playerHeight: {fileID: 95367450038629544}
   normalHeight: 2
   crouchHeight: 0.3
---- !u!65 &95367450038629540
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95367450038629545}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.42194355, y: 1.6459956, z: 0.375064}
-  m_Center: {x: -0.015446982, y: 0.780319, z: -0.01626619}
 --- !u!114 &963270794761650555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2681,6 +2654,7 @@ GameObject:
   - component: {fileID: 5902060891733210608}
   - component: {fileID: 5687027750753129349}
   - component: {fileID: 5440295794661692245}
+  - component: {fileID: 8714778937660895556}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -2794,6 +2768,19 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!135 &8714778937660895556
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3939786692179049237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.021498345
+  m_Center: {x: 0.0001269994, y: 0.102618046, z: 0.1692662}
 --- !u!1 &3992092072318505889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,7 +2875,6 @@ GameObject:
   - component: {fileID: 6179139749513306318}
   - component: {fileID: 2132965618666449897}
   - component: {fileID: 3610232401581503328}
-  - component: {fileID: 2239217750427029446}
   m_Layer: 0
   m_Name: NeckBack (2)
   m_TagString: Untagged
@@ -2961,19 +2947,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2239217750427029446
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4406614543704165013}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.50000006
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4562534614986727276
 GameObject:
   m_ObjectHideFlags: 0
@@ -3645,7 +3618,6 @@ GameObject:
   - component: {fileID: 3509208335895706188}
   - component: {fileID: 1411283929556381819}
   - component: {fileID: 1965197243791619077}
-  - component: {fileID: 1258145968974401642}
   m_Layer: 0
   m_Name: NeckBack (1)
   m_TagString: Untagged
@@ -3718,19 +3690,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1258145968974401642
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8979085118284255633}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.50000006
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &276297356912897675
 PrefabInstance:
   m_ObjectHideFlags: 0

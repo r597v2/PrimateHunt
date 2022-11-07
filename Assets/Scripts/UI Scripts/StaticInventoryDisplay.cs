@@ -6,10 +6,11 @@ public class StaticInventoryDisplay : InventoryDisplay
 {
     [SerializeField] private InventoryHolder inventoryHolder;
     [SerializeField] private InventorySlot_UI[] slots;
+    [SerializeField] private int selectedSlot = 1;
 
     void Awake()
     {
-        hideAllSelections();
+        HideAllSelections();
         slots[0].selectionSprite.enabled = true;
     }
 
@@ -31,27 +32,31 @@ public class StaticInventoryDisplay : InventoryDisplay
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            hideAllSelections();
+            HideAllSelections();
             slots[0].selectionSprite.enabled = true;
+            selectedSlot = 1;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            hideAllSelections();
+            HideAllSelections();
             slots[1].selectionSprite.enabled = true;
+            selectedSlot = 2;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            hideAllSelections();
+            HideAllSelections();
             slots[2].selectionSprite.enabled = true;
+            selectedSlot = 3;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            hideAllSelections();
+            HideAllSelections();
             slots[3].selectionSprite.enabled = true;
+            selectedSlot = 4;
         }
     }
 
-    private  void hideAllSelections()
+    private void HideAllSelections()
     {
         foreach (InventorySlot_UI slot in slots)
         {
