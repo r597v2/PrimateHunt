@@ -8,6 +8,7 @@ public class FlashlightToggle : MonoBehaviourPunCallbacks
 {
 
     public GameObject lightGO; //light gameObject to work with
+    public GameObject lightBlock;
     private bool isOn = false; //is flashlight on or off?
 
     // Use this for initialization
@@ -36,6 +37,15 @@ public class FlashlightToggle : MonoBehaviourPunCallbacks
             isOn = !isOn;
             photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
             gameObject.GetComponent<AudioSource>().Play();
+        }
+
+        if (!isOn)
+        {
+            lightBlock.SetActive(true);
+        }
+        else
+        {
+            lightBlock.SetActive(false);
         }
     }
 
