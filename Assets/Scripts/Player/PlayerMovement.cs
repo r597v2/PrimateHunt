@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 if (ih.InventorySystem.RetrieveFromInventory(itemData, 1))
                 {
                     bananaEat.GetComponent<AudioSource>().Play();
-                    
+
                     if (stamina >= maxStamina)
                     {
                         stamina -= dValue * obesity; //remove dValue * obesity from stamina
@@ -131,6 +131,50 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
         UpdateStamina(staminaDecreasing);
         CheckSprintDisabled();
+        CheckMoving();
+        CheckSprintWithoutMoving();
+    }
+    
+        private void CheckMoving()
+    {
+        if (sprintDisabled)
+        {
+            return;
+        }
+        
+        isMoving = false;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            isMoving = true;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            isMoving = true;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            isMoving = true;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            isMoving = true;
+        }
+    }
+
+    private void CheckSprintWithoutMoving()
+    {
+        if (isSprinting)
+        {
+            if (isMoving)
+            {
+                dValue = 10f;
+            }
+            else
+            {
+                dValue = 0f;
+            }
+        }
     }
 
     private void CheckSprintDisabled()
