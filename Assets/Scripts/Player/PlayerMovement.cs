@@ -33,9 +33,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     private bool isCrouched = false;
     private bool staminaDecreasing;
 
-    public Rigidbody rB;
-    public float unCrouchThrust = 100f;
-
     Vector3 velocity;
     private bool isMoving;
 
@@ -137,14 +134,14 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         CheckMoving();
         CheckSprintWithoutMoving();
     }
-    
-        private void CheckMoving()
+
+    private void CheckMoving()
     {
         if (sprintDisabled)
         {
             return;
         }
-        
+
         isMoving = false;
 
         if (Input.GetKey(KeyCode.W))

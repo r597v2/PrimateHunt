@@ -693,8 +693,6 @@ MonoBehaviour:
   playerHeight: {fileID: 95367450038629544}
   normalHeight: 2
   crouchHeight: 0.3
-  rB: {fileID: 5142211204702234687}
-  unCrouchThrust: 20
 --- !u!114 &963270794761650555
 MonoBehaviour:
   m_ObjectHideFlags: 0
