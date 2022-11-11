@@ -73,7 +73,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         SpawnSpot mySpawnSpot = spawnSpots [Random.Range (0, spawnSpots.Length)];
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
         
-        player.transform.Find("Head").transform.Find("Camera").gameObject.SetActive(true);
+        player.transform.Find("Idle").transform.Find("metarig").transform.Find("spine").transform.Find("spine.001").transform.Find("spine.002").transform.Find("spine.003").transform.Find("spine.004").transform.Find("spine.006").transform.Find("spine.006_end").transform.Find("Head").transform.Find("Camera").gameObject.SetActive(true);
         player.transform.Find("Canvas").gameObject.SetActive(true);
     }
 }

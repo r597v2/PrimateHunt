@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     private bool isCrouched = false;
     private bool staminaDecreasing;
 
+    public Rigidbody rB;
+    public float unCrouchThrust = 100f;
+
     Vector3 velocity;
     private bool isMoving;
 
@@ -110,7 +113,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                     if (stamina >= maxStamina)
                     {
                         stamina -= dValue * obesity; //remove dValue * obesity from stamina
-                        transform.Find("VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
+                        transform.Find("Head").Find("VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
                         staminaBar.value = stamina; //update the stamina
                         DisableSprint();
                     }
@@ -243,5 +246,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         playerHeight.height = normalHeight;
         speed /= crouchFactor;
         isCrouched = false;
+        transform.position = new Vector3(transform.position.x, 100, transform.position.z);
+        Debug.Log("Changed y position");
     }
 }
