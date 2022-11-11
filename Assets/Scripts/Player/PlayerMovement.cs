@@ -6,6 +6,8 @@ using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviourPunCallbacks
 {
+    private Animator mAnimator;
+
     public CharacterController controller;
 
     public Slider staminaBar;
@@ -41,6 +43,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         speed = normalSpeed;
         maxStamina = stamina;
         staminaBar.maxValue = maxStamina;
+        mAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -77,16 +80,19 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 StopSprinting();
             }
 
-            // Check crouching
-            if (Input.GetKeyDown(KeyCode.C))
+            if (mAnimator != null)
             {
-                if (!isCrouched)
+                // Check crouching
+                if (Input.GetKeyDown(KeyCode.C))
                 {
-                    Crouch();
-                }
-                else
-                {
-                    UnCrouch();
+                    if (!isCrouched)
+                    {
+                        Crouch();
+                    }
+                    else
+                    {
+                        UnCrouch();
+                    }
                 }
             }
 
@@ -233,17 +239,15 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     private void Crouch()
     {
-        playerHeight.height = crouchHeight;
+        mAnimator.SetTrigger("TrCrouch");
         speed *= crouchFactor;
         isCrouched = true;
     }
 
     private void UnCrouch()
     {
-        playerHeight.height = normalHeight;
+        mAnimator.SetTrigger("TrUnCrouch");
         speed /= crouchFactor;
         isCrouched = false;
-        transform.position = new Vector3(transform.position.x, 100, transform.position.z);
-        Debug.Log("Changed y position");
     }
 }
