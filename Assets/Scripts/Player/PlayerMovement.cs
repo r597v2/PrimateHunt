@@ -103,36 +103,45 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
             controller.Move(velocity * Time.deltaTime);
 
-            //eating bananas 
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.BANANA);
-                InventoryHolder ih = GetComponent<InventoryHolder>();
-
-                if (ih.InventorySystem.RetrieveFromInventory(itemData, 1))
+                //eating bananas 
+                if (Input.GetKeyDown(KeyCode.B))
                 {
-                    bananaEat.GetComponent<AudioSource>().Play();
+                    InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.BANANA);
+                    InventoryHolder ih = GetComponent<InventoryHolder>();
 
-                    if (stamina >= maxStamina)
+                    if (ih.InventorySystem.RetrieveFromInventory(itemData, 1))
                     {
-                        stamina -= dValue * obesity; //remove dValue * obesity from stamina
-                        transform.Find("Head").Find("VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
-                        staminaBar.value = stamina; //update the stamina
-                        DisableSprint();
-                    }
-                    else if (!staminaDecreasing && stamina < maxStamina)
-                    {
-                        EnableSprint();
-                        sprintFactor = 2f;
-                        stamina += dValue;
-                        staminaBar.value = stamina;
-                    }
-                    else if (stamina < maxStamina)
-                    {
-                        transform.Find("VomitControl").GetComponent<VomitControl>().Vomit();
+                        bananaEat.GetComponent<AudioSource>().Play();
+
+                        if (stamina >= maxStamina)
+                        {
+                            stamina -= dValue * obesity; //remove dValue * obesity from stamina
+                            transform.Find("Monkey/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.006/spine.006_eng/Head/VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
+                            staminaBar.value = stamina; //update the stamina
+                            DisableSprint();
+                        }
+                        else if (!staminaDecreasing && stamina < maxStamina)
+                        {
+                            EnableSprint();
+                            sprintFactor = 2f;
+                            stamina += dValue;
+                            staminaBar.value = stamina;
+                        }
+                        else if (stamina < maxStamina)
+                        {
+                            transform.Find("VomitControl").GetComponent<VomitControl>().Vomit();
+                        }
                     }
                 }
-            }
+
+            // if (isMoving)
+            // {
+            //     mAnimator.SetBool("BoIsWalking", true);
+            // }
+            // else
+            // {
+            //     mAnimator.SetBool("BoIsWalking", false);
+            // }
         }
 
         UpdateStamina(staminaDecreasing);
@@ -143,28 +152,25 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     private void CheckMoving()
     {
-        if (sprintDisabled)
+        // if (sprintDisabled)
+        // {
+        //     return;
+        // }
+
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)  || Input.GetKeyDown(KeyCode.S)
+        || Input.GetKeyDown(KeyCode.D))
         {
-            return;
+            isMoving = true;
+            mAnimator.SetBool("BoIsWalking", true);
+            Debug.Log("Start animation");
         }
 
-        isMoving = false;
-
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A)  || Input.GetKeyUp(KeyCode.S)
+        || Input.GetKeyUp(KeyCode.D))
         {
-            isMoving = true;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            isMoving = true;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            isMoving = true;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            isMoving = true;
+            isMoving = false;
+            mAnimator.SetBool("BoIsWalking", false);
+            Debug.Log("Stop animation");
         }
     }
 

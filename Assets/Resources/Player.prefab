@@ -821,7 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6a87d77d0439d4f98acf640495058f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 2
+  distance: 2.5
   mask:
     serializedVersion: 2
     m_Bits: 512
@@ -1872,7 +1872,7 @@ GameObject:
   - component: {fileID: 7024497084986663621}
   - component: {fileID: 8542900885723592374}
   m_Layer: 0
-  m_Name: Idle
+  m_Name: Monkey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
