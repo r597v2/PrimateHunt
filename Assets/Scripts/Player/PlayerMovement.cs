@@ -136,6 +136,25 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         {
             mAnimator.SetBool("BoWalkingBack", false);
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            mAnimator.SetBool("BoWalkingLeft", true);
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            mAnimator.SetBool("BoWalkingLeft", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            mAnimator.SetBool("BoWalkingRight", true);
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            mAnimator.SetBool("BoWalkingRight", false);
+        }
+
     }
 
     private void CheckSprintWithoutMoving()
