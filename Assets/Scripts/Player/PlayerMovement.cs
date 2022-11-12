@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public GameObject bananaEat;
 
     public CharacterController playerHeight;
-    public float normalHeight, crouchHeight;
     private bool isCrouched = false;
     private bool staminaDecreasing;
 
@@ -60,6 +59,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
+
+            isMoving = (x != 0f || z != 0f);
 
             Vector3 move = transform.right * x + transform.forward * z;
 
@@ -103,74 +104,37 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
             controller.Move(velocity * Time.deltaTime);
 
-                //eating bananas 
-                if (Input.GetKeyDown(KeyCode.B))
-                {
-                    InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.BANANA);
-                    InventoryHolder ih = GetComponent<InventoryHolder>();
-
-                    if (ih.InventorySystem.RetrieveFromInventory(itemData, 1))
-                    {
-                        bananaEat.GetComponent<AudioSource>().Play();
-
-                        if (stamina >= maxStamina)
-                        {
-                            stamina -= dValue * obesity; //remove dValue * obesity from stamina
-                            transform.Find("Monkey/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.006/spine.006_eng/Head/VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
-                            staminaBar.value = stamina; //update the stamina
-                            DisableSprint();
-                        }
-                        else if (!staminaDecreasing && stamina < maxStamina)
-                        {
-                            EnableSprint();
-                            sprintFactor = 2f;
-                            stamina += dValue;
-                            staminaBar.value = stamina;
-                        }
-                        else if (stamina < maxStamina)
-                        {
-                            transform.Find("VomitControl").GetComponent<VomitControl>().Vomit();
-                        }
-                    }
-                }
-
-            // if (isMoving)
-            // {
-            //     mAnimator.SetBool("BoIsWalking", true);
-            // }
-            // else
-            // {
-            //     mAnimator.SetBool("BoIsWalking", false);
-            // }
+            //eating bananas 
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                EatBanana();
+            }
         }
 
         UpdateStamina(staminaDecreasing);
         CheckSprintDisabled();
-        CheckMoving();
+        CheckAnimateMoving();
         CheckSprintWithoutMoving();
     }
 
-    private void CheckMoving()
+    private void CheckAnimateMoving()
     {
-        // if (sprintDisabled)
-        // {
-        //     return;
-        // }
-
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)  || Input.GetKeyDown(KeyCode.S)
-        || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            isMoving = true;
-            mAnimator.SetBool("BoIsWalking", true);
-            Debug.Log("Start animation");
+            mAnimator.SetBool("BoWalking", true);
+        }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            mAnimator.SetBool("BoWalking", false);
         }
 
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A)  || Input.GetKeyUp(KeyCode.S)
-        || Input.GetKeyUp(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            isMoving = false;
-            mAnimator.SetBool("BoIsWalking", false);
-            Debug.Log("Stop animation");
+            mAnimator.SetBool("BoWalkingBack", true);
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            mAnimator.SetBool("BoWalkingBack", false);
         }
     }
 
@@ -255,5 +219,36 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         mAnimator.SetTrigger("TrUnCrouch");
         speed /= crouchFactor;
         isCrouched = false;
+    }
+
+    private void EatBanana()
+    {
+        InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.BANANA);
+        InventoryHolder ih = GetComponent<InventoryHolder>();
+
+        if (ih.InventorySystem.RetrieveFromInventory(itemData, 1))
+        {
+            bananaEat.GetComponent<AudioSource>().Play();
+
+            if (stamina >= maxStamina)
+            {
+                stamina -= dValue * obesity; //remove dValue * obesity from stamina
+                transform.Find("Monkey/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.006/spine.006_eng/Head/VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
+                staminaBar.value = stamina; //update the stamina
+                DisableSprint();
+            }
+            else if (!staminaDecreasing && stamina < maxStamina)
+            {
+                EnableSprint();
+                sprintFactor = 2f;
+                stamina += dValue;
+                staminaBar.value = stamina;
+            }
+            else if (stamina < maxStamina)
+            {
+                transform.Find("VomitControl").GetComponent<VomitControl>().Vomit();
+            }
+        }
+
     }
 }
