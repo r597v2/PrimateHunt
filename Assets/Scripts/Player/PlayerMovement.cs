@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public GameObject bananaEat;
 
     public CharacterController playerHeight;
+    public CharacterController playerCenter;
     private bool isCrouched = false;
     private bool staminaDecreasing;
 
@@ -270,6 +271,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     {
         mAnimator.SetTrigger("TrCrouch");
         speed *= crouchFactor;
+        controller.height = 1.04f;
+        controller.center = new Vector3(0f, 0.56f, 0.11f);
         isCrouched = true;
     }
 
@@ -277,6 +280,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     {
         mAnimator.SetTrigger("TrUnCrouch");
         speed /= crouchFactor;
+        controller.height = 1.6f;
+        controller.center = new Vector3(0f, 0.83f, -0.04f);
         isCrouched = false;
     }
 

@@ -691,6 +691,7 @@ MonoBehaviour:
     m_Bits: 256
   bananaEat: {fileID: 4562534614986727276}
   playerHeight: {fileID: 95367450038629544}
+  playerCenter: {fileID: 95367450038629544}
 --- !u!114 &963270794761650555
 MonoBehaviour:
   m_ObjectHideFlags: 0
