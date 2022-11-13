@@ -119,42 +119,82 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     private void CheckAnimateMoving()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (!isCrouched)
         {
-            mAnimator.SetBool("BoWalking", true);
-        }
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            mAnimator.SetBool("BoWalking", false);
-        }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                mAnimator.SetBool("BoWalking", true);
+            }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                mAnimator.SetBool("BoWalking", false);
+            }
 
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            mAnimator.SetBool("BoWalkingBack", true);
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            mAnimator.SetBool("BoWalkingBack", false);
-        }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                mAnimator.SetBool("BoWalkingBack", true);
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                mAnimator.SetBool("BoWalkingBack", false);
+            }
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            mAnimator.SetBool("BoWalkingLeft", true);
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            mAnimator.SetBool("BoWalkingLeft", false);
-        }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                mAnimator.SetBool("BoWalkingLeft", true);
+            }
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                mAnimator.SetBool("BoWalkingLeft", false);
+            }
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            mAnimator.SetBool("BoWalkingRight", true);
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                mAnimator.SetBool("BoWalkingRight", true);
+            }
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                mAnimator.SetBool("BoWalkingRight", false);
+            }
         }
-        if (Input.GetKeyUp(KeyCode.D))
+        else
         {
-            mAnimator.SetBool("BoWalkingRight", false);
-        }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                mAnimator.SetBool("BoCrouchWalking", true);
+            }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                mAnimator.SetBool("BoCrouchWalking", false);
+            }
 
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                mAnimator.SetBool("BoCrouchWalkingBack", true);
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                mAnimator.SetBool("BoCrouchWalkingBack", false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                mAnimator.SetBool("BoCrouchWalkingLeft", true);
+            }
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                mAnimator.SetBool("BoCrouchWalkingLeft", false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                mAnimator.SetBool("BoCrouchWalkingRight", true);
+            }
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                mAnimator.SetBool("BoCrouchWalkingRight", false);
+            }
+        }
     }
 
     private void CheckSprintWithoutMoving()
