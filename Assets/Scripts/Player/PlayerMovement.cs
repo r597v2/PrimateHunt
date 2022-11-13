@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     Vector3 velocity;
     private bool isMoving;
 
+    private bool isKeyDownW;
+
     void Start()
     {
         speed = normalSpeed;
@@ -82,6 +84,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 StopSprinting();
             }
 
+            CheckMovementKeyStates();
+
             if (mAnimator != null)
             {
                 // Check crouching
@@ -118,25 +122,39 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         CheckSprintWithoutMoving();
     }
 
+    private void CheckMovementKeyStates()
+    {
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            isKeyDownW = true;
+        }
+
+    }
+
+    int i=0;
+
     private void CheckAnimateMoving()
     {
-        if (!isCrouched)
+        if (!isCrouched) 
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKey(KeyCode.W))
             {
-                mAnimator.SetBool("BoWalking", true);
+                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoSprinting" : "BoWalking", true);
+                Debug.Log("staminaDecreasing=" + staminaDecreasing + (i++));
             }
             if (Input.GetKeyUp(KeyCode.W))
             {
+                mAnimator.SetBool("BoSprinting", false);
                 mAnimator.SetBool("BoWalking", false);
             }
 
             if (Input.GetKeyDown(KeyCode.S))
             {
-                mAnimator.SetBool("BoWalkingBack", true);
+                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoSprintingBack" : "BoWalkingBack", true);
             }
             if (Input.GetKeyUp(KeyCode.S))
             {
+                mAnimator.SetBool("BoSprintingBack", false);
                 mAnimator.SetBool("BoWalkingBack", false);
             }
 
@@ -198,6 +216,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         }
     }
 
+
     private void CheckSprintWithoutMoving()
     {
         if (isSprinting)
@@ -237,6 +256,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         speed /= sprintFactor;
         staminaDecreasing = false;
         isSprinting = false;
+        mAnimator.SetBool("BoSprinting", false);
+        mAnimator.SetBool("BoSprintingBack", false);
     }
 
     private void DisableSprint()
@@ -297,7 +318,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             if (stamina >= maxStamina)
             {
                 stamina -= dValue * obesity; //remove dValue * obesity from stamina
-                transform.Find("Monkey/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.006/spine.006_eng/Head/VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
+                transform.Find("Monkey/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.006/spine.006_end/Head/VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
                 staminaBar.value = stamina; //update the stamina
                 DisableSprint();
             }
