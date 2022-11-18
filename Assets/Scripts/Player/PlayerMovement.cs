@@ -337,10 +337,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 stamina += dValue;
                 staminaBar.value = stamina;
             }
-            else if (stamina < maxStamina)
-            {
-                transform.Find("VomitControl").GetComponent<VomitControl>().Vomit();
-            }
         }
 
     }
