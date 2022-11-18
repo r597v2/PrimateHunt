@@ -30,12 +30,12 @@ public class FridgeRight : Interactable
     {
         if (!fridgeOpen)
         {
-            fridgeRightAnimator.SetBool("FridgeOpen", true);
+            fridgeRightAnimator.SetTrigger("OpenFridge");
             fridgeOpen = true;
         }
         else
         {
-            fridgeRightAnimator.SetBool("FridgeOpen", false);
+            fridgeRightAnimator.SetTrigger("CloseFridge");
             fridgeOpen = false;
         }
     }

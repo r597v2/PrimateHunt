@@ -38,8 +38,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     Vector3 velocity;
     private bool isMoving;
 
-    private bool isKeyDownW;
-
     void Start()
     {
         speed = normalSpeed;
@@ -84,8 +82,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 StopSprinting();
             }
 
-            CheckMovementKeyStates();
-
             if (mAnimator != null)
             {
                 // Check crouching
@@ -121,17 +117,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         CheckAnimateMoving();
         CheckSprintWithoutMoving();
     }
-
-    private void CheckMovementKeyStates()
-    {
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            isKeyDownW = true;
-        }
-
-    }
-
-    int i=0;
 
     private void CheckAnimateMoving()
     {
