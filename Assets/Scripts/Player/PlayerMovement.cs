@@ -110,17 +110,17 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             {
                 EatBanana();
             }
-        }
 
+            CheckAnimateMoving();
+            CheckSprintDisabled();
+            CheckSprintWithoutMoving();
+        }
         UpdateStamina(staminaDecreasing);
-        CheckSprintDisabled();
-        CheckAnimateMoving();
-        CheckSprintWithoutMoving();
     }
 
     private void CheckAnimateMoving()
     {
-        if (!isCrouched) 
+        if (!isCrouched)
         {
             if (Input.GetKey(KeyCode.W))
             {
