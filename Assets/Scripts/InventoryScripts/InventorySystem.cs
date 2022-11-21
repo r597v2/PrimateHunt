@@ -79,4 +79,10 @@ public class InventorySystem
 
         return false;
     }
+
+    // Get the item from inventory slot by its index.
+    public InventoryItemData GetFromInventorySlot(int slotIndex) 
+    {
+        return inventorySlots[slotIndex].ItemData;
+    }
 }

@@ -360,6 +360,8 @@ MonoBehaviour:
   - {fileID: 2329631970898914978}
   - {fileID: 5007503231327607301}
   selectedSlot: 1
+  playerGameObject: {fileID: 95367450038629545}
+  playerMovementScript: {fileID: 95367450038629546}
 --- !u!1 &1999901538
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +694,7 @@ MonoBehaviour:
   bananaEat: {fileID: 4562534614986727276}
   playerHeight: {fileID: 95367450038629544}
   playerCenter: {fileID: 95367450038629544}
+  mRigidbody: {fileID: 5142211204702234687}
 --- !u!114 &963270794761650555
 MonoBehaviour:
   m_ObjectHideFlags: 0

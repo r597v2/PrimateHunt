@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     private bool staminaDecreasing;
 
     Vector3 velocity;
+    public Rigidbody mRigidbody;
     private bool isMoving;
 
     void Start()
@@ -118,7 +119,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         UpdateStamina(staminaDecreasing);
     }
 
-    private void CheckAnimateMoving()
+    public void CheckAnimateMoving()
     {
         if (!isCrouched)
         {
@@ -206,6 +207,15 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         }
     }
 
+    public void Slap()
+    {
+        mAnimator.SetTrigger("TrSlap");
+    }
+
+    public void Headbutt()
+    {
+        mAnimator.SetTrigger("TrHeadbutt");
+    }
 
     private void CheckSprintWithoutMoving()
     {

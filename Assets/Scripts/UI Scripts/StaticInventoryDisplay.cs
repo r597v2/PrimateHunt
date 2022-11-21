@@ -7,6 +7,11 @@ public class StaticInventoryDisplay : InventoryDisplay
     [SerializeField] private InventoryHolder inventoryHolder;
     [SerializeField] private InventorySlot_UI[] slots;
     [SerializeField] private int selectedSlot = 1;
+    [SerializeField] GameObject playerGameObject;
+    InventoryHolder inventory;
+    InventoryItemData selectedInventoryItemData;
+
+    public PlayerMovement playerMovementScript;
 
     void Awake()
     {
@@ -26,10 +31,15 @@ public class StaticInventoryDisplay : InventoryDisplay
         else Debug.LogWarning($"No inventory assigned to {this.gameObject}");
 
         AssignSlot(inventorySystem);
+
+        inventory = playerGameObject?.transform.GetComponent<InventoryHolder>();
+        selectedInventoryItemData = inventory?.InventorySystem.GetFromInventorySlot(selectedSlot - 1);
     }
 
     void Update()
     {
+        int previousSelectedSlot = selectedSlot;
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             HideAllSelections();
@@ -54,13 +64,33 @@ public class StaticInventoryDisplay : InventoryDisplay
             slots[3].selectionSprite.enabled = true;
             selectedSlot = 4;
         }
+
+        if (inventory && selectedSlot != previousSelectedSlot)
+        {
+            selectedInventoryItemData = inventory.InventorySystem.GetFromInventorySlot(selectedSlot - 1);
+            Debug.Log("Selected item: " + selectedInventoryItemData?.description);
+        }
+
+        if (selectedInventoryItemData == null)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                playerMovementScript.Headbutt();
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                playerMovementScript.Slap();
+            }
+        }
+
     }
 
     private void HideAllSelections()
     {
         foreach (InventorySlot_UI slot in slots)
         {
-            if(slot.selectionSprite != null)
+            if (slot.selectionSprite != null)
             {
                 slot.selectionSprite.enabled = false;
             }
