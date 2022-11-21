@@ -1988,6 +1988,12 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: BoCrouchSprintingBack
+  - Type: 9
+    SynchronizeType: 1
+    Name: TrSlap
+  - Type: 9
+    SynchronizeType: 1
+    Name: TrHeadbutt
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
