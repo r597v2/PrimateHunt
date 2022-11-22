@@ -71,7 +71,7 @@ public class StaticInventoryDisplay : InventoryDisplay
             Debug.Log("Selected item: " + selectedInventoryItemData?.description);
         }
 
-        if (selectedInventoryItemData == null)
+        if (selectedInventoryItemData == null && photonView.IsMine)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {

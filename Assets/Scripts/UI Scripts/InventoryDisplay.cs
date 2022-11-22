@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Photon.Pun;
 
-public abstract class InventoryDisplay : MonoBehaviour
+public abstract class InventoryDisplay : MonoBehaviourPunCallbacks
 {
     protected InventorySystem inventorySystem;
     protected Dictionary<InventorySlot_UI, InventorySlot> slotDictionary;
