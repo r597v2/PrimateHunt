@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 {
     private Animator mAnimator;
 
+    public GameObject handCollider;
+    public GameObject headCollider;
+
     public CharacterController controller;
 
     public Slider staminaBar;
@@ -38,6 +41,31 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     Vector3 velocity;
     public Rigidbody mRigidbody;
     private bool isMoving;
+
+    bool slapIsPlaying(Animator mAnimator, string Slap)
+    {
+        if (mAnimator.GetCurrentAnimatorStateInfo(0).IsTag(Slap) &&
+        mAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    bool headbuttIsPlaying(Animator mAnimator, string Headbutt)
+    {
+        if (mAnimator.GetCurrentAnimatorStateInfo(0).IsTag(Headbutt) &&
+        mAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     void Start()
     {
@@ -115,8 +143,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             CheckAnimateMoving();
             CheckSprintDisabled();
             CheckSprintWithoutMoving();
+            UpdateStamina(staminaDecreasing);
         }
-        UpdateStamina(staminaDecreasing);
     }
 
     public void CheckAnimateMoving()
@@ -205,6 +233,42 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 mAnimator.SetBool("BoCrouchWalkingRight", false);
             }
         }
+
+        // if (!slapIsPlaying(mAnimator, "Slap"))
+        // {
+        //     handCollider.SetActive(false);
+        // }
+        // else
+        // {
+        //     handCollider.SetActive(true);
+        // }
+
+        // if (!slapIsPlaying(mAnimator, "CrouchSlap"))
+        // {
+        //     handCollider.SetActive(false);
+        // }
+        // else
+        // {
+        //     handCollider.SetActive(true);
+        // }
+
+        // if (!headbuttIsPlaying(mAnimator, "Headbutt"))
+        // {
+        //     headCollider.SetActive(false);
+        // }
+        // else
+        // {
+        //     headCollider.SetActive(true);
+        // }
+
+        // if (!headbuttIsPlaying(mAnimator, "CrouchHeadbutt"))
+        // {
+        //     headCollider.SetActive(false);
+        // }
+        // else
+        // {
+        //     headCollider.SetActive(true);
+        // }
     }
 
     public void Slap()
@@ -281,7 +345,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         sprintDisabled = false;
     }
 
-    private void UpdateStamina(bool decreasing)
+    public void UpdateStamina(bool decreasing)
     {
         if (staminaDecreasing && stamina > 0)
         {

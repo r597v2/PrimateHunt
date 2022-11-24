@@ -5,6 +5,7 @@ using UnityEngine;
 public class SlapSound : MonoBehaviour
 {
     public GameObject hand;
+    private bool slapStart;
 
     // Start is called before the first frame update
     void Start()
@@ -15,12 +16,21 @@ public class SlapSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            slapStart = true;
+            Invoke("EndSlap", 0.5f);
+        }
     }
 
-    private void OnTriggerEnter(Collider player)
+    private void EndSlap()
     {
-        if (player.tag == "Player")
+        slapStart = false;
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+       if (slapStart && collision.tag == "Player")
         {
             hand.GetComponent<AudioSource>().Play();
         }
