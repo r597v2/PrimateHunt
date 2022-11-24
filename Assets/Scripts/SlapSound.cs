@@ -19,7 +19,7 @@ public class SlapSound : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             slapStart = true;
-            Invoke("EndSlap", 0.5f);
+            Invoke("EndSlap", 5f);
         }
     }
 
@@ -32,6 +32,7 @@ public class SlapSound : MonoBehaviour
     {
        if (slapStart && collision.tag == "Player")
         {
+            slapStart = false;
             hand.GetComponent<AudioSource>().Play();
         }
     }
