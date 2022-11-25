@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 30bf3f935e7ed424aa0755ccd2cacb6d
+guid: 57ff0348d53e2564fa5585e0b9239d6b
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable:
   - first:
-      74: 2302441737366764887
-    second: metarigAction
+      74: -8751204150108520819
+    second: metarig|AkIdle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: metarigAction
-      takeName: metarigAction
+      name: metarig|AkIdle
+      takeName: metarig|AkIdle
       internalID: 0
       firstFrame: 0
-      lastFrame: 23
+      lastFrame: 239
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -130,7 +130,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

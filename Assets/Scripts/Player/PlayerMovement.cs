@@ -6,12 +6,16 @@ using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviourPunCallbacks
 {
-    private Animator mAnimator;
+    public Animator mAnimator;
+    public RuntimeAnimatorController defaultController;
+    public RuntimeAnimatorController akController;
+    public string currentAnimController = "default";
 
     public GameObject handCollider;
     public GameObject headCollider;
 
     public CharacterController controller;
+    public GameObject akGO;
 
     public Slider staminaBar;
     public float dValue;
@@ -72,7 +76,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         speed = normalSpeed;
         maxStamina = stamina;
         staminaBar.maxValue = maxStamina;
-        mAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -233,42 +236,21 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 mAnimator.SetBool("BoCrouchWalkingRight", false);
             }
         }
+    }
 
-        // if (!slapIsPlaying(mAnimator, "Slap"))
-        // {
-        //     handCollider.SetActive(false);
-        // }
-        // else
-        // {
-        //     handCollider.SetActive(true);
-        // }
+    public void SetDefaultAnimations()
+    {
+        mAnimator.runtimeAnimatorController = defaultController as RuntimeAnimatorController;
+        currentAnimController = "default";
+        akGO.SetActive(false);
+    }
 
-        // if (!slapIsPlaying(mAnimator, "CrouchSlap"))
-        // {
-        //     handCollider.SetActive(false);
-        // }
-        // else
-        // {
-        //     handCollider.SetActive(true);
-        // }
-
-        // if (!headbuttIsPlaying(mAnimator, "Headbutt"))
-        // {
-        //     headCollider.SetActive(false);
-        // }
-        // else
-        // {
-        //     headCollider.SetActive(true);
-        // }
-
-        // if (!headbuttIsPlaying(mAnimator, "CrouchHeadbutt"))
-        // {
-        //     headCollider.SetActive(false);
-        // }
-        // else
-        // {
-        //     headCollider.SetActive(true);
-        // }
+    public void SetAKAnimations()
+    {
+        mAnimator.runtimeAnimatorController = akController as RuntimeAnimatorController;
+        currentAnimController = "ak";
+        akGO.SetActive(true);
+        
     }
 
     public void Slap()

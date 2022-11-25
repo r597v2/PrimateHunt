@@ -38,52 +38,65 @@ public class StaticInventoryDisplay : InventoryDisplay
 
     void Update()
     {
-        int previousSelectedSlot = selectedSlot;
+        if (photonView.IsMine)
+        {
+            int previousSelectedSlot = selectedSlot;
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            HideAllSelections();
-            slots[0].selectionSprite.enabled = true;
-            selectedSlot = 1;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            HideAllSelections();
-            slots[1].selectionSprite.enabled = true;
-            selectedSlot = 2;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            HideAllSelections();
-            slots[2].selectionSprite.enabled = true;
-            selectedSlot = 3;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            HideAllSelections();
-            slots[3].selectionSprite.enabled = true;
-            selectedSlot = 4;
-        }
-
-        if (inventory && selectedSlot != previousSelectedSlot)
-        {
-            selectedInventoryItemData = inventory.InventorySystem.GetFromInventorySlot(selectedSlot - 1);
-            Debug.Log("Selected item: " + selectedInventoryItemData?.description);
-        }
-
-        if (selectedInventoryItemData == null && photonView.IsMine)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                playerMovementScript.Headbutt();
+                HideAllSelections();
+                slots[0].selectionSprite.enabled = true;
+                selectedSlot = 1;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                HideAllSelections();
+                slots[1].selectionSprite.enabled = true;
+                selectedSlot = 2;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                HideAllSelections();
+                slots[2].selectionSprite.enabled = true;
+                selectedSlot = 3;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                HideAllSelections();
+                slots[3].selectionSprite.enabled = true;
+                selectedSlot = 4;
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (inventory && selectedSlot != previousSelectedSlot)
             {
-                playerMovementScript.Slap();
+                selectedInventoryItemData = inventory.InventorySystem.GetFromInventorySlot(selectedSlot - 1);
+                Debug.Log("Selected item: " + selectedInventoryItemData?.description);
+            }
+
+            if (selectedInventoryItemData == null)
+            {
+                if (playerMovementScript.currentAnimController != "default")
+                {
+                    playerMovementScript.SetDefaultAnimations();
+                }
+                if (playerMovementScript.currentAnimController == "default")
+                {
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        playerMovementScript.Headbutt();
+                    }
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        playerMovementScript.Slap();
+                    }
+                }
+            }
+            else if (selectedInventoryItemData.displayName == "AK47")
+            {
+                playerMovementScript.SetAKAnimations();
             }
         }
-
     }
 
     private void HideAllSelections()
