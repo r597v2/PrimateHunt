@@ -827,9 +827,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 2.5
-  mask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &6252919883353401457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4781,7 +4778,7 @@ GameObject:
   - component: {fileID: 260689728710015414}
   m_Layer: 0
   m_Name: HeadCollider
-  m_TagString: Player
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
