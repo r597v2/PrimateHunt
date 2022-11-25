@@ -6,8 +6,6 @@ using Photon.Pun;
 public class PlayerInteract : MonoBehaviourPunCallbacks
 {
     [SerializeField] private float distance = 2f;
-    [SerializeField] private LayerMask mask;
-    [SerializeField] private LayerMask mask2;
 
     private Camera cam;
     private PlayerUI playerUI;
@@ -29,10 +27,10 @@ public class PlayerInteract : MonoBehaviourPunCallbacks
 
         playerUI.UpdateText(string.Empty);
         //create a ray at the center of the camera, shooting outwards.
-        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * distance, Color.green);
+        Ray interactRay = new Ray(cam.transform.position, cam.transform.forward);
+        Debug.DrawRay(interactRay.origin, interactRay.direction * distance, Color.green);
         RaycastHit hitInfo; //variable to store collision info
-        if (Physics.Raycast(ray, out hitInfo, distance, mask))
+        if (Physics.Raycast(interactRay, out hitInfo, distance))
         {
             if (hitInfo.collider.GetComponent<Interactable>() != null)
             {

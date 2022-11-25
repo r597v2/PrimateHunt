@@ -19,7 +19,7 @@ public class HeadbuttSound : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             headbuttStart = true;
-            Invoke("EndHeadbutt", 0.5f);
+            Invoke("EndHeadbutt", 5f);
         }
     }
 
@@ -30,8 +30,9 @@ public class HeadbuttSound : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-       if (headbuttStart && collision.tag == "Player")
+       if (headbuttStart && collision.tag == "Player" || collision.tag == "Head")
         {
+            headbuttStart = false;
             head.GetComponent<AudioSource>().Play();
         }
     }

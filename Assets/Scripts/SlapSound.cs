@@ -30,7 +30,7 @@ public class SlapSound : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-       if (slapStart && collision.tag == "Player")
+       if (slapStart && (collision.tag == "Player" || collision.tag == "Head"))
         {
             slapStart = false;
             hand.GetComponent<AudioSource>().Play();
