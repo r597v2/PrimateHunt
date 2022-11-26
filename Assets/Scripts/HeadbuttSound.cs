@@ -5,6 +5,7 @@ using UnityEngine;
 public class HeadbuttSound : MonoBehaviour
 {
     public GameObject head;
+    public PlayerMovement playerMvmt;
     private bool headbuttStart;
 
     // Start is called before the first frame update
@@ -33,6 +34,7 @@ public class HeadbuttSound : MonoBehaviour
        if (headbuttStart && collision.tag == "Player" || collision.tag == "Head")
         {
             headbuttStart = false;
+            playerMvmt.health -= 4f;
             head.GetComponent<AudioSource>().Play();
         }
     }

@@ -39,6 +39,24 @@ public class InventorySystem
         return false;
     }
 
+    public bool RemoveFromInventory(InventoryItemData itemToRemove, int amountToRemove)
+    {
+        if (ContainsItem(itemToRemove, out List<InventorySlot> invSlot)) // Check whether item exists in inventory
+        {
+            foreach (var slot in invSlot)
+            {
+                if (slot.SlotType == itemToRemove.itemType)
+                {
+                    slot.RemoveFromStack(amountToRemove);
+                    OnInventorySlotChanged?.Invoke(slot);
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+
     public bool ContainsItem(InventoryItemData itemToCheck, out List<InventorySlot> invSlot)
     {
         invSlot = InventorySlots.Where(i => i.ItemData && i.ItemData.itemType == itemToCheck.itemType).ToList();

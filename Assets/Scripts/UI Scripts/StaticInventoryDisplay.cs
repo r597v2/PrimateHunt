@@ -95,6 +95,15 @@ public class StaticInventoryDisplay : InventoryDisplay
             else if (selectedInventoryItemData.displayName == "AK47")
             {
                 playerMovementScript.SetAKAnimations();
+
+                if (playerMovementScript.currentAnimController == "ak")
+                {
+                    if (Input.GetKeyDown(KeyCode.G))
+                    {
+                        playerMovementScript.DropAk();
+                        selectedInventoryItemData = null;
+                    }
+                }
             }
         }
     }
