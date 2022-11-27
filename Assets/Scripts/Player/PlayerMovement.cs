@@ -14,6 +14,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public GameObject handCollider;
     public GameObject headCollider;
 
+    public GameObject spineTwo;
+    public GameObject spineThree;
+    public GameObject spineEnd;
+    public GameObject head;
+
     public CharacterController controller;
     public GameObject akGO;
     public GameObject akDropGO;
@@ -170,6 +175,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     {
         if (currentAnimController == "default")
         {
+            head.transform.SetParent(spineEnd.transform);
+            spineThree.transform.SetParent(spineTwo.transform);
+            Debug.Log("head parent is " + head.transform.parent + Time.time);
+
             if (!isCrouched)
             {
                 if (Input.GetKey(KeyCode.W))
@@ -253,6 +262,36 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                     mAnimator.SetBool("BoCrouchSprintingRight", false);
                     mAnimator.SetBool("BoCrouchWalkingRight", false);
                 }
+            }
+        }
+        else if (currentAnimController == "ak")
+        {
+            spineThree.transform.SetParent(head.transform);
+            head.transform.SetParent(spineTwo.transform);
+            Debug.Log("spine parent is " + spineThree.transform.parent + Time.time);
+
+            if (!isCrouched)
+            {
+                if (Input.GetKey(KeyCode.W))
+                {
+                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoAkSprinting" : "BoAkWalking", true);
+                }
+                if (Input.GetKeyUp(KeyCode.W))
+                {
+                    mAnimator.SetBool("BoAkSprinting", false);
+                    mAnimator.SetBool("BoAkWalking", false);
+                }
+
+                if (Input.GetKey(KeyCode.S))
+                {
+                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoAkSprintingBack" : "BoAkWalkingBack", true);
+                }
+                if (Input.GetKeyUp(KeyCode.S))
+                {
+                    mAnimator.SetBool("BoAkSprintingBack", false);
+                    mAnimator.SetBool("BoAkWalkingBack", false);
+                }
+
             }
         }
     }
