@@ -17,7 +17,7 @@ public class SlapSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && playerMvmt.currentAnimController == "default")
         {
             slapStart = true;
             Invoke("EndSlap", 5f);

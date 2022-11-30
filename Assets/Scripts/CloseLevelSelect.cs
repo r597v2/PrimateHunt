@@ -5,6 +5,7 @@ using UnityEngine;
 public class CloseLevelSelect : MonoBehaviour
 {
     public GameObject levelSelectUI;
+    public GameObject playerObj;
 
     // Start is called before the first frame update
     void Start()
@@ -22,5 +23,7 @@ public class CloseLevelSelect : MonoBehaviour
     {
         levelSelectUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        playerObj.GetComponent<MouseLook>().enabled = true;
+        playerObj.GetComponent<PlayerMovement>().enabled = true;
     }
 }

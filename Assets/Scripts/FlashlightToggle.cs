@@ -9,6 +9,7 @@ public class FlashlightToggle : MonoBehaviourPunCallbacks
 
     public GameObject lightGO; //light gameObject to work with
     public GameObject lightBlock;
+    public PlayerMovement playerMvt;
     private bool isOn = false; //is flashlight on or off?
 
     // Use this for initialization
@@ -26,12 +27,24 @@ public class FlashlightToggle : MonoBehaviourPunCallbacks
             return;
         }
 
-        //toggle flashlight on key down
-        if (Input.GetMouseButton(1))
+        if (playerMvt.currentAnimController == "default")
         {
-            //toggle light
-            isOn = !isOn;
-            photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
+            //toggle flashlight on key down
+            if (Input.GetMouseButton(1))
+            {
+                //toggle light
+                isOn = !isOn;
+                photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
+            }
+        }
+        else if (playerMvt.currentAnimController == "ak")
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                //toggle light
+                isOn = !isOn;
+                photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
+            }
         }
     }
 

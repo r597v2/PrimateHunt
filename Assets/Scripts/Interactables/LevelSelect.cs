@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelSelect : Interactable
 {
     public GameObject levelSelectUI;
+    public GameObject playerObj;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,8 @@ public class LevelSelect : Interactable
         if (!levelSelectUI.activeInHierarchy)
         {
             levelSelectUI.SetActive(true);
+            playerObj.GetComponent<MouseLook>().enabled = false;
+            playerObj.GetComponent<PlayerMovement>().enabled = false;
             Cursor.lockState = CursorLockMode.Confined;
         }
     }

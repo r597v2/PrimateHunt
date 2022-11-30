@@ -6,6 +6,8 @@ using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviourPunCallbacks
 {
+    public Camera cam;
+
     public Animator mAnimator;
     public RuntimeAnimatorController defaultController;
     public RuntimeAnimatorController akController;
@@ -14,17 +16,15 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public GameObject handCollider;
     public GameObject headCollider;
 
-    public GameObject spineTwo;
-    public GameObject spineThree;
-    public GameObject spineEnd;
+    public GameObject armL;
+    public GameObject armR;
     public GameObject head;
 
     public CharacterController controller;
     public GameObject akGO;
     public GameObject akDropGO;
     public PhotonView akDropPrefab;
-    // public InventoryHolder inventoryHolder;
-    // public InventorySlot_UI inventorySlotUI;
+    public GameObject weaponCrosshair;
 
     public Slider staminaBar;
     public float dValue;
@@ -123,12 +123,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             }
 
             // Check sprint
-            if (Input.GetKeyDown(KeyCode.LeftShift) && stamina > 0 && currentAnimController == "default")
+            if (Input.GetKeyDown(KeyCode.LeftShift) && stamina > 0)
             {
                 Sprint();
             }
 
-            if (Input.GetKeyUp(KeyCode.LeftShift) && currentAnimController == "default")
+            if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 StopSprinting();
             }
@@ -175,9 +175,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     {
         if (currentAnimController == "default")
         {
-            head.transform.SetParent(spineEnd.transform);
-            spineThree.transform.SetParent(spineTwo.transform);
-            Debug.Log("head parent is " + head.transform.parent + Time.time);
+            
+            
+            weaponCrosshair.SetActive(false);
 
             if (!isCrouched)
             {
@@ -266,9 +266,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         }
         else if (currentAnimController == "ak")
         {
-            spineThree.transform.SetParent(head.transform);
-            head.transform.SetParent(spineTwo.transform);
-            Debug.Log("spine parent is " + spineThree.transform.parent + Time.time);
+            // armL.transform.eulerAngles = new Vector3(armL.transform.eulerAngles.x + head.transform.eulerAngles.x, 0, 0);
+            armR.transform.localEulerAngles  = new Vector3(0, 100  + head.transform.localEulerAngles .x, 0);
+            Debug.Log("head.transform.localEulerAngles .x=" + head.transform.localEulerAngles .x + " armR.transform.localEulerAngles .y=" + armR.transform.localEulerAngles .y);
+            weaponCrosshair.SetActive(true);
 
             if (!isCrouched)
             {
@@ -313,8 +314,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     public void DropAk()
     {
-        akDropGO = PhotonNetwork.Instantiate(akDropPrefab.name, akGO.transform.position, akGO.transform.rotation);
-        akDropGO.GetComponent<Rigidbody>().AddForceAtPosition(akGO.transform.forward * 3.5f, akGO.transform.position, ForceMode.Impulse);
+        akDropGO = PhotonNetwork.Instantiate(akDropPrefab.name, cam.transform.position, cam.transform.rotation);
+        akDropGO.GetComponent<Rigidbody>().AddForceAtPosition(cam.transform.forward * 5f, cam.transform.position,
+         ForceMode.Impulse);
         akGO.SetActive(false);
         InventoryHolder ih = GetComponent<InventoryHolder>();
         InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.DEFAULT);

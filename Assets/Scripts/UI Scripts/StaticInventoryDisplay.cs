@@ -79,6 +79,7 @@ public class StaticInventoryDisplay : InventoryDisplay
                 {
                     playerMovementScript.SetDefaultAnimations();
                 }
+                
                 if (playerMovementScript.currentAnimController == "default")
                 {
                     if (Input.GetKeyDown(KeyCode.F))

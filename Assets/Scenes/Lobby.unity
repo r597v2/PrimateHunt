@@ -136,6 +136,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (25)
@@ -225,6 +229,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (24)
@@ -713,6 +721,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (12)
@@ -1169,6 +1181,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.994
       objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
@@ -1297,6 +1313,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (2)
@@ -1442,6 +1462,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.994
       objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
@@ -1541,6 +1565,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (3)
@@ -1829,6 +1857,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (30)
@@ -2367,6 +2399,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo
@@ -3954,6 +3990,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -92.515
       objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
@@ -4235,6 +4275,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -92.515
       objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
@@ -4251,6 +4295,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (19)
@@ -4326,6 +4374,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (4)
@@ -5000,6 +5052,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (11)
@@ -5975,6 +6031,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (13)
@@ -6656,6 +6716,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (26)
@@ -6731,6 +6795,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (22)
@@ -6971,6 +7039,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (23)
@@ -7255,6 +7327,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (18)
@@ -7482,6 +7558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSelectUI: {fileID: 1363501694}
+  playerObj: {fileID: 0}
 --- !u!114 &1103761439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7881,6 +7958,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -92.515
       objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
@@ -7980,6 +8061,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (29)
@@ -8159,6 +8244,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (28)
@@ -8297,6 +8386,10 @@ PrefabInstance:
     - target: {fileID: 5647278116952084890, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -191.554
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -8647,6 +8740,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (15)
@@ -8736,6 +8833,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (10)
@@ -8811,6 +8912,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (9)
@@ -8891,6 +8996,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (27)
@@ -9080,7 +9189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ad674aea6ee954593db560316a8acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: Press E to pickup
+  promptMessage: '[E]'
   idName: AK
   interactType: 1
   itemData: {fileID: 11400000, guid: ff2a6a4c2cd2f514cab196648cba3f43, type: 2}
@@ -9311,6 +9420,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (8)
@@ -10612,6 +10725,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (16)
@@ -10790,6 +10907,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (20)
@@ -10970,6 +11091,10 @@ PrefabInstance:
     - target: {fileID: 5647278116952084890, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.994
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -11353,6 +11478,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.994
       objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
@@ -11532,6 +11661,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (21)
@@ -11872,6 +12005,10 @@ PrefabInstance:
     - target: {fileID: 5647278116952084890, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.994
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -12230,6 +12367,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (6)
@@ -12752,6 +12893,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -92.515
       objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
@@ -12831,6 +12976,10 @@ PrefabInstance:
     - target: {fileID: 5647278116952084890, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -92.515
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -13000,6 +13149,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (1)
@@ -13273,7 +13426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc65fc6df65520245ba0cc6ce26a679e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: Press LMB to use
+  promptMessage: '[LMB]'
   idName: BREAKER
   interactType: 0
   lights: {fileID: 1291289623}
@@ -13287,6 +13440,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (17)
@@ -13392,6 +13549,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (5)
@@ -13530,6 +13691,10 @@ PrefabInstance:
     - target: {fileID: 5647278116952084890, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -92.515
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -14978,6 +15143,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (14)
@@ -15053,6 +15222,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 4326589718244863631, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017555557416070, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
       propertyPath: m_Name
       value: Ammo (7)
@@ -15570,20 +15743,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 133edecd5bc656644bb9fefe96dfe341, type: 3}
---- !u!64 &2045020853
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147978713059}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: 133edecd5bc656644bb9fefe96dfe341, type: 3}
 --- !u!4 &2047328638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7529725964777262741, guid: 8b3c130bc027e224293fd5120728c86a, type: 3}
@@ -16557,10 +16716,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e5a41ab26f6c24d8e3f87105eccd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: Press LMB to use
+  promptMessage: '[LMB]'
   idName: LevelSelectUI
   interactType: 0
   levelSelectUI: {fileID: 1363501694}
+  playerObj: {fileID: 95367450038629545, guid: 0ff3a2ff92c8b4a41824fb84f70ca304, type: 3}
 --- !u!64 &4909941273398590
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17182,7 +17342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866fd941e47ca05438a4ddc41661a96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: Press LMB to use
+  promptMessage: '[LMB]'
   idName: TOILET
   interactType: 0
 --- !u!114 &919132147978713062
@@ -17220,6 +17380,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.7659154, y: 3.0429893, z: 2.0538893}
   m_Center: {x: -0.15357228, y: 3.4174473, z: -1.9393997}
+--- !u!136 &919132147978713064
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147978713059}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.2667248
+  m_Height: 4.533451
+  m_Direction: 1
+  m_Center: {x: -0.21752277, y: -2.9016025, z: 1.5887585}
 --- !u!1 &919132148895777966
 GameObject:
   m_ObjectHideFlags: 0
@@ -20368,7 +20542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dea3231d18ad39498984f855a902008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: Press LMB to use
+  promptMessage: '[LMB]'
   idName: MOUSE
   interactType: 0
 --- !u!23 &7173109550521030660
@@ -21285,6 +21459,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
     - target: {fileID: 1970937518294681876, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970937518294681876, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 97cfb2c8d624b214989c781d683d2909, type: 2}
@@ -21347,6 +21525,10 @@ PrefabInstance:
     - target: {fileID: 5647278116952084890, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.994
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120115087687469044, guid: 64b21af9abfc3104b8b385ff32901b1f, type: 3}
+      propertyPath: promptMessage
+      value: '[E]'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -21478,6 +21660,10 @@ PrefabInstance:
       propertyPath: lightAnimator
       value: 
       objectReference: {fileID: 690215742}
+    - target: {fileID: 9012382085501793075, guid: 2d2545a30363fcf4aa1dd87389c1779f, type: 3}
+      propertyPath: promptMessage
+      value: '[LMB]'
+      objectReference: {fileID: 0}
     - target: {fileID: 9012382085501793076, guid: 2d2545a30363fcf4aa1dd87389c1779f, type: 3}
       propertyPath: MaxDistance
       value: 10
