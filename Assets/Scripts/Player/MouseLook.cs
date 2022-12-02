@@ -14,6 +14,7 @@ public class MouseLook : MonoBehaviourPunCallbacks
 
     public PlayerMovement playerMove;
     public Slider sensSlider;
+    public Slider fovSlider;
 
     public float mouseSensitivity = 100f;
     float xRotation = 0f;
@@ -24,6 +25,7 @@ public class MouseLook : MonoBehaviourPunCallbacks
     {
         Cursor.lockState = CursorLockMode.Locked;
         sensSlider.value = 100f;
+        cam.fieldOfView = 95f;
     }
 
     // Update is called once per frame
@@ -43,6 +45,7 @@ public class MouseLook : MonoBehaviourPunCallbacks
             head.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
             mouseSensitivity = sensSlider.value;
+            cam.fieldOfView = fovSlider.value;
 
             if (sensSlider.value == 0)
             {
@@ -63,8 +66,9 @@ public class MouseLook : MonoBehaviourPunCallbacks
         }
     }
 
-    public void ResetDefaultSens()
+    public void ResetDefault()
     {
         sensSlider.value = 100f;
+        fovSlider.value = 95f;
     }
 }
