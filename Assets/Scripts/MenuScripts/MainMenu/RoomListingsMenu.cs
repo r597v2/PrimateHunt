@@ -17,6 +17,11 @@ public class RoomListingsMenu : MonoBehaviourPunCallbacks
     {
         Debug.Log("Update room list 2.");
 
+        foreach (RectTransform child in _content)
+        {
+            Destroy(child.gameObject);
+        }
+
         foreach (RoomInfo info in roomList)
         {
             RoomListing listing = Instantiate(_roomListing, _content);

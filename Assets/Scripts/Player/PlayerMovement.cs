@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public float normalSpeed = 5f;
     private float speed;
     private float sprintFactor = 2f;
-    private bool isSprinting;
+    public bool isSprinting;
     private float crouchFactor = 0.5f;
     private bool sprintDisabled;
 
@@ -52,37 +52,37 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     public CharacterController playerHeight;
     public CharacterController playerCenter;
-    private bool isCrouched = false;
+    public bool isCrouched = false;
     private bool staminaDecreasing;
 
     Vector3 velocity;
     public Rigidbody mRigidbody;
     private bool isMoving;
 
-    bool slapIsPlaying(Animator mAnimator, string Slap)
-    {
-        if (mAnimator.GetCurrentAnimatorStateInfo(0).IsTag(Slap) &&
-        mAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    bool headbuttIsPlaying(Animator mAnimator, string Headbutt)
-    {
-        if (mAnimator.GetCurrentAnimatorStateInfo(0).IsTag(Headbutt) &&
-        mAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    // bool slapIsPlaying(Animator mAnimator, string Slap)
+    // {
+    //     if (mAnimator.GetCurrentAnimatorStateInfo(0).IsTag(Slap) &&
+    //     mAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+    //     {
+    //         return true;
+    //     }
+    //     else
+    //     {
+    //         return false;
+    //     }
+    // }
+    // bool headbuttIsPlaying(Animator mAnimator, string Headbutt)
+    // {
+    //     if (mAnimator.GetCurrentAnimatorStateInfo(0).IsTag(Headbutt) &&
+    //     mAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+    //     {
+    //         return true;
+    //     }
+    //     else
+    //     {
+    //         return false;
+    //     }
+    // }
 
     void Start()
     {
@@ -175,8 +175,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     {
         if (currentAnimController == "default")
         {
-            
-            
+
+
             weaponCrosshair.SetActive(false);
 
             if (!isCrouched)
@@ -266,9 +266,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         }
         else if (currentAnimController == "ak")
         {
-            // armL.transform.eulerAngles = new Vector3(armL.transform.eulerAngles.x + head.transform.eulerAngles.x, 0, 0);
-            armR.transform.localEulerAngles  = new Vector3(0, 100  + head.transform.localEulerAngles .x, 0);
-            Debug.Log("head.transform.localEulerAngles .x=" + head.transform.localEulerAngles .x + " armR.transform.localEulerAngles .y=" + armR.transform.localEulerAngles .y);
             weaponCrosshair.SetActive(true);
 
             if (!isCrouched)

@@ -777,6 +777,7 @@ MonoBehaviour:
   healthBar: {fileID: 8902341405441862522}
   health: 0
   normalSpeed: 5
+  isSprinting: 0
   gravity: -19.62
   groundDistance: 0.01
   groundCheck: {fileID: 95367450096926020}
@@ -786,6 +787,7 @@ MonoBehaviour:
   bananaEat: {fileID: 4562534614986727276}
   playerHeight: {fileID: 95367450038629544}
   playerCenter: {fileID: 95367450038629544}
+  isCrouched: 0
   mRigidbody: {fileID: 5142211204702234687}
 --- !u!114 &963270794761650555
 MonoBehaviour:
@@ -842,11 +844,12 @@ MonoBehaviour:
   cam: {fileID: 95367450762143519}
   head: {fileID: 3939786692179049237}
   playerModel: {fileID: 95367450038629545}
-  armR: {fileID: 5473521561148589620}
-  armL: {fileID: 8528566060609459438}
   playerMove: {fileID: 95367450038629546}
+  akAnimator: {fileID: 8542900885723592374}
   sensSlider: {fileID: 4289915607724632577}
   fovSlider: {fileID: 5635119064895952848}
+  armL: {fileID: 8528566060609459438}
+  armR: {fileID: 5473521561148589620}
   mouseSensitivity: 100
 --- !u!114 &-5180517343363294081
 MonoBehaviour:
@@ -1053,7 +1056,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 95
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1090,8 +1093,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.012497183
-  m_Center: {x: 1.548396e-11, y: -0.000060037182, z: 0.0043948987}
+  m_Radius: 0.018636903
+  m_Center: {x: 1.8312279e-11, y: -0.0016256323, z: 0.0023693414}
 --- !u!1 &95865992841806458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,7 +1346,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 769
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -1438,7 +1441,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 769
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -1939,7 +1942,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5332983766419876968}
         m_TargetAssemblyTypeName: MouseLook, Assembly-CSharp
-        m_MethodName: ResetDefaultSens
+        m_MethodName: ResetDefault
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7021,7 +7024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3310607241576030124
 RectTransform:
   m_ObjectHideFlags: 0

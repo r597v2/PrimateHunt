@@ -41,7 +41,7 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
         options.IsVisible = true;
-        options.PlayerTtl = 5000;
+        options.PlayerTtl = 3000;
         options.EmptyRoomTtl = 5000;
         PhotonNetwork.CreateRoom(_roomName.text, options, TypedLobby.Default);
         SceneManager.LoadScene("Lobby");

@@ -16,17 +16,12 @@ public class LevelSelect : Interactable
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     protected override void Interact(int photonViewID)
     {
-        if (!levelSelectUI.activeInHierarchy)
-        {
-            levelSelectUI.SetActive(true);
-            playerObj.GetComponent<MouseLook>().enabled = false;
-            playerObj.GetComponent<PlayerMovement>().enabled = false;
-            Cursor.lockState = CursorLockMode.Confined;
-        }
+        levelSelectUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 }

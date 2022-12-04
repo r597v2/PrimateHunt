@@ -19,22 +19,28 @@ public class HeadbuttSound : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && playerMvmt.currentAnimController == "default")
         {
+            if (playerMvmt.isSprinting)
+            {
+                return;
+            }
             headbuttStart = true;
-            Invoke("EndHeadbutt", 5f);
+            playerMvmt.enabled = false;
+            Invoke("EndHeadbutt", 1f);
         }
     }
 
     private void EndHeadbutt()
     {
+        playerMvmt.enabled = true;
         headbuttStart = false;
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-       if (headbuttStart && collision.tag == "Player" || collision.tag == "Head")
+       if (headbuttStart && (collision.tag == "Player" || collision.tag == "Head"))
         {
             headbuttStart = false;
-            playerMvmt.health -= 4f;
+            playerMvmt.health -= 1f;
             head.GetComponent<AudioSource>().Play();
         }
     }

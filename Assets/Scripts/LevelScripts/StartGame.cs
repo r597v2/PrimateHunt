@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviourPunCallbacks
 {
+    public BankIsSelected bankSelectedScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +17,9 @@ public class StartGame : MonoBehaviourPunCallbacks
 
     public void GameStart()
     {
-        if (BankIsSelected.bankIsSelected && PhotonNetwork.IsMasterClient)
+        if (bankSelectedScript.bankIsSelected && PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.LoadLevel("Bank");
+            SceneManager.LoadScene("Bank");
         }
     }
 }

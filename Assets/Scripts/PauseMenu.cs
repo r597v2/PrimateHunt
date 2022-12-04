@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviourPunCallbacks
 {
     public GameObject pauseMenu;
     public GameObject optionsMenu;
@@ -21,21 +22,24 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (photonView.IsMine)
         {
-            if (!gamePaused)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                OpenPauseMenu();
-            }
-            else
-            {
-                if (!optionsOpen)
+                if (!gamePaused)
                 {
-                    CloseMenu();
+                    OpenPauseMenu();
                 }
                 else
                 {
-                    CloseOptions();
+                    if (!optionsOpen)
+                    {
+                        CloseMenu();
+                    }
+                    else
+                    {
+                        CloseOptions();
+                    }
                 }
             }
         }
@@ -43,15 +47,18 @@ public class PauseMenu : MonoBehaviour
 
     public void CheckMenus()
     {
-        if (gamePaused)
+        if (photonView.IsMine)
         {
-            if (optionsOpen)
+            if (gamePaused)
             {
-                CloseOptions();
-            }
-            else
-            {
-                CloseMenu();
+                if (optionsOpen)
+                {
+                    CloseOptions();
+                }
+                else
+                {
+                    CloseMenu();
+                }
             }
         }
     }
@@ -76,8 +83,11 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenOptions()
     {
-        optionsButton.SetActive(false);
-        optionsMenu.SetActive(true);
+        if (photonView.IsMine)
+        {
+            optionsButton.SetActive(false);
+            optionsMenu.SetActive(true);
+        }
     }
 
     public void CloseOptions()

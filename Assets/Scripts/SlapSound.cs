@@ -19,19 +19,25 @@ public class SlapSound : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && playerMvmt.currentAnimController == "default")
         {
+            if (playerMvmt.isSprinting)
+            {
+                return;
+            }
             slapStart = true;
-            Invoke("EndSlap", 5f);
+            playerMvmt.enabled = false;
+            Invoke("EndSlap", 1f);
         }
     }
 
     private void EndSlap()
     {
+        playerMvmt.enabled = true;
         slapStart = false;
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-       if (slapStart && (collision.tag == "Player" || collision.tag == "Head"))
+        if (slapStart && (collision.tag == "Player" || collision.tag == "Head"))
         {
             slapStart = false;
             playerMvmt.health -= 1f;

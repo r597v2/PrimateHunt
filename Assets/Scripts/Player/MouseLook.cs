@@ -9,12 +9,13 @@ public class MouseLook : MonoBehaviourPunCallbacks
     public Camera cam;
     public GameObject head;
     public GameObject playerModel;
-    public GameObject armR;
-    public GameObject armL;
 
     public PlayerMovement playerMove;
+    public Animator akAnimator;
     public Slider sensSlider;
     public Slider fovSlider;
+    public GameObject armL;
+    public GameObject armR;
 
     public float mouseSensitivity = 100f;
     float xRotation = 0f;
@@ -54,14 +55,14 @@ public class MouseLook : MonoBehaviourPunCallbacks
 
             if (playerMove.currentAnimController == "ak")
             {
-                armL.transform.localRotation = Quaternion.Euler(0f, xRotation, 0f);
-                armR.transform.localRotation = Quaternion.Euler(0f, xRotation, 0f);
-                Debug.Log("L = " + armL.transform.localRotation+ ", R = " + armR.transform.localRotation);
+                // playerModel.GetComponentInChildren<Animator>().enabled = false;
+                // armL.transform.localRotation = Quaternion.Euler(0f, 0f, armL.transform.localRotation.z + xRotation);
+                // armR.transform.localRotation = Quaternion.Euler(0f, armR.transform.localRotation.y + xRotation, 0f);
+                akAnimator.SetFloat("FlLookValue", xRotation/(-90.0f), 0f, 0f);
             }
             else if (playerMove.currentAnimController == "default")
             {
-                armL.transform.localRotation = Quaternion.Euler(19.774f, 82.559f, -96.488f);
-                armL.transform.localRotation = Quaternion.Euler(19.774f, -73.663f, 98.553f);
+                playerModel.GetComponentInChildren<Animator>().enabled = true;
             }
         }
     }

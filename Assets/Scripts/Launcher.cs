@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
     public PhotonView playerPrefab;
+    public Scene bank;
     SpawnSpot[] spawnSpots;
 
     // Start is called before the first frame update
@@ -14,16 +16,16 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
 
-        if (PhotonNetwork.IsConnected)
+        if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
         {
-            // spawnPlayer();
+            spawnPlayer();
         }
         else
-        // {
-        //     PhotonNetwork.ConnectUsingSettings();
-        // }
-        
-        PhotonNetwork.AutomaticallySyncScene = true;
+            // {
+            //     PhotonNetwork.ConnectUsingSettings();
+            // }
+
+            PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public override void OnConnectedToMaster()
@@ -54,7 +56,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
-    {    
+    {
         Debug.Log("A player left");
         Debug.Log("Players in this room: " + PhotonNetwork.CurrentRoom.PlayerCount + ". Players in all rooms: " + PhotonNetwork.PlayerList.Length);
     }
@@ -67,11 +69,11 @@ public class Launcher : MonoBehaviourPunCallbacks
         spawnPlayer();
     }
 
-    private void spawnPlayer()
+    public void spawnPlayer()
     {
-        SpawnSpot mySpawnSpot = spawnSpots [Random.Range (0, spawnSpots.Length)];
+        SpawnSpot mySpawnSpot = spawnSpots[Random.Range(0, spawnSpots.Length)];
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
-        
+
         player.transform.Find("Monkey/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.006/spine.006_end/Head/Camera").gameObject.SetActive(true);
         player.transform.Find("Canvas").gameObject.SetActive(true);
     }

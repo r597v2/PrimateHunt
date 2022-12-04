@@ -23,7 +23,5 @@ public class CloseLevelSelect : MonoBehaviour
     {
         levelSelectUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
-        playerObj.GetComponent<MouseLook>().enabled = true;
-        playerObj.GetComponent<PlayerMovement>().enabled = true;
     }
 }

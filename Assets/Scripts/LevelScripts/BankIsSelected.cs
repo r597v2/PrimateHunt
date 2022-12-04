@@ -5,7 +5,7 @@ using UnityEngine;
 public class BankIsSelected : MonoBehaviour
 {
     public GameObject bankSelection;
-    public static bool bankIsSelected;
+    public bool bankIsSelected;
 
     // Start is called before the first frame update
     void Start()
