@@ -16,7 +16,10 @@ public class CloseLevelSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (levelSelectUI.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseUI();
+        }
     }
 
     public void CloseUI()

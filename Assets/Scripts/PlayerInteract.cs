@@ -38,7 +38,7 @@ public class PlayerInteract : MonoBehaviourPunCallbacks
                 playerUI.UpdateText(interactable.promptMessage);
 
                 if (
-                    (Input.GetMouseButtonDown(0) && interactable.interactType == Interactable.INTERACT_TYPE.INTERACT) // Interact type
+                    (Input.GetKeyDown(KeyCode.F) && interactable.interactType == Interactable.INTERACT_TYPE.INTERACT) // Interact type
                     || (Input.GetKeyDown(KeyCode.E) && interactable.interactType == Interactable.INTERACT_TYPE.PICKUP) // pickup type
                     )
                 {

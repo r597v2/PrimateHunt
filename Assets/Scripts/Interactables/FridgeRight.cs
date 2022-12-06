@@ -16,14 +16,7 @@ public class FridgeRight : Interactable
     // Update is called once per frame
     void Update()
     {
-        if (fridgeOpen)
-        {
-            promptMessage = ("Press LMB to close");
-        }
-        else
-        {
-            promptMessage = ("Press LMB to open");
-        }
+        
     }
 
     protected override void Interact(int photonViewID)

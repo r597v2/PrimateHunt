@@ -82,7 +82,7 @@ public class StaticInventoryDisplay : InventoryDisplay
 
                 if (playerMovementScript.currentAnimController == "default")
                 {
-                    if (Input.GetKeyDown(KeyCode.F))
+                    if (Input.GetMouseButtonDown(1))
                     {
                         playerMovementScript.Headbutt();
                     }
@@ -99,7 +99,7 @@ public class StaticInventoryDisplay : InventoryDisplay
 
                 if (playerMovementScript.currentAnimController == "ak")
                 {
-                    if (Input.GetKeyDown(KeyCode.G))
+                    if (Input.GetKeyDown(KeyCode.Q))
                     {
                         playerMovementScript.DropAk();
                         selectedInventoryItemData = null;

@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             if (mAnimator != null)
             {
                 // Check crouching
-                if (Input.GetKeyDown(KeyCode.C) && currentAnimController == "default")
+                if (Input.GetKeyDown(KeyCode.C))
                 {
                     if (!isCrouched)
                     {
@@ -173,124 +173,98 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     public void CheckAnimateMoving()
     {
-        if (currentAnimController == "default")
+        if (!isCrouched)
         {
-
-
-            weaponCrosshair.SetActive(false);
-
-            if (!isCrouched)
+            if (Input.GetKey(KeyCode.W))
             {
-                if (Input.GetKey(KeyCode.W))
-                {
-                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoSprinting" : "BoWalking", true);
-                }
-                if (Input.GetKeyUp(KeyCode.W))
-                {
-                    mAnimator.SetBool("BoSprinting", false);
-                    mAnimator.SetBool("BoWalking", false);
-                }
-
-                if (Input.GetKey(KeyCode.S))
-                {
-                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoSprintingBack" : "BoWalkingBack", true);
-                }
-                if (Input.GetKeyUp(KeyCode.S))
-                {
-                    mAnimator.SetBool("BoSprintingBack", false);
-                    mAnimator.SetBool("BoWalkingBack", false);
-                }
-
-                if (Input.GetKey(KeyCode.A))
-                {
-                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoSprintingLeft" : "BoWalkingLeft", true);
-                }
-                if (Input.GetKeyUp(KeyCode.A))
-                {
-                    mAnimator.SetBool("BoSprintingLeft", false);
-                    mAnimator.SetBool("BoWalkingLeft", false);
-                }
-
-                if (Input.GetKey(KeyCode.D))
-                {
-                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoWalkingRight" : "BoWalkingRight", true);
-                }
-                if (Input.GetKeyUp(KeyCode.D))
-                {
-                    mAnimator.SetBool("BoSprintingRight", false);
-                    mAnimator.SetBool("BoWalkingRight", false);
-                }
+                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoSprinting" : "BoWalking", true);
             }
-            else
+            if (Input.GetKeyUp(KeyCode.W))
             {
-                if (Input.GetKey(KeyCode.W))
-                {
-                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprinting" : "BoCrouchWalking", true);
-                }
-                if (Input.GetKeyUp(KeyCode.W))
-                {
-                    mAnimator.SetBool("BoCrouchSprinting", false);
-                    mAnimator.SetBool("BoCrouchWalking", false);
-                }
+                mAnimator.SetBool("BoSprinting", false);
+                mAnimator.SetBool("BoWalking", false);
+            }
 
-                if (Input.GetKey(KeyCode.S))
-                {
-                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprintingBack" : "BoCrouchWalkingBack", true);
-                }
-                if (Input.GetKeyUp(KeyCode.S))
-                {
-                    mAnimator.SetBool("BoCrouchSprintingBack", false);
-                    mAnimator.SetBool("BoCrouchWalkingBack", false);
-                }
+            if (Input.GetKey(KeyCode.S))
+            {
+                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoSprintingBack" : "BoWalkingBack", true);
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                mAnimator.SetBool("BoSprintingBack", false);
+                mAnimator.SetBool("BoWalkingBack", false);
+            }
 
-                if (Input.GetKey(KeyCode.A))
-                {
-                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprintingLeft" : "BoCrouchWalkingLeft", true);
-                }
-                if (Input.GetKeyUp(KeyCode.A))
-                {
-                    mAnimator.SetBool("BoCrouchSprintingLeft", false);
-                    mAnimator.SetBool("BoCrouchWalkingLeft", false);
-                }
+            if (Input.GetKey(KeyCode.A))
+            {
+                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoSprintingLeft" : "BoWalkingLeft", true);
+            }
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                mAnimator.SetBool("BoSprintingLeft", false);
+                mAnimator.SetBool("BoWalkingLeft", false);
+            }
 
-                if (Input.GetKey(KeyCode.D))
-                {
-                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprintingRight" : "BoCrouchWalkingRight", true);
-                }
-                if (Input.GetKeyUp(KeyCode.D))
-                {
-                    mAnimator.SetBool("BoCrouchSprintingRight", false);
-                    mAnimator.SetBool("BoCrouchWalkingRight", false);
-                }
+            if (Input.GetKey(KeyCode.D))
+            {
+                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoWalkingRight" : "BoWalkingRight", true);
+            }
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                mAnimator.SetBool("BoSprintingRight", false);
+                mAnimator.SetBool("BoWalkingRight", false);
             }
         }
-        else if (currentAnimController == "ak")
+        else
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprinting" : "BoCrouchWalking", true);
+            }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                mAnimator.SetBool("BoCrouchSprinting", false);
+                mAnimator.SetBool("BoCrouchWalking", false);
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprintingBack" : "BoCrouchWalkingBack", true);
+            }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                mAnimator.SetBool("BoCrouchSprintingBack", false);
+                mAnimator.SetBool("BoCrouchWalkingBack", false);
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprintingLeft" : "BoCrouchWalkingLeft", true);
+            }
+            if (Input.GetKeyUp(KeyCode.A))
+            {
+                mAnimator.SetBool("BoCrouchSprintingLeft", false);
+                mAnimator.SetBool("BoCrouchWalkingLeft", false);
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprintingRight" : "BoCrouchWalkingRight", true);
+            }
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                mAnimator.SetBool("BoCrouchSprintingRight", false);
+                mAnimator.SetBool("BoCrouchWalkingRight", false);
+            }
+        }
+
+        if (currentAnimController == "ak")
         {
             weaponCrosshair.SetActive(true);
-
-            if (!isCrouched)
-            {
-                if (Input.GetKey(KeyCode.W))
-                {
-                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoAkSprinting" : "BoAkWalking", true);
-                }
-                if (Input.GetKeyUp(KeyCode.W))
-                {
-                    mAnimator.SetBool("BoAkSprinting", false);
-                    mAnimator.SetBool("BoAkWalking", false);
-                }
-
-                if (Input.GetKey(KeyCode.S))
-                {
-                    mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoAkSprintingBack" : "BoAkWalkingBack", true);
-                }
-                if (Input.GetKeyUp(KeyCode.S))
-                {
-                    mAnimator.SetBool("BoAkSprintingBack", false);
-                    mAnimator.SetBool("BoAkWalkingBack", false);
-                }
-
-            }
+        }
+        else
+        {
+            weaponCrosshair.SetActive(false);
         }
     }
 

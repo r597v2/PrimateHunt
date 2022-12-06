@@ -17,7 +17,7 @@ public class HeadbuttSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && playerMvmt.currentAnimController == "default")
+        if (Input.GetMouseButtonDown(1) && playerMvmt.currentAnimController == "default")
         {
             if (playerMvmt.isSprinting)
             {

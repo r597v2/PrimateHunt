@@ -27,24 +27,12 @@ public class FlashlightToggle : MonoBehaviourPunCallbacks
             return;
         }
 
-        if (playerMvt.currentAnimController == "default")
+        //toggle flashlight on key down
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            //toggle flashlight on key down
-            if (Input.GetMouseButton(1))
-            {
-                //toggle light
-                isOn = !isOn;
-                photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
-            }
-        }
-        else if (playerMvt.currentAnimController == "ak")
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                //toggle light
-                isOn = !isOn;
-                photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
-            }
+            //toggle light
+            isOn = !isOn;
+            photonView.RPC("RPC_FlashlightControl", RpcTarget.AllBuffered, isOn);
         }
     }
 
