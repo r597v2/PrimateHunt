@@ -398,10 +398,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     private void EatBanana()
     {
-        InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.BANANA);
+        InventoryItemData bananaItemData = new InventoryItemData(InventoryItemData.ITEMTYPES.BANANA);
         InventoryHolder ih = GetComponent<InventoryHolder>();
 
-        if (ih.InventorySystem.RetrieveFromInventory(itemData, 1))
+        if (ih.InventorySystem.RetrieveFromInventory(bananaItemData, 1))
         {
             bananaEat.GetComponent<AudioSource>().Play();
 
@@ -414,10 +414,18 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             }
             else if (!staminaDecreasing && stamina < maxStamina)
             {
-                EnableSprint();
-                sprintFactor = 2f;
-                stamina += dValue;
-                staminaBar.value = stamina;
+                if ((stamina += dValue) > maxStamina)
+                {
+                    EnableSprint();
+                    stamina = maxStamina;
+                    staminaBar.value = stamina;
+                }
+                else
+                {
+                    EnableSprint();
+                    stamina += dValue;
+                    staminaBar.value = stamina;
+                }
             }
         }
 
