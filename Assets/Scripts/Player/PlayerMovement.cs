@@ -26,7 +26,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public PhotonView akDropPrefab;
     public GameObject weaponCrosshair;
 
-    public Slider staminaBar;
+    public GameObject c4GO;
+    public GameObject c4DropGO;
+    public PhotonView c4DropPrefab;
+    private float throwForce = 3f;
+
+    private Slider staminaBar;
     public float dValue;
     public float obesity;
     public float stamina;
@@ -59,35 +64,13 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public Rigidbody mRigidbody;
     private bool isMoving;
 
-    // bool slapIsPlaying(Animator mAnimator, string Slap)
-    // {
-    //     if (mAnimator.GetCurrentAnimatorStateInfo(0).IsTag(Slap) &&
-    //     mAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-    //     {
-    //         return true;
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    // }
-    // bool headbuttIsPlaying(Animator mAnimator, string Headbutt)
-    // {
-    //     if (mAnimator.GetCurrentAnimatorStateInfo(0).IsTag(Headbutt) &&
-    //     mAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-    //     {
-    //         return true;
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    // }
-
     void Start()
     {
         if (photonView.IsMine)
         {
+            staminaBar = (Slider)GameObject.FindObjectsOfType(typeof(Slider))[1];
+            healthBar = (Slider)GameObject.FindObjectsOfType(typeof(Slider))[0];
+
             speed = normalSpeed;
             maxStamina = stamina;
             staminaBar.maxValue = maxStamina;
@@ -270,9 +253,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     public void SetDefaultAnimations()
     {
+        mAnimator.SetLayerWeight(1, 0f);
         mAnimator.runtimeAnimatorController = defaultController as RuntimeAnimatorController;
         currentAnimController = "default";
         akGO.SetActive(false);
+        c4GO.SetActive(false);
     }
 
     public void SetAKAnimations()
@@ -280,7 +265,17 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         mAnimator.runtimeAnimatorController = akController as RuntimeAnimatorController;
         currentAnimController = "ak";
         akGO.SetActive(true);
+        c4GO.SetActive(false);
 
+    }
+
+    public void SetC4Animations()
+    {
+        mAnimator.runtimeAnimatorController = defaultController as RuntimeAnimatorController;
+        mAnimator.SetLayerWeight(1, 1f);
+        currentAnimController = "c4";
+        c4GO.SetActive(true);
+        akGO.SetActive(false);
     }
 
     public void DropAk()
@@ -294,6 +289,44 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
         ih.InventorySystem.RemoveFromInventory(itemData, 1);
     }
+
+    public void DropC4()
+    {
+        c4DropGO = PhotonNetwork.Instantiate(c4DropPrefab.name, cam.transform.position, cam.transform.rotation);
+        c4DropGO.GetComponent<Rigidbody>().AddForceAtPosition(cam.transform.forward * 5f, cam.transform.position,
+         ForceMode.Impulse);
+        c4DropGO.GetComponent<C4PickUpItem>().armed = false;
+        c4GO.SetActive(false);
+        InventoryHolder ih = GetComponent<InventoryHolder>();
+        InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.DEFAULT);
+
+        ih.InventorySystem.RemoveFromInventory(itemData, 1);
+    }
+
+    public void AimC4()
+    {
+        mAnimator.SetBool("BoThrowing", true);
+        throwForce += Time.deltaTime * 2;
+    }
+
+    public void ThrowC4()
+    {
+        c4DropGO = PhotonNetwork.Instantiate(c4DropPrefab.name, cam.transform.position, cam.transform.rotation);
+        c4DropGO.GetComponent<Rigidbody>().AddForceAtPosition(cam.transform.forward * throwForce, cam.transform.position,
+         ForceMode.Impulse);
+        c4GO.SetActive(false);
+
+        c4DropGO.GetComponent<C4PickUpItem>().armed = true;
+
+        InventoryHolder ih = GetComponent<InventoryHolder>();
+        InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.DEFAULT);
+
+        ih.InventorySystem.RemoveFromInventory(itemData, 1);
+
+        mAnimator.SetBool("BoThrowing", false);
+        throwForce = 3f;
+    }
+
 
     public void Slap()
     {
@@ -375,6 +408,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         {
             stamina -= dValue * Time.deltaTime;
             staminaBar.value = stamina;
+            Debug.Log(Time.time + "staminaBar.value=" + staminaBar.value);
         }
     }
 

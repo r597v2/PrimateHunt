@@ -11,7 +11,7 @@ public class MouseLook : MonoBehaviourPunCallbacks
     public GameObject playerModel;
 
     public PlayerMovement playerMove;
-    public Animator akAnimator;
+    public Animator playerAnimator;
     public Slider sensSlider;
     public Slider fovSlider;
     public GameObject armL;
@@ -53,16 +53,17 @@ public class MouseLook : MonoBehaviourPunCallbacks
                 sensSlider.value = 1;
             }
 
-            if (playerMove.currentAnimController == "ak")
-            {
-                // playerModel.GetComponentInChildren<Animator>().enabled = false;
-                // armL.transform.localRotation = Quaternion.Euler(0f, 0f, armL.transform.localRotation.z + xRotation);
-                // armR.transform.localRotation = Quaternion.Euler(0f, armR.transform.localRotation.y + xRotation, 0f);
-                akAnimator.SetFloat("FlLookValue", xRotation/(-90.0f), 0f, 0f);
-            }
-            else if (playerMove.currentAnimController == "default")
+            if (playerMove.currentAnimController == "default")
             {
                 playerModel.GetComponentInChildren<Animator>().enabled = true;
+            }
+            else if (playerMove.currentAnimController == "ak")
+            {
+                playerAnimator.SetFloat("FlLookValue", xRotation/(-90.0f), 0f, 0f);
+            }
+            if (playerMove.currentAnimController == "c4")
+            {
+                playerAnimator.SetFloat("FlC4LookValue", xRotation/(-90.0f), 0f, 0f);
             }
         }
     }

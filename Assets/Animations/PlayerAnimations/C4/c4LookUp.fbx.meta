@@ -1,8 +1,11 @@
 fileFormatVersion: 2
-guid: 86953f21b3e06334792356236a5ee276
+guid: 4fcc486ae768f544a8c93d22f31bc900
 ModelImporter:
   serializedVersion: 22103
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -2070897002112704150
+    second: metarig|C4LookUp
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -47,7 +50,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1

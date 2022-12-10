@@ -106,6 +106,30 @@ public class StaticInventoryDisplay : InventoryDisplay
                     }
                 }
             }
+            else if (selectedInventoryItemData.displayName == "C4")
+            {
+                playerMovementScript.SetDefaultAnimations();
+                playerMovementScript.SetC4Animations();
+
+                if (playerMovementScript.currentAnimController == "c4")
+                {
+                    if (Input.GetKeyDown(KeyCode.Q))
+                    {
+                        playerMovementScript.DropC4();
+                        selectedInventoryItemData = null;
+                    }
+
+                    if (Input.GetMouseButton(0))
+                    {
+                        playerMovementScript.AimC4();
+                    }
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        playerMovementScript.ThrowC4();
+                        selectedInventoryItemData = null;
+                    }
+                }
+            }
         }
     }
 
