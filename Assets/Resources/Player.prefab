@@ -4493,8 +4493,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d0c1d1bd157c7574a8d3edb6ca386736, type: 2}
+  m_sharedMaterial: {fileID: 4918131305196762718, guid: d0c1d1bd157c7574a8d3edb6ca386736, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5533,7 +5533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5118088206137098936}
   m_LocalRotation: {x: 0.03875025, y: 0.007898205, z: 0.07220379, w: 0.9966056}
-  m_LocalPosition: {x: 1.4001044, y: 12.799941, z: -0.49995708}
+  m_LocalPosition: {x: 0.005, y: 0.088, z: -0.002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7550,7 +7550,7 @@ Transform:
   m_GameObject: {fileID: 7377141724441910804}
   m_LocalRotation: {x: 0.38837284, y: -0.4548417, z: -0.5132606, w: 0.6155072}
   m_LocalPosition: {x: -0.00005, y: 0.0026, z: -0.00038}
-  m_LocalScale: {x: 0.000048000566, y: 0.000048000566, z: 0.000048000566}
+  m_LocalScale: {x: 0.0043515787, y: 0.0043515787, z: 0.0043515787}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8464824425968002227}

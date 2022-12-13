@@ -11,6 +11,7 @@ public class C4Detonate : MonoBehaviour
     public ParticleSystem smokeParticles;
     public ParticleSystem smokeParticles1;
     public GameObject bombLight;
+    public GameObject explosionRadius;
 
     private float timer;
     private float waitingTime = 1.5f;
@@ -46,6 +47,7 @@ public class C4Detonate : MonoBehaviour
 
     private void DetonateC4()
     {
+        explosionRadius.SetActive(true);
         explosionParticles.Play();
         explosionParticles1.Play();
         smokeParticles.Play();
@@ -59,7 +61,7 @@ public class C4Detonate : MonoBehaviour
         if (collision.gameObject.layer == 8 && c4PickUpItem.armed)
         {
             rb.useGravity = false;
-            rb.isKinematic = true;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 

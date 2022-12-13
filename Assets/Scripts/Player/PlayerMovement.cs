@@ -281,7 +281,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public void DropAk()
     {
         akDropGO = PhotonNetwork.Instantiate(akDropPrefab.name, cam.transform.position, cam.transform.rotation);
-        akDropGO.GetComponent<Rigidbody>().AddForceAtPosition(cam.transform.forward * 5f, cam.transform.position,
+        akDropGO.GetComponent<Rigidbody>().AddForceAtPosition(cam.transform.forward * 10f, cam.transform.position,
          ForceMode.Impulse);
         akGO.SetActive(false);
         InventoryHolder ih = GetComponent<InventoryHolder>();

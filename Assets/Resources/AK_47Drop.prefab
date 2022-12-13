@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342229449311337569}
-  m_LocalRotation: {x: 0.03875025, y: 0.007898205, z: 0.07220379, w: 0.9966056}
-  m_LocalPosition: {x: 1.4001044, y: 12.799941, z: -0.49995708}
+  m_LocalRotation: {x: -0.0059277145, y: -0.009030699, z: 0.07345154, w: 0.9972403}
+  m_LocalPosition: {x: 0.007, y: 0.076, z: 0.012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 555909171619588868}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 4.364, y: 1.226, z: 8.334}
+  m_LocalEulerAnglesHint: {x: -0.601, y: -1.082, z: 8.431}
 --- !u!33 &7770092736567452377
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 2726950008704770253}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0.7071068, w: 0}
   m_LocalPosition: {x: -1.9, y: -4.4, z: 0}
-  m_LocalScale: {x: -0.009130871, y: -0.009130871, z: -0.009130871}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3945669160248629866}
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ad674aea6ee954593db560316a8acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: Press E to pickup
+  promptMessage: '[E]'
   idName: AK
   interactType: 1
   itemData: {fileID: 11400000, guid: ff2a6a4c2cd2f514cab196648cba3f43, type: 2}

@@ -11,14 +11,19 @@ public class Launcher : MonoBehaviourPunCallbacks
     public Scene bank;
     SpawnSpot[] spawnSpots;
 
+    ItemSpawnSpot[] itemSpawnSpots;
+    public List<GameObject> spawnableItems = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
         spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
+        itemSpawnSpots = GameObject.FindObjectsOfType<ItemSpawnSpot>();
 
         if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
         {
             spawnPlayer();
+            spawnItems();
         }
         else
             // {
@@ -67,6 +72,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         Debug.Log("Players in this room: " + PhotonNetwork.CurrentRoom.PlayerCount + ". Players in all rooms: " + PhotonNetwork.PlayerList.Length);
 
         spawnPlayer();
+        spawnItems();
     }
 
     public void spawnPlayer()
@@ -76,5 +82,19 @@ public class Launcher : MonoBehaviourPunCallbacks
 
         player.transform.Find("Monkey/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.006/spine.006_end/Head/Camera").gameObject.SetActive(true);
         player.transform.Find("Canvas").gameObject.SetActive(true);
+    }
+
+    public void spawnItems()
+    {
+        foreach (var itemSpawnSpot in itemSpawnSpots)
+        {
+            GameObject randomItem = Instantiate(spawnableItems[Random.Range(0, spawnableItems.Count)], transform.position, Quaternion.identity, itemSpawnSpot.transform);
+            randomItem.transform.localPosition = Vector3.zero;
+
+            if (randomItem.tag == "AK47")
+            {
+                randomItem.transform.localRotation = Quaternion.Euler(0, -90f, 0);
+            }
+        }
     }
 }
