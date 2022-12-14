@@ -8,6 +8,8 @@ TagManager:
   - Item
   - Light Switch
   - Head
+  - AmmoSpawnItem
+  - Ak47SpawnItem
   layers:
   - Default
   - TransparentFX

@@ -25,10 +25,6 @@ public class CaptureZone : MonoBehaviour
 
         if (captureProgress >= 50f)
         {
-            vaultDoor.AddComponent<VaultDoor>();
-            vaultDoor.GetComponent<VaultDoor>().promptMessage = "[F]";
-            vaultDoor.GetComponent<VaultDoor>().idName = "VAULT";
-            vaultDoor.GetComponent<VaultDoor>().vaultAnimator = vaultDoor.GetComponent<Animator>();
             gameObject.SetActive(false);
         }
 

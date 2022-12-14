@@ -5246,6 +5246,7 @@ GameObject:
   - component: {fileID: 5959966404444350547}
   - component: {fileID: -1031630776900969614}
   - component: {fileID: 8265189750373042589}
+  - component: {fileID: 5671737872428143078}
   m_Layer: 9
   m_Name: C4_Drop
   m_TagString: Untagged
@@ -5476,6 +5477,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5671737872428143078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3993049474978857966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 854c6f2d2e34b85409917813ecaa41e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionRadius: {fileID: 8084538457146258721}
+  vaultDoor: {fileID: 8998293043510923828, guid: 5fa82d110da9ab2498fdb45ac131200e, type: 3}
 --- !u!1 &4523732727224066725
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,14 +11,19 @@ public class Launcher : MonoBehaviourPunCallbacks
     public Scene bank;
     SpawnSpot[] spawnSpots;
 
+    private int numOfItemSpawnSpots;
+
     ItemSpawnSpot[] itemSpawnSpots;
     public List<GameObject> spawnableItems = new List<GameObject>();
+
+    private float[] difficultyFactor = new float[] {1f, 0.8f, 0.6f, 0.4f};
 
     // Start is called before the first frame update
     void Start()
     {
         spawnSpots = GameObject.FindObjectsOfType<SpawnSpot>();
         itemSpawnSpots = GameObject.FindObjectsOfType<ItemSpawnSpot>();
+        numOfItemSpawnSpots = (int)(itemSpawnSpots.Length * difficultyFactor[GlobalGameSettings.difficultyLevel]);
 
         if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
         {
@@ -86,12 +91,14 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void spawnItems()
     {
-        foreach (var itemSpawnSpot in itemSpawnSpots)
+        // foreach (var itemSpawnSpot in itemSpawnSpots)
+        for(int i = 0; i < numOfItemSpawnSpots; i++)
         {
-            GameObject randomItem = Instantiate(spawnableItems[Random.Range(0, spawnableItems.Count)], transform.position, Quaternion.identity, itemSpawnSpot.transform);
+            GameObject randomItem = Instantiate(spawnableItems[Random.Range(0, spawnableItems.Count)], 
+                transform.position, Quaternion.identity, itemSpawnSpots[i].transform);
             randomItem.transform.localPosition = Vector3.zero;
 
-            if (randomItem.tag == "AK47")
+            if (randomItem.tag == "Ak47SpawnItem" || randomItem.tag == "AmmoSpawnItem")
             {
                 randomItem.transform.localRotation = Quaternion.Euler(0, -90f, 0);
             }
