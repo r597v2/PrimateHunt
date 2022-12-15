@@ -306,7 +306,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public void AimC4()
     {
         mAnimator.SetBool("BoThrowing", true);
-        throwForce += Time.deltaTime * 2;
+        throwForce += Time.deltaTime * 3;
     }
 
     public void ThrowC4()

@@ -47,6 +47,7 @@ public class C4Detonate : MonoBehaviour
 
     private void DetonateC4()
     {
+        gameObject.GetComponent<C4RadiusDamage>().c4Detonating = true;
         explosionRadius.SetActive(true);
         explosionParticles.Play();
         explosionParticles1.Play();

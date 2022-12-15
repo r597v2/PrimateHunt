@@ -6,32 +6,36 @@ public class C4RadiusDamage : MonoBehaviour
 {
     public GameObject explosionRadius;
     public GameObject vaultDoor;
+    public bool c4Detonating;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (c4Detonating)
+        {
+            DamageInRadius();
+        }
     }
 
-    private void OnTriggerEnter(Collider otherCollision)
+    void DamageInRadius()
     {
-        if (explosionRadius.activeInHierarchy)
+        Collider[] objectsInRange = Physics.OverlapSphere(gameObject.transform.position, 11f);
+        foreach (Collider collider in objectsInRange)
         {
-            if (otherCollision.tag == "Player")
+            if (collider.tag == "Player")
             {
                 Debug.Log("Player damaged by c4");
             }
-            if (otherCollision.tag == "VaultDoor")
+            else if (collider.tag == "VaultDoor")
             {
-                vaultDoor.GetComponent<Animator>().SetTrigger("TrOpenVault");
+                collider.GetComponent<Animator>().SetTrigger("TrOpenVault");
             }
         }
-        
     }
 }

@@ -5491,6 +5491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionRadius: {fileID: 8084538457146258721}
   vaultDoor: {fileID: 8998293043510923828, guid: 5fa82d110da9ab2498fdb45ac131200e, type: 3}
+  c4Detonating: 0
 --- !u!1 &4523732727224066725
 GameObject:
   m_ObjectHideFlags: 0
@@ -15227,7 +15228,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 956954510699120414}
-  - component: {fileID: 3785780691693529254}
   m_Layer: 0
   m_Name: ExplosionRadius
   m_TagString: Untagged
@@ -15250,19 +15250,6 @@ Transform:
   m_Father: {fileID: 4333019177168968020}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &3785780691693529254
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8084538457146258721}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 8.914882
-  m_Center: {x: 0, y: -0.101088524, z: 0}
 --- !u!1 &8749374733930182592
 GameObject:
   m_ObjectHideFlags: 0
