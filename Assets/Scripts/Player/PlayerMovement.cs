@@ -6,21 +6,36 @@ using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviourPunCallbacks
 {
-    public Camera cam;
+    [Header("UI Bars")]
+
+    public float dValue;
+    public float obesity;
+    public float stamina;
+    float maxStamina;
+    private Slider staminaBar;
+
+    float maxHealth;
+    [SerializeField] public float health = 100f;
+    public Slider healthBar;
+
+    [Space]
+    [Header("Character Controllers")]
+
+    public CharacterController controller;
+    public CharacterController playerHeight;
+    public CharacterController playerCenter;
+
+    [Space]
+    [Header("Animator Controllers")]
 
     public Animator mAnimator;
     public RuntimeAnimatorController defaultController;
     public RuntimeAnimatorController akController;
     public string currentAnimController = "default";
 
-    public GameObject handCollider;
-    public GameObject headCollider;
+    [Space]
+    [Header("Items")]
 
-    public GameObject armL;
-    public GameObject armR;
-    public GameObject head;
-
-    public CharacterController controller;
     public GameObject akGO;
     public GameObject akDropGO;
     public PhotonView akDropPrefab;
@@ -31,38 +46,41 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public PhotonView c4DropPrefab;
     private float throwForce = 3f;
 
-    private Slider staminaBar;
-    public float dValue;
-    public float obesity;
-    public float stamina;
-    float maxStamina;
+    public GameObject axeGO;
+    public GameObject axeDropGO;
+    public PhotonView axeDropPrefab;
 
-    public Slider healthBar;
-    public float health;
-    float maxHealth;
+    [Space]
+    [Header("Other")]
+
+    public Camera cam;
+    public GameObject bananaDrunkVolume;
+
+    public GameObject handCollider;
+    public GameObject headCollider;
 
     public float normalSpeed = 5f;
     private float speed;
     private float sprintFactor = 2f;
-    public bool isSprinting;
+    [SerializeField] public bool isSprinting;
     private float crouchFactor = 0.5f;
     private bool sprintDisabled;
 
-    public float gravity = -9.81f;
-    public float groundDistance = 0.1f;
-    private bool isGrounded;
-    public Transform groundCheck;
-    public LayerMask groundMask;
     public GameObject bananaEat;
 
-    public CharacterController playerHeight;
-    public CharacterController playerCenter;
     public bool isCrouched = false;
     private bool staminaDecreasing;
 
     Vector3 velocity;
     public Rigidbody mRigidbody;
     private bool isMoving;
+
+    public float gravity = -9.81f;
+
+    // public float groundDistance = 0.1f;
+    // private bool isGrounded;
+    // public Transform groundCheck;
+    // public LayerMask groundMask;
 
     void Start()
     {
@@ -253,11 +271,13 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     public void SetDefaultAnimations()
     {
-        mAnimator.SetLayerWeight(1, 0f);
         mAnimator.runtimeAnimatorController = defaultController as RuntimeAnimatorController;
+        mAnimator.SetLayerWeight(1, 0f);
+        mAnimator.SetLayerWeight(2, 0f);
         currentAnimController = "default";
         akGO.SetActive(false);
         c4GO.SetActive(false);
+        axeGO.SetActive(false);
     }
 
     public void SetAKAnimations()
@@ -276,6 +296,16 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         currentAnimController = "c4";
         c4GO.SetActive(true);
         akGO.SetActive(false);
+    }
+
+    public void SetAxeAnimations()
+    {
+        mAnimator.runtimeAnimatorController = defaultController as RuntimeAnimatorController;
+        mAnimator.SetLayerWeight(2, 1f);
+        currentAnimController = "axe";
+        c4GO.SetActive(false);
+        akGO.SetActive(false);
+        axeGO.SetActive(true);
     }
 
     public void DropAk()
@@ -301,6 +331,28 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.DEFAULT);
 
         ih.InventorySystem.RemoveFromInventory(itemData, 1);
+    }
+
+    public void DropAxe()
+    {
+        axeDropGO = PhotonNetwork.Instantiate(axeDropPrefab.name, cam.transform.position, cam.transform.rotation);
+        axeDropGO.GetComponent<Rigidbody>().AddForceAtPosition(cam.transform.forward * 5f, cam.transform.position,
+         ForceMode.Impulse);
+        axeGO.SetActive(false);
+        InventoryHolder ih = GetComponent<InventoryHolder>();
+        InventoryItemData itemData = new InventoryItemData(InventoryItemData.ITEMTYPES.DEFAULT);
+
+        ih.InventorySystem.RemoveFromInventory(itemData, 1);
+    }
+
+    public void AxeLightAttack()
+    {
+        mAnimator.SetTrigger("TrAxeLightAttack");
+    }
+
+    public void AxeHeavyAttack()
+    {
+        mAnimator.SetTrigger("TrAxeHeavyAttack");
     }
 
     public void AimC4()
@@ -445,6 +497,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 transform.Find("Monkey/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.006/spine.006_end/Head/VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
                 staminaBar.value = stamina; //update the stamina
                 DisableSprint();
+                bananaDrunkVolume.SetActive(true);
             }
             else if (!staminaDecreasing && stamina < maxStamina)
             {
@@ -453,12 +506,14 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                     EnableSprint();
                     stamina = maxStamina;
                     staminaBar.value = stamina;
+                    bananaDrunkVolume.SetActive(false);
                 }
                 else
                 {
                     EnableSprint();
                     stamina += dValue;
                     staminaBar.value = stamina;
+                    bananaDrunkVolume.SetActive(false);
                 }
             }
         }

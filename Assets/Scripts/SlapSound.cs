@@ -40,6 +40,7 @@ public class SlapSound : MonoBehaviour
         if (slapStart && (collision.tag == "Player" || collision.tag == "Head"))
         {
             slapStart = false;
+            collision.gameObject.GetComponent<PlayerMovement>().health -= 5f;
             hand.GetComponent<AudioSource>().Play();
         }
     }

@@ -16,7 +16,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     ItemSpawnSpot[] itemSpawnSpots;
     public List<GameObject> spawnableItems = new List<GameObject>();
 
-    private float[] difficultyFactor = new float[] {1f, 0.8f, 0.6f, 0.4f};
+    private float[] difficultyFactor = new float[] { 1f, 0.8f, 0.6f, 0.4f };
 
     // Start is called before the first frame update
     void Start()
@@ -91,16 +91,24 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void spawnItems()
     {
-        // foreach (var itemSpawnSpot in itemSpawnSpots)
-        for(int i = 0; i < numOfItemSpawnSpots; i++)
+        if (PhotonNetwork.IsMasterClient)
         {
-            GameObject randomItem = Instantiate(spawnableItems[Random.Range(0, spawnableItems.Count)], 
-                transform.position, Quaternion.identity, itemSpawnSpots[i].transform);
-            randomItem.transform.localPosition = Vector3.zero;
-
-            if (randomItem.tag == "Ak47SpawnItem" || randomItem.tag == "AmmoSpawnItem")
+            // foreach (var itemSpawnSpot in itemSpawnSpots)
+            for (int i = 0; i < numOfItemSpawnSpots; i++)
             {
-                randomItem.transform.localRotation = Quaternion.Euler(0, -90f, 0);
+                GameObject randomItem = Instantiate(spawnableItems[Random.Range(0, spawnableItems.Count)],
+                    transform.position, Quaternion.identity, itemSpawnSpots[i].transform);
+
+                randomItem.transform.localPosition = Vector3.zero;
+
+                if (randomItem.tag == "Ak47SpawnItem" || randomItem.tag == "AmmoSpawnItem")
+                {
+                    randomItem.transform.localRotation = Quaternion.Euler(0, -90f, 0);
+                }
+                else if (randomItem.tag == "AxeSpawnItem")
+                {
+                    randomItem.transform.localRotation = Quaternion.Euler(-90f, -90f, 0);
+                }
             }
         }
     }

@@ -70,7 +70,7 @@ public class StaticInventoryDisplay : InventoryDisplay
             if (inventory && selectedSlot != previousSelectedSlot)
             {
                 selectedInventoryItemData = inventory.InventorySystem.GetFromInventorySlot(selectedSlot - 1);
-                Debug.Log("Selected item: " + selectedInventoryItemData?.description);
+                Debug.Log("Selected item: " + selectedInventoryItemData?.displayName);
             }
 
             if (selectedInventoryItemData == null)
@@ -127,6 +127,29 @@ public class StaticInventoryDisplay : InventoryDisplay
                     {
                         playerMovementScript.ThrowC4();
                         selectedInventoryItemData = null;
+                    }
+                }
+            }
+            else if (selectedInventoryItemData.displayName == "Axe")
+            {
+                playerMovementScript.SetDefaultAnimations();
+                playerMovementScript.SetAxeAnimations();
+
+                if (playerMovementScript.currentAnimController == "axe")
+                {
+                    if (Input.GetKeyDown(KeyCode.Q))
+                    {
+                        playerMovementScript.DropAxe();
+                        selectedInventoryItemData = null;
+                    }
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        playerMovementScript.AxeLightAttack();
+                    }
+                    if (Input.GetMouseButtonDown(1))
+                    {
+                        playerMovementScript.AxeHeavyAttack();
                     }
                 }
             }

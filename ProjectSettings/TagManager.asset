@@ -10,6 +10,8 @@ TagManager:
   - Head
   - AmmoSpawnItem
   - Ak47SpawnItem
+  - VaultDoor
+  - AxeSpawnItem
   layers:
   - Default
   - TransparentFX

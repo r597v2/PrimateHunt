@@ -17,8 +17,8 @@ public class QuitGame : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(PhotonNetwork.CountOfRooms + " rooms currently active.");
-        Debug.Log("Currently in room: " + PhotonNetwork.CurrentRoom.Name);
+        // Debug.Log(PhotonNetwork.CountOfRooms + " rooms currently active.");
+        // Debug.Log("Currently in room: " + PhotonNetwork.CurrentRoom.Name);
     }
 
     public void QuitGameToMenu()
