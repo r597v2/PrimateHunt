@@ -460,7 +460,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         {
             stamina -= dValue * Time.deltaTime;
             staminaBar.value = stamina;
-            Debug.Log(Time.time + "staminaBar.value=" + staminaBar.value);
         }
     }
 

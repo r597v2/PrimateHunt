@@ -40,7 +40,6 @@ public class HeadbuttSound : MonoBehaviour
         if (headbuttStart && (collision.tag == "Player" || collision.tag == "Head"))
         {
             headbuttStart = false;
-            collision.gameObject.GetComponent<PlayerMovement>().health -= 5f;
             head.GetComponent<AudioSource>().Play();
         }
     }

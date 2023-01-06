@@ -11,6 +11,9 @@ public class Launcher : MonoBehaviourPunCallbacks
     public Scene bank;
     SpawnSpot[] spawnSpots;
 
+    private GameObject randomItem;
+    public Ghost ghost;
+
     private int numOfItemSpawnSpots;
 
     ItemSpawnSpot[] itemSpawnSpots;
@@ -27,8 +30,13 @@ public class Launcher : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
         {
-            spawnPlayer();
-            spawnItems();
+            SpawnPlayer();
+            SpawnItems();
+
+            if (SceneManager.GetActiveScene().name != "Lobby")
+            {
+                ghost.PickGhostType();
+            }
         }
         else
             // {
@@ -76,11 +84,11 @@ public class Launcher : MonoBehaviourPunCallbacks
         Debug.Log("Successfully Joined a Room.");
         Debug.Log("Players in this room: " + PhotonNetwork.CurrentRoom.PlayerCount + ". Players in all rooms: " + PhotonNetwork.PlayerList.Length);
 
-        spawnPlayer();
-        spawnItems();
+        SpawnPlayer();
+        SpawnItems();
     }
 
-    public void spawnPlayer()
+    public void SpawnPlayer()
     {
         SpawnSpot mySpawnSpot = spawnSpots[Random.Range(0, spawnSpots.Length)];
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, mySpawnSpot.transform.position, mySpawnSpot.transform.rotation, 0);
@@ -89,21 +97,26 @@ public class Launcher : MonoBehaviourPunCallbacks
         player.transform.Find("Canvas").gameObject.SetActive(true);
     }
 
-    public void spawnItems()
+    public void SpawnItems()
     {
         if (PhotonNetwork.IsMasterClient)
         {
             // foreach (var itemSpawnSpot in itemSpawnSpots)
             for (int i = 0; i < numOfItemSpawnSpots; i++)
             {
-                GameObject randomItem = Instantiate(spawnableItems[Random.Range(0, spawnableItems.Count)],
-                    transform.position, Quaternion.identity, itemSpawnSpots[i].transform);
+                GameObject randomItemPrefab = spawnableItems[Random.Range(0, spawnableItems.Count)];
 
-                randomItem.transform.localPosition = Vector3.zero;
+                GameObject randomItem = PhotonNetwork.Instantiate(randomItemPrefab.name, itemSpawnSpots[i].transform.position, Quaternion.identity);
 
-                if (randomItem.tag == "Ak47SpawnItem" || randomItem.tag == "AmmoSpawnItem")
+                // randomItem.transform.SetParent(itemSpawnSpots[i].transform, false);
+
+                if (randomItem.tag == "Ak47SpawnItem")
                 {
                     randomItem.transform.localRotation = Quaternion.Euler(0, -90f, 0);
+                }
+                else if (randomItem.tag == "AmmoSpawnItem")
+                {
+                    randomItem.transform.localRotation = Quaternion.Euler(0, 90f, 0);
                 }
                 else if (randomItem.tag == "AxeSpawnItem")
                 {

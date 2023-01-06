@@ -30,7 +30,7 @@ public class C4RadiusDamage : MonoBehaviour
         {
             if (collider.tag == "Player")
             {
-                Debug.Log("Player damaged by c4");
+                Debug.Log("Player stunned by c4");
             }
             else if (collider.tag == "VaultDoor")
             {

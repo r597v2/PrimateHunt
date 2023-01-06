@@ -12382,6 +12382,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 963270794761650555, guid: 0ff3a2ff92c8b4a41824fb84f70ca304, type: 3}
   bank:
     m_Handle: 0
+  ghost: {fileID: 0}
   spawnableItems: []
 --- !u!4 &1561536663
 Transform:
@@ -17804,6 +17805,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 543450652884557332}
     m_Modifications:
+    - target: {fileID: 1264924977666263210, guid: 2e487761602a02445a69d07e447b77c5, type: 3}
+      propertyPath: sceneViewId
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4000055573731823269, guid: 2e487761602a02445a69d07e447b77c5, type: 3}
       propertyPath: m_Name
       value: c4

@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8862924529249477763}
   - component: {fileID: 8862924529249477764}
   - component: {fileID: 4359542751158766249}
+  - component: {fileID: -5636410210992683770}
   m_Layer: 9
   m_Name: AxePickup
   m_TagString: AxeSpawnItem
@@ -109,9 +110,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8862924529249477765}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.86, y: 0, z: 0}
-  m_LocalScale: {x: 1.325, y: 1.325, z: 1.325}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5027451876502644058}
@@ -161,6 +162,28 @@ MonoBehaviour:
   idName: AXE
   interactType: 1
   itemData: {fileID: 11400000, guid: 98edea5efdc23674caaf05701f638589, type: 2}
+--- !u!114 &-5636410210992683770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8862924529249477765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &9057412555664649136
 GameObject:
   m_ObjectHideFlags: 0

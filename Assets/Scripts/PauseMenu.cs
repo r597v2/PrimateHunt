@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     public GameObject optionsMenu;
     public GameObject optionsButton;
     public GameObject playerObj;
+    public GameObject evidenceJournal;
 
     private bool gamePaused;
     private bool optionsOpen;
@@ -32,13 +33,13 @@ public class PauseMenu : MonoBehaviourPunCallbacks
                 }
                 else
                 {
-                    if (!optionsOpen)
+                    if (optionsOpen)
                     {
-                        CloseMenu();
+                        CloseOptions();
                     }
                     else
                     {
-                        CloseOptions();
+                        CloseMenu();
                     }
                 }
             }
@@ -55,7 +56,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
                 {
                     CloseOptions();
                 }
-                else
+                else if (!optionsOpen)
                 {
                     CloseMenu();
                 }
@@ -70,6 +71,8 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         playerObj.GetComponent<MouseLook>().enabled = false;
         playerObj.GetComponent<PlayerMovement>().enabled = false;
         gamePaused = true;
+        gameObject.GetComponent<OpenCloseJournal>().enabled = false;
+        evidenceJournal.SetActive(false);
     }
 
     public void CloseMenu()
@@ -79,6 +82,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         playerObj.GetComponent<MouseLook>().enabled = true;
         playerObj.GetComponent<PlayerMovement>().enabled = true;
         gamePaused = false;
+        gameObject.GetComponent<OpenCloseJournal>().enabled = true;
     }
 
     public void OpenOptions()
@@ -87,6 +91,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         {
             optionsButton.SetActive(false);
             optionsMenu.SetActive(true);
+            optionsOpen = true;
         }
     }
 
@@ -94,5 +99,6 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
         optionsButton.SetActive(true);
         optionsMenu.SetActive(false);
+        optionsOpen = false;
     }
 }
