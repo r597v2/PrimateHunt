@@ -110,17 +110,9 @@ public class Launcher : MonoBehaviourPunCallbacks
 
                 // randomItem.transform.SetParent(itemSpawnSpots[i].transform, false);
 
-                if (randomItem.tag == "Ak47SpawnItem")
+                if (randomItem.tag == "BananaSpawnItem" || randomItem.tag == "C4SpawnItem")
                 {
                     randomItem.transform.localRotation = Quaternion.Euler(0, -90f, 0);
-                }
-                else if (randomItem.tag == "AmmoSpawnItem")
-                {
-                    randomItem.transform.localRotation = Quaternion.Euler(0, 90f, 0);
-                }
-                else if (randomItem.tag == "AxeSpawnItem")
-                {
-                    randomItem.transform.localRotation = Quaternion.Euler(-90f, -90f, 0);
                 }
             }
         }

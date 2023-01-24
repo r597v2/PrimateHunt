@@ -13,6 +13,8 @@ public class StaticInventoryDisplay : InventoryDisplay
 
     public PlayerMovement playerMovementScript;
 
+    private HumidityMeter humidityMeterScript;
+
     void Awake()
     {
         HideAllSelections();
@@ -34,6 +36,8 @@ public class StaticInventoryDisplay : InventoryDisplay
 
         inventory = playerGameObject?.transform.GetComponent<InventoryHolder>();
         selectedInventoryItemData = inventory?.InventorySystem.GetFromInventorySlot(selectedSlot - 1);
+
+        humidityMeterScript = playerGameObject.GetComponent<HumidityMeter>();
     }
 
     void Update()
@@ -152,6 +156,12 @@ public class StaticInventoryDisplay : InventoryDisplay
                         playerMovementScript.AxeHeavyAttack();
                     }
                 }
+            }
+            else if (selectedInventoryItemData.displayName == "Humidity Meter")
+            {
+                playerMovementScript.SetDefaultAnimations();
+                playerMovementScript.SetHumidityAnims();
+                humidityMeterScript.EquipHumidityMeter();
             }
         }
     }

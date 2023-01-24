@@ -9091,10 +9091,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Location: Bank
+  m_text: 'Waldo Balls Bank
 
-
-    Description: This bank has lots of money.'
+    (Small)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20323,6 +20322,10 @@ PrefabInstance:
       propertyPath: lights
       value: 
       objectReference: {fileID: 1291289623}
+    - target: {fileID: 3478487916628481071, guid: 4ef71513afacc7d47bfd8e22b587225b, type: 3}
+      propertyPath: lightsAreOn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3478487917243095277, guid: 4ef71513afacc7d47bfd8e22b587225b, type: 3}
       propertyPath: m_Layer
       value: 8

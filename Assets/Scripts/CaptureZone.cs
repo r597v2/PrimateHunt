@@ -28,8 +28,6 @@ public class CaptureZone : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-
-        Debug.Log("capture progress = " + captureProgress);
     }
 
     private void OnTriggerEnter(Collider collider)

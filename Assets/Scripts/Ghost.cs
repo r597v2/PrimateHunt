@@ -11,22 +11,22 @@ public enum GhostType
 
 public enum GhostEvidence
 {
-    Whispher, EatCandle, Spit, Humid, Laugh, Blood
+    Whispher, EatCandle, Spit, Humid, HandPrint, Blood
 }
 
 public class Ghost : MonoBehaviour
 {
-    private GhostType ghostType;
-    private GhostEvidence[] ghostEvidence;
+    public GhostType ghostType;
+    public GhostEvidence[] ghostEvidence;
 
     public static GhostEvidence[][] ghostTypeEvidenceArray = new GhostEvidence[][]
     {
-        new GhostEvidence[] {GhostEvidence.Spit, GhostEvidence.Humid, GhostEvidence.EatCandle},
-        new GhostEvidence[] {GhostEvidence.Whispher, GhostEvidence.Humid, GhostEvidence.EatCandle},
-        new GhostEvidence[] {GhostEvidence.Whispher, GhostEvidence.EatCandle, GhostEvidence.Blood},
-        new GhostEvidence[] {GhostEvidence.Laugh},
-        new GhostEvidence[] {GhostEvidence.Whispher, GhostEvidence.Humid, GhostEvidence.Blood},
-        new GhostEvidence[] {GhostEvidence.EatCandle, GhostEvidence.Laugh, GhostEvidence.Spit}
+        new GhostEvidence[] {GhostEvidence.Spit, GhostEvidence.Humid, GhostEvidence.EatCandle}, //Ravenous evidence
+        new GhostEvidence[] {GhostEvidence.Whispher, GhostEvidence.Humid, GhostEvidence.EatCandle}, //Wrathful evidence
+        new GhostEvidence[] {GhostEvidence.Whispher, GhostEvidence.HandPrint, GhostEvidence.Blood}, //Hurt evidence
+        new GhostEvidence[] {GhostEvidence.Spit}, //Jester evidence
+        new GhostEvidence[] {GhostEvidence.Whispher, GhostEvidence.Humid, GhostEvidence.Blood}, //Tortured evidence
+        new GhostEvidence[] {GhostEvidence.EatCandle, GhostEvidence.Blood, GhostEvidence.Spit} //Maniac evidence
     };
 
     // Start is called before the first frame update
@@ -41,6 +41,7 @@ public class Ghost : MonoBehaviour
     public void PickGhostType()
     {
         int ghostIndex = UnityEngine.Random.Range(0, Enum.GetNames(typeof(GhostType)).Length);
+        // int ghostIndex = GlobalGameSettings.RandomGenerator.Next(0, Enum.GetNames(typeof(GhostType)).Length);
         ghostType = (GhostType)(ghostIndex);
         Debug.Log("Ghost is: " + ghostType);
 
@@ -58,5 +59,10 @@ public class Ghost : MonoBehaviour
         string ghostLastName = lastNames[UnityEngine.Random.Range(0, lastNames.Length)];
 
         Debug.Log("Ghost name is: " + ghostFirstName + " " + ghostLastName);
+    }
+
+    public static bool HasEvidence(GhostType gt, GhostEvidence ge)
+    {
+        return Array.Exists<GhostEvidence>(ghostTypeEvidenceArray[(int)gt], element => element == ge);
     }
 }

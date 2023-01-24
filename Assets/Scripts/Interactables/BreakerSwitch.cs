@@ -8,20 +8,29 @@ public class BreakerSwitch : Interactable
     public GameObject lightOn;
     public GameObject lightOff;
 
-    private bool lightsAreOn;
+    public bool lightsAreOn;
 
     // Start is called before the first frame update
     void Start()
     {
-        lightsAreOn = true;
-        lightOff.SetActive(false);
-        lightOn.SetActive(true);
+        if (lightsAreOn)
+        {
+            lights.SetActive(true);
+            lightOff.SetActive(false);
+            lightOn.SetActive(true);
+        }
+        else
+        {
+            lights.SetActive(false);
+            lightOff.SetActive(true);
+            lightOn.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     protected override void Interact(int photonViewID)

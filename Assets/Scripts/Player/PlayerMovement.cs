@@ -50,6 +50,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public GameObject axeDropGO;
     public PhotonView axeDropPrefab;
 
+    private HumidityMeter humidityMeterScript;
+
     [Space]
     [Header("Other")]
 
@@ -95,6 +97,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
             maxHealth = healthBar.maxValue;
             health = maxHealth;
+
+            humidityMeterScript = gameObject.GetComponent<HumidityMeter>();
         }
     }
 
@@ -274,10 +278,18 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         mAnimator.runtimeAnimatorController = defaultController as RuntimeAnimatorController;
         mAnimator.SetLayerWeight(1, 0f);
         mAnimator.SetLayerWeight(2, 0f);
+        mAnimator.SetLayerWeight(3, 0f);
         currentAnimController = "default";
+        humidityMeterScript.UnEquipHumidityMeter();
         akGO.SetActive(false);
         c4GO.SetActive(false);
         axeGO.SetActive(false);
+    }
+
+    public void SetHumidityAnims()
+    {
+        mAnimator.SetLayerWeight(3, 1f);
+        currentAnimController = "humid";
     }
 
     public void SetAKAnimations()
@@ -500,7 +512,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             }
             else if (!staminaDecreasing && stamina < maxStamina)
             {
-                if ((stamina += dValue) > maxStamina)
+                if ((stamina + dValue) > maxStamina)
                 {
                     EnableSprint();
                     stamina = maxStamina;

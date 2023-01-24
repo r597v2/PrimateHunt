@@ -378,8 +378,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d0c1d1bd157c7574a8d3edb6ca386736, type: 2}
-  m_sharedMaterial: {fileID: 4918131305196762718, guid: d0c1d1bd157c7574a8d3edb6ca386736, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f935c497f188874b9cc1afa1e531e17, type: 2}
+  m_sharedMaterial: {fileID: 8311274411605696256, guid: 8f935c497f188874b9cc1afa1e531e17, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -409,7 +409,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 10
   m_fontSizeMax: 35
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -674,8 +674,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d0c1d1bd157c7574a8d3edb6ca386736, type: 2}
-  m_sharedMaterial: {fileID: 4918131305196762718, guid: d0c1d1bd157c7574a8d3edb6ca386736, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f935c497f188874b9cc1afa1e531e17, type: 2}
+  m_sharedMaterial: {fileID: 8311274411605696256, guid: 8f935c497f188874b9cc1afa1e531e17, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -699,13 +699,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150.45
+  m_fontSize: 135.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 165.22
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1415,6 +1415,7 @@ GameObject:
   - component: {fileID: 957065169}
   - component: {fileID: 957065168}
   - component: {fileID: 957065171}
+  - component: {fileID: 957065172}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1511,8 +1512,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -1521,6 +1522,23 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &957065172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957065167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 495ae936ffba0a9498e35a4a1c785555, type: 2}
 --- !u!1 &1038829088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,8 +1925,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d0c1d1bd157c7574a8d3edb6ca386736, type: 2}
-  m_sharedMaterial: {fileID: 4918131305196762718, guid: d0c1d1bd157c7574a8d3edb6ca386736, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f935c497f188874b9cc1afa1e531e17, type: 2}
+  m_sharedMaterial: {fileID: 8311274411605696256, guid: 8f935c497f188874b9cc1afa1e531e17, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1938,7 +1956,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2074,7 +2092,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Create Room
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d0c1d1bd157c7574a8d3edb6ca386736, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f935c497f188874b9cc1afa1e531e17, type: 2}
   m_sharedMaterial: {fileID: 4918131305196762718, guid: d0c1d1bd157c7574a8d3edb6ca386736, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2105,7 +2123,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2138,7 +2156,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1326714899
@@ -2523,8 +2541,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter Room Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f935c497f188874b9cc1afa1e531e17, type: 2}
+  m_sharedMaterial: {fileID: 8311274411605696256, guid: 8f935c497f188874b9cc1afa1e531e17, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3244,7 +3262,7 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
-  m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_GlobalFontAsset: {fileID: 11400000, guid: 8f935c497f188874b9cc1afa1e531e17, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1

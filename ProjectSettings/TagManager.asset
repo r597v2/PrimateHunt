@@ -8,10 +8,12 @@ TagManager:
   - Item
   - Light Switch
   - Head
-  - AmmoSpawnItem
-  - Ak47SpawnItem
   - VaultDoor
+  - C4SpawnItem
+  - BananaSpawnItem
+  - AmmoSpawnItem
   - AxeSpawnItem
+  - Ak47SpawnItem
   layers:
   - Default
   - TransparentFX
@@ -23,8 +25,8 @@ TagManager:
   - 
   - Ground
   - Interactable
-  - 
-  - 
+  - Ghost
+  - Player
   - 
   - 
   - 

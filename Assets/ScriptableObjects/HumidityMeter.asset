@@ -15,6 +15,6 @@ MonoBehaviour:
   ID: 5
   displayName: Humidity Meter
   description: It measures the air humidity.
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: e1422f0dd9692b049847523f2c5529ee, type: 3}
   MaxStackSize: 1
   itemType: 0

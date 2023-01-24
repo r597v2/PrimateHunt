@@ -45,13 +45,13 @@ public class FlashlightToggle : MonoBehaviourPunCallbacks
         if (isOn)
         {
             lightGO.SetActive(true);
-            lightBlock.SetActive(false);
+            lightBlock.SetActive(true);
         }
         //turn light off
         else
         {
             lightGO.SetActive(false);
-            lightBlock.SetActive(true);
+            lightBlock.SetActive(false);
         }
     }
 }
