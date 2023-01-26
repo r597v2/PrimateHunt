@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
+using TMPro;
 
 public enum GhostType
 {
@@ -18,6 +19,8 @@ public class Ghost : MonoBehaviour
 {
     public GhostType ghostType;
     public GhostEvidence[] ghostEvidence;
+
+    private string ghostName;
 
     public static GhostEvidence[][] ghostTypeEvidenceArray = new GhostEvidence[][]
     {
@@ -36,6 +39,12 @@ public class Ghost : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float ghostWallWrite = UnityEngine.Random.Range(-0.1f, 1000f);
+        if (ghostWallWrite <= 0)
+        {
+            WriteGhostName();
+            Debug.Log("write ghost name called");
+        }
     }
 
     public void PickGhostType()
@@ -59,6 +68,21 @@ public class Ghost : MonoBehaviour
         string ghostLastName = lastNames[UnityEngine.Random.Range(0, lastNames.Length)];
 
         Debug.Log("Ghost name is: " + ghostFirstName + " " + ghostLastName);
+
+        ghostName = ghostFirstName + " " + ghostLastName;
+    }
+
+    private void WriteGhostName()
+    {
+        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, 4f);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.gameObject.CompareTag("WallWritingSpot"))
+            {
+                collider.gameObject.GetComponent<TMP_Text>().text = ghostName;
+                Debug.Log("Wrote Name on wall");
+            }
+        }
     }
 
     public static bool HasEvidence(GhostType gt, GhostEvidence ge)

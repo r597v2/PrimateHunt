@@ -19,7 +19,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     ItemSpawnSpot[] itemSpawnSpots;
     public List<GameObject> spawnableItems = new List<GameObject>();
 
-    private float[] difficultyFactor = new float[] { 1f, 0.8f, 0.6f, 0.4f };
+    private float[] difficultyFactor = new float[] { 1f, 0.8f, 0.6f, 0f };
 
     // Start is called before the first frame update
     void Start()
