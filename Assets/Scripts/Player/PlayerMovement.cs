@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMovement : MonoBehaviourPunCallbacks
 {
@@ -12,7 +13,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     public float obesity;
     public float stamina;
     float maxStamina;
-    private Slider staminaBar;
+    public Slider staminaBar;
 
     float maxHealth;
     [SerializeField] public float health = 100f;
@@ -56,7 +57,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     [Header("Other")]
 
     public Camera cam;
-    public GameObject bananaDrunkVolume;
+    public GameObject postProcessingVolumes;
 
     public GameObject handCollider;
     public GameObject headCollider;
@@ -79,6 +80,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     public float gravity = -9.81f;
 
+    public AudioSource footstepSource;
+
     // public float groundDistance = 0.1f;
     // private bool isGrounded;
     // public Transform groundCheck;
@@ -88,9 +91,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
-            staminaBar = (Slider)GameObject.FindObjectsOfType(typeof(Slider))[1];
-            healthBar = (Slider)GameObject.FindObjectsOfType(typeof(Slider))[0];
-
             speed = normalSpeed;
             maxStamina = stamina;
             staminaBar.maxValue = maxStamina;
@@ -156,9 +156,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
             // Move
             controller.Move(move * speed * Time.deltaTime);
-
             velocity.y += gravity * Time.deltaTime;
-
             controller.Move(velocity * Time.deltaTime);
 
             //eating bananas 
@@ -168,6 +166,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             }
 
             healthBar.value = health;
+
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
 
             CheckAnimateMoving();
             CheckSprintDisabled();
@@ -508,7 +511,13 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 transform.Find("Monkey/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.006/spine.006_end/Head/VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
                 staminaBar.value = stamina; //update the stamina
                 DisableSprint();
-                bananaDrunkVolume.SetActive(true);
+                postProcessingVolumes.SetActive(true);
+                for (float i = 0; i < 1; i += 0.15f)
+                {
+                    
+                }
+                cam.GetComponent<AudioDistortionFilter>().distortionLevel = 0.95f;
+                health += 5f;
             }
             else if (!staminaDecreasing && stamina < maxStamina)
             {
@@ -517,14 +526,16 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                     EnableSprint();
                     stamina = maxStamina;
                     staminaBar.value = stamina;
-                    bananaDrunkVolume.SetActive(false);
+                    postProcessingVolumes.SetActive(false);
+                    cam.GetComponent<AudioDistortionFilter>().distortionLevel = 0;
                 }
                 else
                 {
                     EnableSprint();
                     stamina += dValue;
                     staminaBar.value = stamina;
-                    bananaDrunkVolume.SetActive(false);
+                    postProcessingVolumes.SetActive(false);
+                    cam.GetComponent<AudioDistortionFilter>().distortionLevel = 0;
                 }
             }
         }

@@ -9,6 +9,7 @@ public class MouseLook : MonoBehaviourPunCallbacks
     public Camera cam;
     public GameObject head;
     public GameObject playerModel;
+    public PauseMenu pauseMenu;
 
     public PlayerMovement playerMove;
     public Animator playerAnimator;
@@ -72,5 +73,6 @@ public class MouseLook : MonoBehaviourPunCallbacks
     {
         sensSlider.value = 100f;
         fovSlider.value = 95f;
+        pauseMenu.ResetDefaults();
     }
 }

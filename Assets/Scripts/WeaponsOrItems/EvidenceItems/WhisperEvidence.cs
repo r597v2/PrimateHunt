@@ -12,11 +12,13 @@ public class WhisperEvidence : MonoBehaviour
     private float randomModifier;
     private float nextTime;
     private Ghost ghost;
+    private float startTime;
 
     // Start is called before the first frame update
     void Start()
     {
         ghost = FindObjectOfType<Ghost>();
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -25,9 +27,9 @@ public class WhisperEvidence : MonoBehaviour
         if (Ghost.HasEvidence(ghost.ghostType, GhostEvidence.Whispher) && Physics.CheckSphere(gameObject.transform.position, 
         2.5f, playerLM))
         {
-            randomModifier = Random.Range(-0.1f, 150);
+            randomModifier = Random.Range(-0.1f, 200);
             nextTime = Time.time + randomModifier;
-            if (Time.time > nextTime)
+            if ((Time.time > nextTime) && (Time.time - startTime > 60f))
             {
                 Whisper();
             }

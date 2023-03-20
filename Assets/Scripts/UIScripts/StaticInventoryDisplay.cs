@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class StaticInventoryDisplay : InventoryDisplay
 {
@@ -13,12 +15,24 @@ public class StaticInventoryDisplay : InventoryDisplay
 
     public PlayerMovement playerMovementScript;
 
+    public Image[] hotbarImages = new Image[] { };
+    public TMP_Text[] hotbarItemCounts = new TMP_Text[] { };
+
     private HumidityMeter humidityMeterScript;
 
     void Awake()
     {
         HideAllSelections();
         slots[0].selectionSprite.enabled = true;
+
+        foreach (Image image in hotbarImages)
+        {
+            image.CrossFadeAlpha(0f, 0.01f, false);
+        }
+        foreach (TMP_Text text in hotbarItemCounts)
+        {
+            text.CrossFadeAlpha(0f, 0.01f, false);
+        }
     }
 
     protected override void Start()
@@ -48,24 +62,28 @@ public class StaticInventoryDisplay : InventoryDisplay
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
+                HotbarOpacity();
                 HideAllSelections();
                 slots[0].selectionSprite.enabled = true;
                 selectedSlot = 1;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
+                HotbarOpacity();
                 HideAllSelections();
                 slots[1].selectionSprite.enabled = true;
                 selectedSlot = 2;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
+                HotbarOpacity();
                 HideAllSelections();
                 slots[2].selectionSprite.enabled = true;
                 selectedSlot = 3;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
+                HotbarOpacity();
                 HideAllSelections();
                 slots[3].selectionSprite.enabled = true;
                 selectedSlot = 4;
@@ -163,6 +181,27 @@ public class StaticInventoryDisplay : InventoryDisplay
                 playerMovementScript.SetHumidityAnims();
                 humidityMeterScript.EquipHumidityMeter();
             }
+
+            foreach (Image image in hotbarImages)
+            {
+                image.CrossFadeAlpha(0f, 0.25f, false);
+            }
+            foreach (TMP_Text text in hotbarItemCounts)
+            {
+                text.CrossFadeAlpha(0f, 0.25f, false);
+            }
+        }
+    }
+
+    private void HotbarOpacity()
+    {
+        foreach (Image image in hotbarImages)
+        {
+            image.CrossFadeAlpha(127.5f, 0.01f, false);
+        }
+        foreach (TMP_Text text in hotbarItemCounts)
+        {
+            text.CrossFadeAlpha(255f, 0.01f, false);
         }
     }
 

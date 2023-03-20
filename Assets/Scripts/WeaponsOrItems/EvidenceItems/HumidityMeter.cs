@@ -12,16 +12,20 @@ public class HumidityMeter : MonoBehaviour
     public TMP_Text meterReading;
     private Ghost ghost;
     public LayerMask ghostLayer;
+    private float startTime;
 
     // Start is called before the first frame update
     void Start()
     {
         ghost = FindObjectOfType<Ghost>();
+        startTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        meterActive = meterObj.activeInHierarchy;
+
         if (Input.GetMouseButtonDown(1) && meterActive)
         {
             if (!screenOn)
@@ -42,19 +46,17 @@ public class HumidityMeter : MonoBehaviour
     public void EquipHumidityMeter()
     {
         meterObj.SetActive(true);
-        meterActive = true;
     }
 
     public void UnEquipHumidityMeter()
     {
         meterObj.SetActive(false);
-        meterActive = false;
     }
 
     private void MeterReadings()
     {
         if (Ghost.HasEvidence(ghost.ghostType, GhostEvidence.Humid) && Physics.CheckSphere(meterObj.transform.position, 
-        5f, ghostLayer))
+        5f, ghostLayer) && (Time.time - startTime > Random.Range(60f, 300f)))
         {
             meterReading.text = Random.Range(80, 99) + "%";
         }

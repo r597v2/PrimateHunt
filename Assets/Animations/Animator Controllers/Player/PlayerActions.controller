@@ -64,7 +64,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: UnCrouch
-  m_Speed: -1
+  m_Speed: -1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8425608096764098170}
@@ -1085,7 +1085,7 @@ AnimatorStateMachine:
     m_Position: {x: 1050, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8975539626252755310}
-    m_Position: {x: 770, y: 720, z: 0}
+    m_Position: {x: 710, y: 730, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7490583106335220630}
     m_Position: {x: -360, y: 510, z: 0}
@@ -1584,7 +1584,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SprintBack
-  m_Speed: -2
+  m_Speed: -1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8764991703095948901}
@@ -2965,7 +2965,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Crouch
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6630556236846490461}
@@ -3412,7 +3412,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sprint
-  m_Speed: 2
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2097924079303407412}

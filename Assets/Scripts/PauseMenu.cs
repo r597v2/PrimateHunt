@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 
 public class PauseMenu : MonoBehaviourPunCallbacks
@@ -10,6 +11,8 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     public GameObject optionsButton;
     public GameObject playerObj;
     public GameObject evidenceJournal;
+    public PlayerInteract playerInteract;
+    public Toggle promptMessageToggle;
 
     private bool gamePaused;
     private bool optionsOpen;
@@ -17,7 +20,6 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -100,5 +102,22 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         optionsButton.SetActive(true);
         optionsMenu.SetActive(false);
         optionsOpen = false;
+    }
+
+    public void TogglePromptMessages()
+    {
+        if (playerInteract.promptMessageSettingOn)
+        {
+            playerInteract.promptMessageSettingOn = false;
+        }
+        else
+        {
+            playerInteract.promptMessageSettingOn = true;
+        }
+    }
+
+    public void ResetDefaults()
+    {
+        promptMessageToggle.isOn = false;
     }
 }

@@ -20,15 +20,15 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        Debug.Log(PhotonNetwork.CountOfRooms + " rooms currently active.");
-        if (PhotonNetwork.CurrentRoom != null)
-        {
-        Debug.Log("Currently in room: " + PhotonNetwork.CurrentRoom.Name);
-        }
-        else
-        {
-            Debug.Log("Currently not in a room");
-        }
+        // Debug.Log(PhotonNetwork.CountOfRooms + " rooms currently active.");
+        // if (PhotonNetwork.CurrentRoom != null)
+        // {
+        // Debug.Log("Currently in room: " + PhotonNetwork.CurrentRoom.Name);
+        // }
+        // else
+        // {
+        //     Debug.Log("Currently not in a room");
+        // }
     }
 
     public void OnClick_CreateRoom()

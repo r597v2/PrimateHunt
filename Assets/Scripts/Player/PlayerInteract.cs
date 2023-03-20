@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviourPunCallbacks
 {
     [SerializeField] private float distance = 2f;
+    public Image innerCrosshair;
 
+    public bool promptMessageSettingOn;
     private Camera cam;
     private PlayerUI playerUI;
 
@@ -15,6 +18,7 @@ public class PlayerInteract : MonoBehaviourPunCallbacks
     {
         cam = GetComponent<MouseLook>().cam;
         playerUI = GetComponent<PlayerUI>();
+        promptMessageSettingOn = false;
     }
 
     // Update is called once per frame
@@ -35,7 +39,11 @@ public class PlayerInteract : MonoBehaviourPunCallbacks
             if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
-                playerUI.UpdateText(interactable.promptMessage);
+                if (promptMessageSettingOn)
+                {
+                    playerUI.UpdateText(interactable.promptMessage);
+                }
+                innerCrosshair.color = new Color32(255, 0, 0, 255);
 
                 if (
                     (Input.GetKeyDown(KeyCode.F) && interactable.interactType == Interactable.INTERACT_TYPE.INTERACT) // Interact type
@@ -45,6 +53,14 @@ public class PlayerInteract : MonoBehaviourPunCallbacks
                     interactable.BaseIntereract(photonView.ViewID);
                 }
             }
+            else
+            {
+                innerCrosshair.color = new Color32(255, 255, 255, 255);
+            }
+        }
+        else
+        {
+            innerCrosshair.color = new Color32(255, 255, 255, 255);
         }
     }
 }
