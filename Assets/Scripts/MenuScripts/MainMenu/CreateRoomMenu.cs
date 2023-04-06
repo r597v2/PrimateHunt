@@ -39,12 +39,15 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
         //     return;
         // }
         RoomOptions options = new RoomOptions();
-        options.MaxPlayers = 4;
+        options.MaxPlayers = 5;
         options.IsVisible = true;
         options.PlayerTtl = 3000;
         options.EmptyRoomTtl = 5000;
-        PhotonNetwork.CreateRoom(_roomName.text, options, TypedLobby.Default);
-        SceneManager.LoadScene("Lobby");
+        if (!_roomName.text.Contains(" ") || _roomName.text != "")
+        {
+            PhotonNetwork.CreateRoom(_roomName.text, options, TypedLobby.Default);
+            SceneManager.LoadScene("Lobby");
+        }
     }
 
     public override void OnCreatedRoom()

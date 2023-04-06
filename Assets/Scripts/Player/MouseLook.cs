@@ -26,8 +26,11 @@ public class MouseLook : MonoBehaviourPunCallbacks
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        sensSlider.value = 100f;
-        cam.fieldOfView = 95f;
+    }
+
+    void Awake()
+    {
+        ResetDefault();
     }
 
     // Update is called once per frame

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
 using TMPro;
+using UnityEngine.AI;
 
 public enum GhostType
 {
@@ -24,6 +25,17 @@ public class Ghost : MonoBehaviour
     private string jesterGhostName;
     private string possibleJesterGhostName;
 
+    public GameObject player;
+    private NavMeshAgent agent;
+    [SerializeField] LayerMask groundLayer, playerLayer;
+    Vector3 destPoint;
+    bool walkPointSet;
+    [SerializeField] float walkRange;
+
+    public GameObject[] ghostRooms = new GameObject[] { };
+    private GameObject ghostRoom;
+    private bool returningToRoom;
+
     public static GhostEvidence[][] ghostTypeEvidenceArray = new GhostEvidence[][]
     {
         new GhostEvidence[] {GhostEvidence.FootPrint, GhostEvidence.Humid, GhostEvidence.EatCandle}, //Ravenous evidence
@@ -38,15 +50,53 @@ public class Ghost : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        ghostRoom = ghostRooms[UnityEngine.Random.Range(0, ghostRooms.Length)];
+        gameObject.transform.position = ghostRoom.transform.position;
+        Debug.Log("Ghost room is: " + ghostRoom.name);
     }
     // Update is called once per frame
     void Update()
     {
-        float ghostWallWrite = UnityEngine.Random.Range(-0.1f, 2500f);
-        if (ghostWallWrite <= 0)
+        if ((int)UnityEngine.Random.Range(0, 10000f) == 0)
         {
             WriteGhostName();
-            Debug.Log("write ghost name called");
+        }
+
+        if (!returningToRoom) Roam();
+    }
+
+    private void Roam()
+    {
+        Debug.Log("roaming");
+        if (!walkPointSet) SearchForDest();
+        if (walkPointSet) agent.SetDestination(destPoint);
+        if (Vector3.Distance(transform.position, destPoint) < 10) walkPointSet = false;
+
+        if ((int)UnityEngine.Random.Range(0, 10) == 0) //after returning to room it cant roam normally anymore (fix bool?)
+        {
+            Debug.Log("returning to room");
+            ReturnToRoom();
+            returningToRoom = true;
+        }
+    }
+
+    private void ReturnToRoom()
+    {
+        agent.SetDestination(ghostRoom.transform.position);
+        returningToRoom = false;
+    }
+
+    private void SearchForDest()
+    {
+        float z = UnityEngine.Random.Range(-walkRange, walkRange);
+        float x = UnityEngine.Random.Range(-walkRange, walkRange);
+
+        destPoint = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
+
+        if (Physics.Raycast(destPoint, Vector3.down, groundLayer))
+        {
+            walkPointSet = true;
         }
     }
 
@@ -116,7 +166,6 @@ public class Ghost : MonoBehaviour
                         collider.gameObject.GetComponent<AudioSource>().pitch - 0.75f,
                         collider.gameObject.GetComponent<AudioSource>().pitch + 0.75f);
                     collider.gameObject.GetComponent<AudioSource>().Play();
-                    Debug.Log("Wrote Name on wall");
                 }
             }
         }
@@ -127,7 +176,7 @@ public class Ghost : MonoBehaviour
             {
                 if (collider.gameObject.CompareTag("WallWritingSpot"))
                 {
-                    int randomNumber = (int) UnityEngine.Random.Range(1,3);
+                    int randomNumber = (int)UnityEngine.Random.Range(1, 3);
                     if (randomNumber == 1)
                     {
                         possibleJesterGhostName = ghostName;

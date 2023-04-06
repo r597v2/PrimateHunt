@@ -57,7 +57,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     [Header("Other")]
 
     public Camera cam;
-    public GameObject postProcessingVolumes;
+    public GameObject defaultVolume;
+    public GameObject bananaVolume;
 
     public GameObject handCollider;
     public GameObject headCollider;
@@ -183,11 +184,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     {
         if (!isCrouched)
         {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
                 mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoSprinting" : "BoWalking", true);
             }
-            if (Input.GetKeyUp(KeyCode.W))
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
             {
                 mAnimator.SetBool("BoSprinting", false);
                 mAnimator.SetBool("BoWalking", false);
@@ -203,33 +204,33 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 mAnimator.SetBool("BoWalkingBack", false);
             }
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoSprintingLeft" : "BoWalkingLeft", true);
-            }
-            if (Input.GetKeyUp(KeyCode.A))
-            {
-                mAnimator.SetBool("BoSprintingLeft", false);
-                mAnimator.SetBool("BoWalkingLeft", false);
-            }
+            // if (Input.GetKey(KeyCode.A))
+            // {
+            //     mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoSprintingLeft" : "BoWalkingLeft", true);
+            // }
+            // if (Input.GetKeyUp(KeyCode.A))
+            // {
+            //     mAnimator.SetBool("BoSprintingLeft", false);
+            //     mAnimator.SetBool("BoWalkingLeft", false);
+            // }
 
-            if (Input.GetKey(KeyCode.D))
-            {
-                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoWalkingRight" : "BoWalkingRight", true);
-            }
-            if (Input.GetKeyUp(KeyCode.D))
-            {
-                mAnimator.SetBool("BoSprintingRight", false);
-                mAnimator.SetBool("BoWalkingRight", false);
-            }
+            // if (Input.GetKey(KeyCode.D))
+            // {
+            //     mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoWalkingRight" : "BoWalkingRight", true);
+            // }
+            // if (Input.GetKeyUp(KeyCode.D))
+            // {
+            //     mAnimator.SetBool("BoSprintingRight", false);
+            //     mAnimator.SetBool("BoWalkingRight", false);
+            // }
         }
         else
         {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
                 mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprinting" : "BoCrouchWalking", true);
             }
-            if (Input.GetKeyUp(KeyCode.W))
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
             {
                 mAnimator.SetBool("BoCrouchSprinting", false);
                 mAnimator.SetBool("BoCrouchWalking", false);
@@ -245,25 +246,25 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 mAnimator.SetBool("BoCrouchWalkingBack", false);
             }
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprintingLeft" : "BoCrouchWalkingLeft", true);
-            }
-            if (Input.GetKeyUp(KeyCode.A))
-            {
-                mAnimator.SetBool("BoCrouchSprintingLeft", false);
-                mAnimator.SetBool("BoCrouchWalkingLeft", false);
-            }
+            // if (Input.GetKey(KeyCode.A))
+            // {
+            //     mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprintingLeft" : "BoCrouchWalkingLeft", true);
+            // }
+            // if (Input.GetKeyUp(KeyCode.A))
+            // {
+            //     mAnimator.SetBool("BoCrouchSprintingLeft", false);
+            //     mAnimator.SetBool("BoCrouchWalkingLeft", false);
+            // }
 
-            if (Input.GetKey(KeyCode.D))
-            {
-                mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprintingRight" : "BoCrouchWalkingRight", true);
-            }
-            if (Input.GetKeyUp(KeyCode.D))
-            {
-                mAnimator.SetBool("BoCrouchSprintingRight", false);
-                mAnimator.SetBool("BoCrouchWalkingRight", false);
-            }
+            // if (Input.GetKey(KeyCode.D))
+            // {
+            //     mAnimator.SetBool(staminaDecreasing && Input.GetKey(KeyCode.LeftShift) ? "BoCrouchSprintingRight" : "BoCrouchWalkingRight", true);
+            // }
+            // if (Input.GetKeyUp(KeyCode.D))
+            // {
+            //     mAnimator.SetBool("BoCrouchSprintingRight", false);
+            //     mAnimator.SetBool("BoCrouchWalkingRight", false);
+            // }
         }
 
         if (currentAnimController == "ak")
@@ -505,36 +506,35 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         {
             bananaEat.GetComponent<AudioSource>().Play();
 
-            if (stamina >= maxStamina)
+            if (stamina >= maxStamina) //vomit if stamina overflow
             {
                 stamina -= dValue * obesity; //remove dValue * obesity from stamina
                 transform.Find("Monkey/metarig/spine/spine.001/spine.002/spine.003/spine.004/spine.006/spine.006_end/Head/VomitControl").GetComponent<VomitControl>().Vomit(); //vomit
                 staminaBar.value = stamina; //update the stamina
                 DisableSprint();
-                postProcessingVolumes.SetActive(true);
-                for (float i = 0; i < 1; i += 0.15f)
-                {
-                    
-                }
+                bananaVolume.SetActive(true);
+                defaultVolume.SetActive(false);
                 cam.GetComponent<AudioDistortionFilter>().distortionLevel = 0.95f;
                 health += 5f;
             }
             else if (!staminaDecreasing && stamina < maxStamina)
             {
-                if ((stamina + dValue) > maxStamina)
+                if (stamina < maxStamina && (stamina + dValue) > maxStamina) //tops out stamina to max if you have less than max
                 {
                     EnableSprint();
                     stamina = maxStamina;
                     staminaBar.value = stamina;
-                    postProcessingVolumes.SetActive(false);
+                    bananaVolume.SetActive(false);
+                    defaultVolume.SetActive(true);
                     cam.GetComponent<AudioDistortionFilter>().distortionLevel = 0;
                 }
-                else
+                else //normal eat banana
                 {
                     EnableSprint();
                     stamina += dValue;
                     staminaBar.value = stamina;
-                    postProcessingVolumes.SetActive(false);
+                    bananaVolume.SetActive(false);
+                    defaultVolume.SetActive(true);
                     cam.GetComponent<AudioDistortionFilter>().distortionLevel = 0;
                 }
             }

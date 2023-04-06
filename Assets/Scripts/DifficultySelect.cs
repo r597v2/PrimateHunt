@@ -6,7 +6,7 @@ using TMPro;
 public class DifficultySelect : MonoBehaviour
 {
     private TextMeshProUGUI difficultyText;
-    private string[] difficultyLevelTexts = new string[] {"Easy", "Medium", "Hard", "Insane"};
+    private string[] difficultyLevelTexts = new string[] {"Newcomer", "Adept", "Experienced", "Extreme"};
 
     void Start()
     {

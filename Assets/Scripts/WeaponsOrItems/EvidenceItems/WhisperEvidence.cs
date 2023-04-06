@@ -9,7 +9,7 @@ public class WhisperEvidence : MonoBehaviour
     public AudioSource aSource1;
     public LayerMask playerLM;
 
-    private float randomModifier;
+    private int randomModifier;
     private float nextTime;
     private Ghost ghost;
     private float startTime;
@@ -27,9 +27,8 @@ public class WhisperEvidence : MonoBehaviour
         if (Ghost.HasEvidence(ghost.ghostType, GhostEvidence.Whispher) && Physics.CheckSphere(gameObject.transform.position, 
         2.5f, playerLM))
         {
-            randomModifier = Random.Range(-0.1f, 200);
-            nextTime = Time.time + randomModifier;
-            if ((Time.time > nextTime) && (Time.time - startTime > 60f))
+            randomModifier = (int) Random.Range(0,8250);
+            if ((Time.time - startTime > 60f) && randomModifier == 0)
             {
                 Whisper();
             }
@@ -38,10 +37,8 @@ public class WhisperEvidence : MonoBehaviour
 
     private void Whisper()
     {
-        int randomWhisper = Random.Range(0, whispersList.Length);
-        int randomWhisper1 = Random.Range(0, whispersList.Length);
-        aSource.clip = whispersList[randomWhisper];
-        aSource1.clip = whispersList[randomWhisper1];
+        aSource.clip = whispersList[(int) Random.Range(0, whispersList.Length)];
+        aSource1.clip = whispersList[(int) Random.Range(0, whispersList.Length)];
         aSource.Play();
         aSource1.Play();
     }

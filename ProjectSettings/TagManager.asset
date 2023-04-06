@@ -14,6 +14,8 @@ TagManager:
   - AmmoSpawnItem
   - AxeSpawnItem
   - Ak47SpawnItem
+  - Contract
+  - WallWritingSpot
   layers:
   - Default
   - TransparentFX
