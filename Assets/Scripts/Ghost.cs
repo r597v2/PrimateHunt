@@ -28,13 +28,19 @@ public class Ghost : MonoBehaviour
     public GameObject player;
     private NavMeshAgent agent;
     [SerializeField] LayerMask groundLayer, playerLayer;
-    Vector3 destPoint;
-    bool walkPointSet;
+    private Vector3 destPoint;
+    // bool walkPointValid;
     [SerializeField] float walkRange;
+    [SerializeField] float longWalkRange;
 
     public GameObject[] ghostRooms = new GameObject[] { };
     private GameObject ghostRoom;
-    private bool returningToRoom;
+    private bool goingToRoom;
+    private bool reachedDestPoint = true;
+    private bool longRoaming;
+    private bool roaming;
+    public float roamCooldown = 1.75f;
+    private float nextRoamTime = 0;
 
     public static GhostEvidence[][] ghostTypeEvidenceArray = new GhostEvidence[][]
     {
@@ -59,44 +65,82 @@ public class Ghost : MonoBehaviour
     void Update()
     {
         if ((int)UnityEngine.Random.Range(0, 10000f) == 0)
-        {
             WriteGhostName();
-        }
 
-        if (!returningToRoom) Roam();
+        NavMeshPath path = new NavMeshPath();
+
+        if (goingToRoom && Vector3.Distance(transform.position, destPoint) <= 2.5f)
+            goingToRoom = false;
+        roaming = false;
+        if (path.status == NavMeshPathStatus.PathComplete)
+        {
+            reachedDestPoint = true;
+            roaming = false;
+            longRoaming = false;
+        }
+        else reachedDestPoint = false;
+
+        if (!longRoaming && !goingToRoom && reachedDestPoint && Time.time > nextRoamTime && (int)UnityEngine.Random.Range(0, 51) >= 5)
+            Roam();
+        else if (!goingToRoom && reachedDestPoint && Time.time > nextRoamTime && (int)UnityEngine.Random.Range(0, 51) == 0)
+            LongRoam();
     }
 
     private void Roam()
     {
-        Debug.Log("roaming");
-        if (!walkPointSet) SearchForDest();
-        if (walkPointSet) agent.SetDestination(destPoint);
-        if (Vector3.Distance(transform.position, destPoint) < 10) walkPointSet = false;
-
-        if ((int)UnityEngine.Random.Range(0, 10) == 0) //after returning to room it cant roam normally anymore (fix bool?)
+        NavMeshPath path = new NavMeshPath();
+        SearchForDest(walkRange);
+        agent.SetDestination(destPoint);
+        // if (Vector3.Distance(transform.position, destPoint) < 10) walkPointValid = false;
+        nextRoamTime = Time.time + roamCooldown;
+        if (path.status == NavMeshPathStatus.PathPartial)
+            SearchForDest(walkRange);
+        roaming = true;
+    }
+    private void LongRoam()
+    {
+        if ((int)UnityEngine.Random.Range(0, 21) != 0)
         {
-            Debug.Log("returning to room");
-            ReturnToRoom();
-            returningToRoom = true;
+            NavMeshPath path = new NavMeshPath();
+            SearchForDest(longWalkRange);
+            agent.SetDestination(destPoint);
+            // if (Vector3.Distance(transform.position, destPoint) < 10) walkPointValid = false;
+            nextRoamTime = Time.time + roamCooldown;
+            if (path.status == NavMeshPathStatus.PathPartial)
+                SearchForDest(longWalkRange);
+            longRoaming = true;
+            roaming = true;
+        }
+        else
+        { //go to other ghost rooms
+            nextRoamTime = Time.time + roamCooldown;
+            agent.SetDestination(ghostRooms[UnityEngine.Random.Range(0, ghostRooms.Length)].transform.position);
+            longRoaming = true;
+            roaming = true;
         }
     }
 
-    private void ReturnToRoom()
+    private void SearchForDest(float range)
     {
-        agent.SetDestination(ghostRoom.transform.position);
-        returningToRoom = false;
-    }
-
-    private void SearchForDest()
-    {
-        float z = UnityEngine.Random.Range(-walkRange, walkRange);
-        float x = UnityEngine.Random.Range(-walkRange, walkRange);
-
-        destPoint = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
-
-        if (Physics.Raycast(destPoint, Vector3.down, groundLayer))
+        if (!roaming)
         {
-            walkPointSet = true;
+            if ((int)UnityEngine.Random.Range(0, 50) != 0)
+            {
+                float z = UnityEngine.Random.Range(-range, range);
+                float x = UnityEngine.Random.Range(-range, range);
+
+                destPoint = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
+            }
+            else
+            {
+                destPoint = ghostRoom.transform.position;
+                goingToRoom = true;
+                Debug.Log("Going to room");
+            }
+            // if (Physics.Raycast(destPoint, Vector3.down, groundLayer))
+            // {
+            //     walkPointValid = true;
+            // }
         }
     }
 

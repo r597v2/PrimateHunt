@@ -28,11 +28,7 @@ public class C4RadiusDamage : MonoBehaviour
         Collider[] objectsInRange = Physics.OverlapSphere(gameObject.transform.position, 11f);
         foreach (Collider collider in objectsInRange)
         {
-            if (collider.tag == "Player")
-            {
-                Debug.Log("Player stunned by c4");
-            }
-            else if (collider.tag == "VaultDoor")
+            if (collider.tag == "VaultDoor")
             {
                 collider.GetComponent<Animator>().SetTrigger("TrOpenVault");
             }

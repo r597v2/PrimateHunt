@@ -52,7 +52,8 @@ public class DriveVehicle : MonoBehaviour
             wheel.Steer(horInput);
             wheel.Accelerate(verInput * power);
             wheel.UpdatePos();
-            if(Input.GetKey(KeyCode.Space)) wheel.Brake();
+            if(Input.GetKeyDown(KeyCode.Space)) wheel.Brake();
+            if(Input.GetKeyUp(KeyCode.Space)) wheel.StopBrake();
         }
     }
 }

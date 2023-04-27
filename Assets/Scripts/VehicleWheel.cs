@@ -32,7 +32,11 @@ public class VehicleWheel : MonoBehaviour
     public void Brake()
     {
         wMesh.transform.rotation = Quaternion.identity;
-        wCol.brakeTorque = 20000;
+        wCol.brakeTorque = 30000;
+    }
+    public void StopBrake()
+    {
+        wCol.brakeTorque = 0;
     }
     public void UpdatePos()
     {
