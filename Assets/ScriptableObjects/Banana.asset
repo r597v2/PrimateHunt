@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   displayName: Banana
-  description: This is a banana.
+  description: It's a banana.
   Icon: {fileID: 21300000, guid: 80671be8ca738a64bba33e45a7cecb7f, type: 3}
   MaxStackSize: 69
   itemType: 1

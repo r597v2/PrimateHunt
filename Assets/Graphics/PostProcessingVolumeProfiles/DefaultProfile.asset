@@ -99,6 +99,22 @@ MonoBehaviour:
   bladeRotation:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-3946633252266496091
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
+  m_Name: Tonemapping
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &-2090483810296957012
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -205,12 +221,12 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.309
+    m_Value: 0.513
   smoothness:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.227
   rounded:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -233,6 +249,7 @@ MonoBehaviour:
   - {fileID: -345673916083919268}
   - {fileID: -6088949322960189878}
   - {fileID: -758058340100368654}
+  - {fileID: -3946633252266496091}
 --- !u!114 &7880206723437180306
 MonoBehaviour:
   m_ObjectHideFlags: 3

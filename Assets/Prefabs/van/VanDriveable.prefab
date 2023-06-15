@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 1945721442417037870}
   - component: {fileID: 8496461895974527963}
   - component: {fileID: 268451739028363821}
+  - component: {fileID: 2725671980936881398}
   m_Layer: 0
   m_Name: VanDriveable
   m_TagString: Untagged
@@ -456,11 +457,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 15000
+  brakePower: 20000
   wheels:
   - {fileID: 8138223421147971537}
   - {fileID: 1300841596681915628}
   - {fileID: 8950361002518143312}
   - {fileID: 3611601831634610559}
+--- !u!114 &2725671980936881398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3924358513326572132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 6716551652530666551}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4022185263982196201
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +671,7 @@ GameObject:
   - component: {fileID: 8690415210868346870}
   - component: {fileID: 2983262396662439715}
   - component: {fileID: 8959376687601529845}
+  - component: {fileID: 6716551652530666551}
   m_Layer: 9
   m_Name: VanDoorL
   m_TagString: Untagged
@@ -770,6 +796,22 @@ MonoBehaviour:
   promptMessage: 
   idName: VANDOOR
   interactType: 0
+--- !u!114 &6716551652530666551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7126726927252309649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7220626275411848938
 GameObject:
   m_ObjectHideFlags: 0

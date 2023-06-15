@@ -43,7 +43,7 @@ public class PlayerInteract : MonoBehaviourPunCallbacks
                 {
                     playerUI.UpdateText(interactable.promptMessage);
                 }
-                innerCrosshair.color = new Color32(255, 0, 0, 255);
+                innerCrosshair.color = new Color32(228, 62, 0, 255);
 
                 if (
                     (Input.GetKeyDown(KeyCode.F) && interactable.interactType == Interactable.INTERACT_TYPE.INTERACT) // Interact type

@@ -6,8 +6,7 @@ public class DriveVehicle : MonoBehaviour
 {
     // public Transform gravityTarget;
 
-    public float power = 15000f;
-    public float brakePower = 20000f;
+    public float power = 30000f;
     // public float torque = 500f;
     // public float gravity = 9.81f;
 
@@ -17,7 +16,7 @@ public class DriveVehicle : MonoBehaviour
     private float horInput;
     private float verInput;
     private float steerAngle;
-    private float brakeInput;
+    private bool braking;
 
     public VehicleWheel[] wheels;
 
@@ -43,6 +42,7 @@ public class DriveVehicle : MonoBehaviour
     {
         verInput = Input.GetAxis("Vertical");
         horInput = Input.GetAxis("Horizontal");
+        braking = Input.GetKey(KeyCode.Space);
     }
 
     void ProcessForces()
@@ -52,8 +52,7 @@ public class DriveVehicle : MonoBehaviour
             wheel.Steer(horInput);
             wheel.Accelerate(verInput * power);
             wheel.UpdatePos();
-            if(Input.GetKeyDown(KeyCode.Space)) wheel.Brake();
-            if(Input.GetKeyUp(KeyCode.Space)) wheel.StopBrake();
+            wheel.Brake(braking);
         }
     }
 }

@@ -36,9 +36,9 @@ public class Ghost : MonoBehaviour
     public GameObject[] ghostRooms = new GameObject[] { };
     private GameObject ghostRoom;
     private bool goingToRoom;
-    private bool reachedDestPoint = true;
+    // private bool reachedDestPoint = true;
     private bool longRoaming;
-    private bool roaming;
+    // private bool roaming;
     public float roamCooldown = 1.75f;
     private float nextRoamTime = 0;
 
@@ -71,59 +71,65 @@ public class Ghost : MonoBehaviour
 
         if (goingToRoom && Vector3.Distance(transform.position, destPoint) <= 2.5f)
             goingToRoom = false;
-        roaming = false;
-        if (path.status == NavMeshPathStatus.PathComplete)
+        // roaming = false;
+        if (path.status == NavMeshPathStatus.PathComplete || Vector3.Distance(transform.position, destPoint) <= 2.5f)
         {
-            reachedDestPoint = true;
-            roaming = false;
+            // reachedDestPoint = true;
+            // roaming = false;
             longRoaming = false;
         }
-        else reachedDestPoint = false;
+        // else reachedDestPoint = false;
 
-        if (!longRoaming && !goingToRoom && reachedDestPoint && Time.time > nextRoamTime && (int)UnityEngine.Random.Range(0, 51) >= 5)
+        if (!longRoaming && !goingToRoom &&  Time.time > nextRoamTime)
             Roam();
-        else if (!goingToRoom && reachedDestPoint && Time.time > nextRoamTime && (int)UnityEngine.Random.Range(0, 51) == 0)
+        else if (!goingToRoom &&  Time.time > nextRoamTime)
             LongRoam();
     }
 
     private void Roam()
     {
-        NavMeshPath path = new NavMeshPath();
-        SearchForDest(walkRange);
-        agent.SetDestination(destPoint);
-        // if (Vector3.Distance(transform.position, destPoint) < 10) walkPointValid = false;
-        nextRoamTime = Time.time + roamCooldown;
-        if (path.status == NavMeshPathStatus.PathPartial)
-            SearchForDest(walkRange);
-        roaming = true;
-    }
-    private void LongRoam()
-    {
-        if ((int)UnityEngine.Random.Range(0, 21) != 0)
+        if ((int)UnityEngine.Random.Range(0, 51) >= 2)
         {
             NavMeshPath path = new NavMeshPath();
-            SearchForDest(longWalkRange);
+            SearchForDest(walkRange);
             agent.SetDestination(destPoint);
             // if (Vector3.Distance(transform.position, destPoint) < 10) walkPointValid = false;
             nextRoamTime = Time.time + roamCooldown;
             if (path.status == NavMeshPathStatus.PathPartial)
-                SearchForDest(longWalkRange);
-            longRoaming = true;
-            roaming = true;
+                SearchForDest(walkRange);
+            // roaming = true;
         }
-        else
-        { //go to other ghost rooms
-            nextRoamTime = Time.time + roamCooldown;
-            agent.SetDestination(ghostRooms[UnityEngine.Random.Range(0, ghostRooms.Length)].transform.position);
-            longRoaming = true;
-            roaming = true;
+    }
+    private void LongRoam()
+    {
+        if ((int)UnityEngine.Random.Range(0, 51) == 0)
+        {
+            if ((int)UnityEngine.Random.Range(0, 21) != 0)
+            {
+                NavMeshPath path = new NavMeshPath();
+                SearchForDest(longWalkRange);
+                agent.SetDestination(destPoint);
+                // if (Vector3.Distance(transform.position, destPoint) < 10) walkPointValid = false;
+                nextRoamTime = Time.time + roamCooldown;
+                if (path.status == NavMeshPathStatus.PathPartial)
+                    SearchForDest(longWalkRange);
+                longRoaming = true;
+                // roaming = true;
+            }
+            else
+            { //go to other ghost rooms
+                nextRoamTime = Time.time + roamCooldown;
+                agent.SetDestination(ghostRooms[UnityEngine.Random.Range(0, ghostRooms.Length)].transform.position);
+                longRoaming = true;
+                // roaming = true;
+            }
         }
     }
 
     private void SearchForDest(float range)
     {
-        if (!roaming)
-        {
+        // if (!roaming)
+        // {
             if ((int)UnityEngine.Random.Range(0, 50) != 0)
             {
                 float z = UnityEngine.Random.Range(-range, range);
@@ -141,7 +147,7 @@ public class Ghost : MonoBehaviour
             // {
             //     walkPointValid = true;
             // }
-        }
+        // }
     }
 
     public void PickGhostType()

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce6901118f16794cbd3ac28cc0ba1d6, type: 3}
   m_Name: HumidityMeter
   m_EditorClassIdentifier: 
-  ID: 5
+  ID: 7
   displayName: Humidity Meter
   description: It measures the air humidity.
   Icon: {fileID: 21300000, guid: e1422f0dd9692b049847523f2c5529ee, type: 3}

@@ -711,12 +711,10 @@ GameObject:
   m_Component:
   - component: {fileID: 95367450038629547}
   - component: {fileID: 95367450038629544}
+  - component: {fileID: 5142211204702234687}
   - component: {fileID: 95367450038629546}
-  - component: {fileID: 963270794761650555}
-  - component: {fileID: 661959708076234156}
   - component: {fileID: 5332983766419876968}
   - component: {fileID: -5180517343363294081}
-  - component: {fileID: 5142211204702234687}
   - component: {fileID: 7329540771786708825}
   - component: {fileID: 741793616793302554}
   - component: {fileID: 6252919883353401457}
@@ -724,6 +722,8 @@ GameObject:
   - component: {fileID: 4178121249512167196}
   - component: {fileID: 2639123466842735807}
   - component: {fileID: 4475308629051528376}
+  - component: {fileID: 963270794761650555}
+  - component: {fileID: 661959708076234156}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -769,6 +769,22 @@ CharacterController:
   m_SkinWidth: 0.05
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.83, z: -0.04}
+--- !u!54 &5142211204702234687
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95367450038629545}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &95367450038629546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,46 +832,6 @@ MonoBehaviour:
   mRigidbody: {fileID: 5142211204702234687}
   gravity: -19.62
   footstepSource: {fileID: 0}
---- !u!114 &963270794761650555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95367450038629545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: 0
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 0
-  ObservedComponents:
-  - {fileID: 661959708076234156}
-  - {fileID: 9033223710198310526}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &661959708076234156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95367450038629545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!114 &5332983766419876968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,22 +867,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a388df842ba09294dbcb4ca768663821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &5142211204702234687
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95367450038629545}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &7329540771786708825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,7 +912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6a87d77d0439d4f98acf640495058f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 2.5
+  distance: 2.8
   innerCrosshair: {fileID: 3996621152548672731}
   promptMessageSettingOn: 1
 --- !u!114 &6252919883353401457
@@ -1030,6 +990,46 @@ MonoBehaviour:
   ghostLayer:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &963270794761650555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95367450038629545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: 0
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 0
+  ObservedComponents:
+  - {fileID: 661959708076234156}
+  - {fileID: 9033223710198310526}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &661959708076234156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95367450038629545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &95367450096926021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,7 +1072,6 @@ GameObject:
   - component: {fileID: 95367450762143518}
   - component: {fileID: 95367450762143519}
   - component: {fileID: 95367450762143516}
-  - component: {fileID: 6932659793532576223}
   - component: {fileID: 4152533430207803769}
   - component: {fileID: 4890670487237542120}
   m_Layer: 0
@@ -1148,19 +1147,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95367450762143517}
   m_Enabled: 1
---- !u!135 &6932659793532576223
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95367450762143517}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.018636903
-  m_Center: {x: 1.8312279e-11, y: -0.0016256323, z: 0.0023693414}
 --- !u!114 &4152533430207803769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1249,7 +1235,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 0.8632076, a: 1}
   m_Intensity: 46
-  m_Range: 40
+  m_Range: 25
   m_SpotAngle: 53
   m_InnerSpotAngle: 39.430843
   m_CookieSize: 10
@@ -1365,7 +1351,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.6981132, g: 0.6981132, b: 0.49065503, a: 1}
   m_Intensity: 45.5
-  m_Range: 40
+  m_Range: 20
   m_SpotAngle: 50
   m_InnerSpotAngle: 5
   m_CookieSize: 10

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 6
   displayName: IR Cam
-  description: It shows changes in a magnetic field with visual representation.
+  description: It shows changes in a magnetic field visually.
   Icon: {fileID: 21300000, guid: 69dd4023b90648e44bb9f35172e5ca4a, type: 3}
   MaxStackSize: 1
   itemType: 0

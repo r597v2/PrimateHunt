@@ -26,13 +26,20 @@ public class VehicleWheel : MonoBehaviour
     }
     public void Accelerate(float powerInput)
     {
-        if(powered) wCol.motorTorque = powerInput;
-        else wCol.brakeTorque = 0;
+        if (powered) wCol.motorTorque = powerInput;
+        // else wCol.brakeTorque = 0;
     }
-    public void Brake()
+    public void Brake(bool braking)
     {
-        wMesh.transform.rotation = Quaternion.identity;
-        wCol.brakeTorque = 30000;
+        if (braking)
+        {
+            wMesh.transform.rotation = Quaternion.identity;
+            wCol.brakeTorque = 40000;
+        }
+        else
+        {
+            wCol.brakeTorque = 0;
+        }
     }
     public void StopBrake()
     {
